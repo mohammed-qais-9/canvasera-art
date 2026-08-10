@@ -36,6 +36,23 @@
             margin-bottom: 1.5rem;
         }
 
+        /* FIX SHARE ICON CUT BUG */
+        .action-toolbar { 
+            overflow: visible !important; 
+            flex-wrap: nowrap; 
+        }
+        #modal-share-btn, #modal-like-btn, #modal-download-btn { 
+            flex-shrink: 0; 
+            min-width: 40px; 
+            min-height: 40px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        #modal-share-btn svg { 
+            overflow: visible; 
+        }
+
         /* Ad Slots CSS - Prevents Cumulative Layout Shift (CLS) */
         .ad-slot--in-article {
             min-height: 250px; /* Monetag/Journey Responsive 300x250 baseline */
@@ -151,24 +168,30 @@
                     
                     <!-- 1. Main Image -->
                     <div class="rounded-2xl overflow-hidden bg-gray-100 shadow-inner relative">
-                        <img id="modal-image" src="" alt="" class="w-full h-auto object-contain max-h-[60vh] sm:max-h-[500px]">
+                        <img id="modal-image" src="" alt="" loading="lazy" class="w-full h-auto object-contain max-h-[60vh] sm:max-h-[500px]">
                     </div>
 
                     <!-- 2. Action Toolbar -->
                     <div class="flex items-center justify-between gap-2 pt-2">
-                        <div class="flex items-center gap-1.5 sm:gap-2">
+                        <div class="flex items-center gap-1.5 sm:gap-2 action-toolbar">
                             <!-- Interactive Like -->
-                            <button id="modal-like-btn" onclick="toggleLike()" class="flex items-center gap-1 bg-gray-100 hover:bg-red-50 text-gray-700 px-3 py-2 sm:px-3.5 rounded-xl text-sm font-medium transition-colors">
-                                <svg id="modal-like-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                            <button id="modal-like-btn" onclick="toggleLike()" class="bg-gray-100 hover:bg-red-50 text-gray-700 rounded-xl text-sm font-medium transition-colors">
+                                <svg id="modal-like-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
                                 <span id="modal-likes-count">0</span>
                             </button>
                             <!-- Download -->
-                            <a id="modal-download-btn" href="#" download target="_blank" class="flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-700 p-2.5 rounded-xl transition-colors" title="Download">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                            <a id="modal-download-btn" href="#" download target="_blank" class="flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-700 w-10 h-10 rounded-full transition-colors" title="Download">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                             </a>
                             <!-- Share -->
-                            <button id="modal-share-btn" class="flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-700 p-2.5 rounded-xl transition-colors" title="Share">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684b3.000 3.000 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3.000 3.000 0 00-5.368-2.684z" /></svg>
+                            <button id="modal-share-btn" class="flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-700 w-10 h-10 rounded-full transition-colors" title="Share">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="18" cy="5" r="3"></circle>
+                                    <circle cx="6" cy="12" r="3"></circle>
+                                    <circle cx="18" cy="19" r="3"></circle>
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                </svg>
                             </button>
                         </div>
                         <!-- Copy Prompt Button -->
@@ -190,11 +213,11 @@
                         <p id="modal-prompt" class="text-sm font-mono text-gray-800 break-words"></p>
                     </div>
 
-                    <!-- 4. Affiliate CTA (Sticky on mobile inside scroll area) -->
+                    <!-- 4. Affiliate CTA (Replaced with Multi-Choice Button) -->
                     <div class="sticky bottom-2 z-20 md:static md:bottom-auto">
-                        <a href="https://leonardo.ai" target="_blank" class="flex items-center justify-center w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transform transition-transform active:scale-95 text-sm sm:text-base">
-                            ✨ Create this in 1-Click with Leonardo &rarr;
-                        </a>
+                        <button id="create-ai-btn" onclick="openAffiliatePopup()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transform transition-transform active:scale-95 text-sm sm:text-base flex justify-center items-center gap-2">
+                            ✨ Create this with AI &rarr;
+                        </button>
                     </div>
 
                     <!-- 5. Ad Slot 1 (In-Article) -->
@@ -213,6 +236,40 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AFFILIATE POPUP MODAL -->
+    <div id="affiliate-popup" class="fixed inset-0 bg-black/60 z-[60] hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity">
+        <div class="fixed inset-0 cursor-pointer" onclick="closeAffiliatePopup()"></div>
+        <div class="bg-white rounded-2xl w-full max-w-md p-6 relative z-10 shadow-2xl">
+            <button onclick="closeAffiliatePopup()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h3 class="text-xl font-bold font-serif mb-5 text-gray-900">Choose AI Generator</h3>
+            <div class="space-y-3">
+                <button onclick="handleAffiliateClick('imagineart')" class="w-full flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-purple-500 hover:bg-purple-50 transition-colors group">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">🎨</span>
+                        <span class="font-bold text-gray-800">ImagineArt</span>
+                    </div>
+                    <span class="bg-purple-100 text-purple-700 text-xs font-bold px-2.5 py-1 rounded-md">Best Quality</span>
+                </button>
+                <button onclick="handleAffiliateClick('openart')" class="w-full flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-purple-500 hover:bg-purple-50 transition-colors group">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">✨</span>
+                        <span class="font-bold text-gray-800">OpenArt</span>
+                    </div>
+                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-md">Most Similar</span>
+                </button>
+                <button onclick="handleAffiliateClick('getimg')" class="w-full flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-purple-500 hover:bg-purple-50 transition-colors group">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">🚀</span>
+                        <span class="font-bold text-gray-800">Getimg.ai</span>
+                    </div>
+                    <span class="bg-green-100 text-green-700 text-xs font-bold px-2.5 py-1 rounded-md">Free to Try</span>
+                </button>
             </div>
         </div>
     </div>
@@ -242,6 +299,13 @@
 
     <!-- JavaScript logic -->
     <script>
+        // 1. Affiliate Links Placeholders
+        const AFFILIATE_LINKS = {
+            imagineart: 'https://www.imagine.art/?ref=YOUR_IMAGINEART_ID',
+            openart: 'https://openart.ai/?via=YOUR_OPENART_ID',
+            getimg: 'https://getimg.ai/?via=YOUR_GETIMG_ID'
+        };
+
         // Data Structure with Slugs for Deep Linking
         const posts = [
             {
@@ -330,9 +394,6 @@
         const adObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Trigger Ad Network Code here
-                    // console.log('Ad slot in view:', entry.target);
-                    // entry.target.innerHTML = 'Ad Code Executed';
                     adObserver.unobserve(entry.target);
                 }
             });
@@ -347,15 +408,14 @@
         // Generate In-Feed Ad HTML
         function getAdCardHTML() {
             return `
-                <article class="masonry-item ad-card--in-feed bg-gray-50 rounded-2xl border border-gray-200 border-dashed flex flex-col justify-center items-center relative overflow-hidden">
+                <article class="masonry-item ad-card--in-feed bg-gray-50 rounded-2xl border border-gray-200 border-dashed flex flex-col justify-center items-center relative overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
                     <div class="absolute top-4 text-[10px] text-gray-400 font-bold uppercase tracking-widest">Advertisement</div>
                     <div class="text-gray-400 text-xs">Ad Space: 300x250 or 300x600</div>
-                    <!-- Replace with Journey in-feed code later -->
                 </article>
             `;
         }
 
-        // Render Posts in Main Feed (With Ad Injection every 6 cards)
+        // Render Posts in Main Feed
         function renderPosts(category = 'All') {
             const container = document.getElementById('posts-container');
             container.innerHTML = '';
@@ -363,7 +423,6 @@
             const filteredPosts = category === 'All' ? posts : posts.filter(p => p.category === category);
 
             filteredPosts.forEach((post, index) => {
-                // 1. Append Real Post Card
                 const article = document.createElement('article');
                 article.className = 'masonry-item bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col cursor-pointer';
                 article.onclick = () => openModal(post.id);
@@ -388,7 +447,6 @@
                 `;
                 container.appendChild(article);
 
-                // 2. Inject Ad Card after every 6 real cards
                 if ((index + 1) % 6 === 0) {
                     container.insertAdjacentHTML('beforeend', getAdCardHTML());
                 }
@@ -442,7 +500,6 @@
             document.getElementById('modal-copy-btn').onclick = () => copyText(currentPost.prompt);
             document.getElementById('modal-share-btn').onclick = () => sharePost(currentPost.title, currentPost.desc);
 
-            // Render "More like this" + Inject Ad after 3rd item
             const relatedContainer = document.getElementById('related-posts');
             relatedContainer.innerHTML = '';
             const related = posts.filter(p => p.category === currentPost.category && p.id !== currentPost.id);
@@ -451,10 +508,9 @@
                 const item = document.createElement('div');
                 item.className = 'masonry-item rounded-xl overflow-hidden cursor-pointer group bg-gray-100';
                 item.onclick = () => openModal(rel.id);
-                item.innerHTML = `<img src="${rel.image}" alt="${rel.title}" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300">`;
+                item.innerHTML = `<img src="${rel.image}" alt="${rel.title}" loading="lazy" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300">`;
                 relatedContainer.appendChild(item);
 
-                // Inject 1 Native In-Feed ad after 3 real related cards
                 if (idx === 2) {
                     relatedContainer.insertAdjacentHTML('beforeend', getAdCardHTML());
                 }
@@ -463,12 +519,11 @@
             document.getElementById('image-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             
-            // Re-observe injected ads in modal
             observeAds();
 
-            // Handle URL changes
             if (pushState) {
-                history.pushState({ postId: id }, '', '?art=' + currentPost.slug);
+                const fullSlug = currentPost.slug;
+                history.pushState({ postId: id }, '', '?art=' + fullSlug);
             }
             updateMetaTags(currentPost);
         }
@@ -480,23 +535,33 @@
             currentPost = null;
 
             if (pushState) {
-                // Remove ?art= parameter
                 const newUrl = window.location.pathname;
                 history.pushState(null, '', newUrl);
             }
             updateMetaTags(null);
         }
 
+        // ESC Key to close modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (!document.getElementById('affiliate-popup').classList.contains('hidden')) {
+                    closeAffiliatePopup();
+                } else if (!document.getElementById('image-modal').classList.contains('hidden')) {
+                    closeModal();
+                }
+            }
+        });
+
         // Handle Browser Back/Forward Buttons
         window.addEventListener('popstate', (event) => {
             const urlParams = new URLSearchParams(window.location.search);
-            const artSlug = urlParams.get('art');
+            const artSlug = urlParams.get('art'); 
             
             if (artSlug) {
                 const post = posts.find(p => p.slug === artSlug);
                 if (post) openModal(post.id, false);
             } else {
-                closeModal(false); // false means don't push state again
+                closeModal(false); 
             }
         });
 
@@ -511,6 +576,32 @@
                 if (post) openModal(post.id, false);
             }
         });
+
+        // Affiliate Popup Logic
+        function openAffiliatePopup() {
+            document.getElementById('affiliate-popup').classList.remove('hidden');
+        }
+
+        function closeAffiliatePopup() {
+            document.getElementById('affiliate-popup').classList.add('hidden');
+        }
+
+        function handleAffiliateClick(platform) {
+            if (!currentPost) return;
+            
+            try {
+                const url = new URL(AFFILIATE_LINKS[platform]);
+                url.searchParams.append('prompt', currentPost.prompt);
+                
+                if (typeof gtag === 'function') {
+                    gtag('event', 'affiliate_click', { 'platform': platform });
+                }
+                
+                window.open(url.toString(), '_blank');
+            } catch (e) {
+                console.error("Invalid Affiliate URL", e);
+            }
+        }
 
         // Toggle Like Function
         function toggleLike() {
@@ -545,9 +636,10 @@
             }).catch(err => console.error("Failed to copy", err));
         }
 
-        // Updated Share Post (Now shares specific URL)
+        // Share Post
         function sharePost(title, desc) {
-            const shareUrl = window.location.origin + window.location.pathname + '?art=' + currentPost.slug;
+            const fullSlug = currentPost.slug;
+            const shareUrl = window.location.origin + window.location.pathname + '?art=' + fullSlug;
             
             if (navigator.share) {
                 navigator.share({
