@@ -1,9 +1,48 @@
+يا أهلاً بك! سعيد جداً أن النسخة السابقة نالت إعجابك وتوفير صفحات متعددة جعل العمل أسهل بكثير! 🤩👏
+
+طلبك الحالي احترافي جداً، وهو النقلة النوعية من مجرد "موقع" إلى "مشروع يدر أرباحاً" (Monetization). التخطيط لإضافة Monetag الآن و Mediavine Journey مستقبلاً هو تفكير استراتيجي ممتاز، ولهذا بنيت لك بنية تحتية للإعلانات (Ad Architecture) لا تسبب أي انزياح مزعج للموقع (Zero CLS) وتعمل بنظام التحميل الكسول (Lazy Loading) لضمان بقاء الموقع سريعاً كالصاروخ! 🚀
+
+### 🛠️ ماذا تم إنجازه في هذا التحديث الشامل؟
+
+1. **نظام الإعلانات الذكي (Ad Injection):**
+* **الصفحة الرئيسية:** يتم حقن كرت إعلاني مخفي `ad-card--in-feed` تلقائياً بعد كل 6 مقالات.
+* **النافذة المنبثقة (Modal):** تم ترتيب المحتوى كما طلبت (صورة -> أزرار الأكشن -> البرومبت -> زر الأفلييت -> مساحة إعلان Monetag -> قسم صور مشابهة).
+* **الصور المشابهة:** يتم حقن إعلان بعد أول 3 صور لتكملة الصف بشكل أنيق، ثم تتابع الصور.
+* **زر الأفيليت:** تم جعله ثابت (Sticky) في أسفل شاشة الهاتف لزيادة النقرات (CTR) دون أن يغطي على الإعلانات.
+* **Lazy Loading:** تمت إضافة `IntersectionObserver`؛ الإعلانات لا تُحمل إلا عندما يقترب منها الزائر، مما يحافظ على سرعة الموقع.
+
+
+2. **إصلاح مشكلة المشاركة (Deep Linking & Share Bug):**
+* الآن لكل مقالة "رابط خاص" (Slug)، مثلاً: `?art=cyberpunk-neon-city`.
+* تم تفعيل `history.pushState`: عند فتح مقالة، يتغير رابط الموقع تلقائياً في المتصفح دون إعادة تحميل الصفحة!
+* **زر الرجوع (Back Button):** الآن يعمل بشكل طبيعي، إذا ضغطت رجوع ستنغلق النافذة المنبثقة وتعود للصفحة الرئيسية بدلاً من الخروج من الموقع!
+* **عند مشاركة الرابط:** إذا فتح أي شخص الرابط، سيتعرف الكود عليه ويفتح النافذة المنبثقة للصورة المحددة فوراً.
+
+
+
+> **ملاحظة مهمة جداً بخصوص (Meta Tags) لتليجرام وواتساب:**
+> موقعك مستضاف على GitHub Pages كصفحة واحدة (Static SPA). الكود الجديد يقوم بتحديث بيانات الـ Meta (الصورة والعنوان) بواسطة الجافاسكريبت. **لكن**، روبوتات واتساب وتليجرام "لا تقرأ الجافاسكريبت"، بل تقرأ كود الـ HTML الأساسي فقط. لذلك، قد تظهر صورة الموقع الرئيسية دائماً في المعاينة لديهم. لحل هذه المشكلة 100% مستقبلاً ستحتاج إلى سيرفر (مثل Next.js)، ولكن حالياً التوجيه عبر الرابط `?art=...` سيعمل بشكل مثالي لفتح الصورة المطلوبة للزائر.
+
+---
+
+### الكود النهائي المحدث (ملف `index.html`):
+
+قم بنسخ هذا الكود واستبدله بالكامل. المساحات الإعلانية جاهزة ومكتوب بداخلها تعليقات لتعرف أين تضع كود Monetag أو Journey لاحقاً.
+
+```html
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canvas Era | AI Art & Prompts</title>
+    
+    <!-- Dynamic Meta Tags (Fallback) -->
+    <meta property="og:title" content="Canvas Era | AI Art & Prompts">
+    <meta property="og:description" content="Discover how AI images were created, and copy the prompts with a single click.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://canvasera.art">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -15,7 +54,7 @@
             font-family: 'Playfair Display', serif;
         }
         
-        /* Masonry Grid (Pinterest style) */
+        /* Masonry Grid */
         .masonry-grid {
             column-count: 1;
             column-gap: 1.5rem;
@@ -29,6 +68,14 @@
             margin-bottom: 1.5rem;
         }
 
+        /* Ad Slots CSS - Prevents Cumulative Layout Shift (CLS) */
+        .ad-slot--in-article {
+            min-height: 250px; /* Monetag/Journey Responsive 300x250 baseline */
+        }
+        .ad-card--in-feed {
+            min-height: 320px;
+        }
+
         /* Toast Notification */
         #toast {
             visibility: hidden;
@@ -39,7 +86,7 @@
             border-radius: 8px;
             padding: 16px;
             position: fixed;
-            z-index: 2000;
+            z-index: 3000;
             left: 50%;
             bottom: 30px;
             transform: translateX(-50%);
@@ -60,15 +107,14 @@
     <header class="bg-[#f0ece5] sticky top-0 z-40 border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="javascript:void(0)" onclick="filterPosts('All')" class="font-serif text-2xl md:text-3xl font-bold tracking-wider text-gray-900">
+                    <a href="/" onclick="event.preventDefault(); navigateHome();" class="font-serif text-2xl md:text-3xl font-bold tracking-wider text-gray-900">
                         Canvas Era
                     </a>
                 </div>
 
-                <!-- Desktop Menu (Active Category Filtering) -->
+                <!-- Desktop Menu -->
                 <nav class="hidden md:flex space-x-8 items-center">
                     <button onclick="filterPosts('All')" class="category-btn text-gray-900 font-bold px-3 py-2 text-sm transition-colors">Home</button>
                     <button onclick="filterPosts('Culture')" class="category-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors">Culture</button>
@@ -113,123 +159,113 @@
 
     </main>
 
-    <!-- POPUP MODAL VIEW (Meigen.ai Style) -->
-    <div id="image-modal" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden overflow-y-auto backdrop-blur-sm flex justify-center p-2 sm:p-4">
-        <div class="bg-white rounded-3xl max-w-2xl w-full my-auto overflow-hidden shadow-2xl relative flex flex-col max-h-[90vh]">
+    <!-- POPUP MODAL VIEW -->
+    <div id="image-modal" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden overflow-y-auto backdrop-blur-sm flex justify-center p-0 sm:p-4">
+        <!-- Close background layer -->
+        <div class="fixed inset-0 cursor-pointer" onclick="closeModal()"></div>
+        
+        <div class="bg-white sm:rounded-3xl max-w-2xl w-full my-auto shadow-2xl relative flex flex-col min-h-screen sm:min-h-0 sm:max-h-[90vh] z-10">
             
             <!-- Sticky Header Bar inside Modal -->
-            <div class="p-4 flex items-center justify-between border-b border-gray-100 bg-white/90 backdrop-blur sticky top-0 z-10">
+            <div class="p-4 flex items-center justify-between border-b border-gray-100 bg-white/95 backdrop-blur sticky top-0 z-30 sm:rounded-t-3xl">
                 <button onclick="closeModal()" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                 </button>
-                <span id="modal-category" class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Category</span>
+                <span id="modal-category" class="text-xs font-bold text-gray-500 uppercase tracking-widest">Category</span>
                 <div class="w-10"></div> <!-- Balance spacer -->
             </div>
 
             <!-- Modal Body (Scrollable) -->
-            <div class="p-4 sm:p-6 overflow-y-auto space-y-6">
-                
-                <!-- Main Image -->
-                <div class="rounded-2xl overflow-hidden bg-gray-100 shadow-inner">
-                    <img id="modal-image" src="" alt="" class="w-full h-auto object-cover max-h-[500px]">
-                </div>
+            <div class="overflow-y-auto flex-grow relative pb-20 sm:pb-6">
+                <div class="p-4 sm:p-6 space-y-6">
+                    
+                    <!-- 1. Main Image -->
+                    <div class="rounded-2xl overflow-hidden bg-gray-100 shadow-inner relative">
+                        <img id="modal-image" src="" alt="" class="w-full h-auto object-contain max-h-[60vh] sm:max-h-[500px]">
+                    </div>
 
-                <!-- Action Toolbar (Like, Download, Share, Copy) -->
-                <div class="flex items-center justify-between gap-3 pt-2">
-                    <div class="flex items-center gap-2">
-                        <button class="flex items-center gap-1.5 bg-gray-100 hover:bg-red-50 hover:text-red-600 text-gray-700 px-3.5 py-2 rounded-xl text-sm font-medium transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                            </svg>
-                            <span>144</span>
+                    <!-- 2. Action Toolbar -->
+                    <div class="flex items-center justify-between gap-2 pt-2">
+                        <div class="flex items-center gap-1.5 sm:gap-2">
+                            <!-- Interactive Like -->
+                            <button id="modal-like-btn" onclick="toggleLike()" class="flex items-center gap-1 bg-gray-100 hover:bg-red-50 text-gray-700 px-3 py-2 sm:px-3.5 rounded-xl text-sm font-medium transition-colors">
+                                <svg id="modal-like-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                                <span id="modal-likes-count">0</span>
+                            </button>
+                            <!-- Download -->
+                            <a id="modal-download-btn" href="#" download target="_blank" class="flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-700 p-2.5 rounded-xl transition-colors" title="Download">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                            </a>
+                            <!-- Share -->
+                            <button id="modal-share-btn" class="flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-700 p-2.5 rounded-xl transition-colors" title="Share">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684b3.000 3.000 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3.000 3.000 0 00-5.368-2.684z" /></svg>
+                            </button>
+                        </div>
+                        <!-- Copy Prompt Button -->
+                        <button id="modal-copy-btn" class="bg-gray-900 hover:bg-gray-800 text-white px-4 sm:px-5 py-2.5 rounded-xl font-medium text-sm transition-colors flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                            <span class="hidden sm:inline">Copy Prompt</span><span class="sm:hidden">Copy</span>
                         </button>
-                        <a id="modal-download-btn" href="#" download target="_blank" class="flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-700 p-2.5 rounded-xl transition-colors" title="Download Image">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                            </svg>
+                    </div>
+
+                    <!-- Title & Description -->
+                    <div>
+                        <h2 id="modal-title" class="text-2xl font-serif font-bold text-gray-900 mb-2">Title</h2>
+                        <p id="modal-desc" class="text-gray-600 text-sm leading-relaxed">Description</p>
+                    </div>
+
+                    <!-- 3. Prompt Box -->
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 relative">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Prompt</span>
+                        <p id="modal-prompt" class="text-sm font-mono text-gray-800 break-words"></p>
+                    </div>
+
+                    <!-- 4. Affiliate CTA (Sticky on mobile inside scroll area) -->
+                    <div class="sticky bottom-2 z-20 md:static md:bottom-auto">
+                        <a href="https://leonardo.ai" target="_blank" class="flex items-center justify-center w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transform transition-transform active:scale-95 text-sm sm:text-base">
+                            ✨ Create this in 1-Click with Leonardo &rarr;
                         </a>
-                        <button id="modal-share-btn" class="flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-700 p-2.5 rounded-xl transition-colors" title="Share">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3.000 3.000 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3.000 3.000 0 00-5.368-2.684z" />
-                            </svg>
-                        </button>
                     </div>
 
-                    <!-- Copy Prompt Button -->
-                    <button id="modal-copy-btn" class="bg-[#f0ece5] hover:bg-gray-900 hover:text-white text-gray-900 px-5 py-2.5 rounded-xl font-medium text-sm transition-colors flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                        Copy Prompt
-                    </button>
-                </div>
-
-                <!-- Title & Description -->
-                <div>
-                    <h2 id="modal-title" class="text-2xl font-serif font-bold text-gray-900 mb-2">Title</h2>
-                    <p id="modal-desc" class="text-gray-600 text-sm leading-relaxed">Description</p>
-                </div>
-
-                <!-- Prompt Box -->
-                <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
-                    <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Prompt</span>
-                    <p id="modal-prompt" class="text-sm font-mono text-gray-800 break-words"></p>
-                </div>
-
-                <!-- Google AdSense Container Placeholder -->
-                <div class="w-full bg-gray-100 border border-dashed border-gray-300 rounded-xl py-6 text-center text-xs text-gray-400">
-                    <!-- Paste Google AdSense Code Here Later -->
-                    Advertisement Space
-                </div>
-
-                <!-- More Like This Section -->
-                <div class="pt-4 border-t border-gray-100">
-                    <h3 class="text-lg font-bold text-gray-900 mb-4 font-serif">More like this</h3>
-                    <div id="related-posts" class="grid grid-cols-2 gap-3">
-                        <!-- Related images populated dynamically -->
+                    <!-- 5. Ad Slot 1 (In-Article) -->
+                    <div class="ad-slot ad-slot--in-article bg-gray-50 border border-gray-200 border-dashed rounded-xl flex flex-col items-center justify-center relative overflow-hidden" id="monetag-in-article-1" data-ad="in-article-1">
+                        <span class="absolute top-2 text-[10px] text-gray-400 font-bold uppercase tracking-widest z-0">Advertisement</span>
+                        <!-- monetag/journey script goes here -->
+                        <div class="relative z-10 text-gray-400 text-xs mt-4">Ad Space: 300x250</div>
                     </div>
-                </div>
 
+                    <!-- 6. More Like This Section -->
+                    <div class="pt-6 border-t border-gray-100">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 font-serif">More like this</h3>
+                        <div class="masonry-grid" id="related-posts" style="column-count: 2;">
+                            <!-- Related images populated dynamically + Ad injected here -->
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer with Social Icons Restored -->
+    <!-- Footer -->
     <footer class="bg-white border-t border-gray-200 mt-12 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-            
-            <a href="javascript:void(0)" onclick="filterPosts('All')" class="font-serif text-2xl font-bold text-gray-900 mb-6">
-                Canvas Era
-            </a>
-            <p class="text-gray-500 text-sm mb-8 text-center max-w-md">
-                Your premier destination for learning AI image creation and discovering the best ready-to-use prompts.
-            </p>
-
+            <a href="/" onclick="event.preventDefault(); navigateHome();" class="font-serif text-2xl font-bold text-gray-900 mb-6">Canvas Era</a>
+            <p class="text-gray-500 text-sm mb-8 text-center max-w-md">Your premier destination for learning AI image creation and discovering the best ready-to-use prompts.</p>
             <!-- Social Icons -->
             <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-8">
                 <!-- Pinterest -->
-                <a href="#" class="text-gray-500 hover:text-[#E60023] transition-colors" aria-label="Pinterest">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.17 0 7.41 2.967 7.41 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.592 0 12.017 0z"/></svg>
-                </a>
+                <a href="#" class="text-gray-400 hover:text-[#E60023] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.17 0 7.41 2.967 7.41 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.592 0 12.017 0z"/></svg></a>
                 <!-- Instagram -->
-                <a href="#" class="text-gray-500 hover:text-[#E1306C] transition-colors" aria-label="Instagram">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"/></svg>
-                </a>
+                <a href="#" class="text-gray-400 hover:text-[#E1306C] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"/></svg></a>
                 <!-- X (Twitter) -->
-                <a href="#" class="text-gray-500 hover:text-black transition-colors" aria-label="X (Twitter)">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
-                </a>
+                <a href="#" class="text-gray-400 hover:text-black transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
                 <!-- Telegram -->
-                <a href="#" class="text-gray-500 hover:text-[#0088cc] transition-colors" aria-label="Telegram">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.896-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                </a>
+                <a href="#" class="text-gray-400 hover:text-[#0088cc] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.896-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
             </div>
-            
-            <div class="text-gray-400 text-sm">
-                &copy; 2026 Canvas Era. All rights reserved.
-            </div>
+            <div class="text-gray-400 text-sm">&copy; 2026 Canvas Era. All rights reserved.</div>
         </div>
     </footer>
 
@@ -238,67 +274,128 @@
 
     <!-- JavaScript logic -->
     <script>
+        // Data Structure with Slugs for Deep Linking
         const posts = [
             {
                 id: 1,
+                slug: "cyberpunk-neon-city",
                 image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
                 category: "Anime",
                 title: "Cyberpunk Neon City",
                 desc: "A detailed and heartwarming modern anime artwork of a girl enjoying a quiet evening.",
-                prompt: "Anime style illustration of a girl looking over a cyberpunk city, glowing neon signs, rain, cinematic lighting, Makoto Shinkai style, masterpiece, highly detailed --ar 16:9"
+                prompt: "Anime style illustration of a girl looking over a cyberpunk city, glowing neon signs, rain, cinematic lighting, Makoto Shinkai style, masterpiece, highly detailed --ar 16:9",
+                likes: 124,
+                isLiked: false
             },
             {
                 id: 2,
+                slug: "modern-abstract-fluidity",
                 image: "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
                 category: "Art",
                 title: "Modern Abstract Fluidity",
                 desc: "Abstract shapes and fluid colors blending seamlessly together.",
-                prompt: "Abstract fluid art, 3D render, flowing shapes, soft pastel colors, gold accents, elegant composition, high quality, octane render."
+                prompt: "Abstract fluid art, 3D render, flowing shapes, soft pastel colors, gold accents, elegant composition, high quality, octane render.",
+                likes: 89,
+                isLiked: false
             },
             {
                 id: 3,
+                slug: "traditional-mexican-ceramics",
                 image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
                 category: "Culture",
                 title: "Traditional Mexican Ceramics",
                 desc: "Colorful traditional Mexican ceramic pots sitting on a vibrant hand-woven rug.",
-                prompt: "Traditional Mexican ceramic pots on a vibrant woven rug, natural lighting, sharp focus, cultural photography, vibrant colors, 4k."
+                prompt: "Traditional Mexican ceramic pots on a vibrant woven rug, natural lighting, sharp focus, cultural photography, vibrant colors, 4k.",
+                likes: 215,
+                isLiked: false
             },
             {
                 id: 4,
-                image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", // Fixed working image URL
+                slug: "samurai-on-a-mountain",
+                image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
                 category: "Anime",
                 title: "Samurai on a Mountain",
                 desc: "Anime style portrait of a warrior standing on a snowy peak.",
-                prompt: "Anime style portrait of a samurai standing on a snowy mountain peak, dramatic lighting, clouds, masterpiece, detailed --ar 16:9"
+                prompt: "Anime style portrait of a samurai standing on a snowy mountain peak, dramatic lighting, clouds, masterpiece, detailed --ar 16:9",
+                likes: 342,
+                isLiked: false
             },
             {
                 id: 5,
+                slug: "digital-portrait-art",
                 image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
                 category: "Art",
                 title: "Digital Portrait Art",
                 desc: "Detailed digital painting with abstract aesthetic elements.",
-                prompt: "Detailed digital painting of a face with integrated abstract patterns, vibrant colors, intricate details, highly detailed, Arstation --ar 4:5"
+                prompt: "Detailed digital painting of a face with integrated abstract patterns, vibrant colors, intricate details, highly detailed, Arstation --ar 4:5",
+                likes: 76,
+                isLiked: false
             },
             {
                 id: 6,
+                slug: "japanese-zen-garden",
                 image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
                 category: "Culture",
                 title: "Japanese Zen Garden",
                 desc: "Peaceful photograph of a raked Japanese Zen rock garden.",
-                prompt: "Peaceful photograph of a raked Japanese Zen rock garden, moss, stones, soft lighting, 4k resolution --ar 3:2"
+                prompt: "Peaceful photograph of a raked Japanese Zen rock garden, moss, stones, soft lighting, 4k resolution --ar 3:2",
+                likes: 153,
+                isLiked: false
+            },
+            {
+                id: 7,
+                slug: "golden-hour-coffee",
+                image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                category: "Culture",
+                title: "Golden Hour Coffee",
+                desc: "A warm cup of coffee resting on a wooden table bathed in golden hour light.",
+                prompt: "A ceramic coffee cup on a rustic wooden table, golden hour sunlight streaming through a window, photorealistic, 8k, cinematic lighting --ar 16:9",
+                likes: 412,
+                isLiked: false
             }
         ];
 
         let currentCategory = 'All';
+        let currentPost = null;
 
-        // Render Posts in Main Feed
+        // Lazy Load Intersection Observer for Ads
+        const adObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Trigger Ad Network Code here
+                    // console.log('Ad slot in view:', entry.target);
+                    // entry.target.innerHTML = 'Ad Code Executed';
+                    adObserver.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '100px' });
+
+        function observeAds() {
+            document.querySelectorAll('.ad-slot, .ad-card--in-feed').forEach(ad => {
+                adObserver.observe(ad);
+            });
+        }
+
+        // Generate In-Feed Ad HTML
+        function getAdCardHTML() {
+            return `
+                <article class="masonry-item ad-card--in-feed bg-gray-50 rounded-2xl border border-gray-200 border-dashed flex flex-col justify-center items-center relative overflow-hidden">
+                    <div class="absolute top-4 text-[10px] text-gray-400 font-bold uppercase tracking-widest">Advertisement</div>
+                    <div class="text-gray-400 text-xs">Ad Space: 300x250 or 300x600</div>
+                    <!-- Replace with Journey in-feed code later -->
+                </article>
+            `;
+        }
+
+        // Render Posts in Main Feed (With Ad Injection every 6 cards)
         function renderPosts(category = 'All') {
             const container = document.getElementById('posts-container');
             container.innerHTML = '';
             
             const filteredPosts = category === 'All' ? posts : posts.filter(p => p.category === category);
 
-            filteredPosts.forEach(post => {
+            filteredPosts.forEach((post, index) => {
+                // 1. Append Real Post Card
                 const article = document.createElement('article');
                 article.className = 'masonry-item bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col cursor-pointer';
                 article.onclick = () => openModal(post.id);
@@ -315,16 +412,21 @@
                         
                         <div class="mt-auto pt-4 border-t border-gray-100 flex gap-2">
                             <button onclick="event.stopPropagation(); copyText('${post.prompt.replace(/'/g, "\\'")}')" class="flex-grow flex items-center justify-center gap-2 bg-[#f0ece5] hover:bg-gray-800 hover:text-white text-gray-800 py-2.5 px-3 rounded-xl font-medium transition-colors text-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
                                 Copy
                             </button>
                         </div>
                     </div>
                 `;
                 container.appendChild(article);
+
+                // 2. Inject Ad Card after every 6 real cards
+                if ((index + 1) % 6 === 0) {
+                    container.insertAdjacentHTML('beforeend', getAdCardHTML());
+                }
             });
+            
+            observeAds();
         }
 
         // Filter Category
@@ -334,68 +436,159 @@
             renderPosts(category);
         }
 
-        // Open Modal (Meigen.ai Style)
-        function openModal(id) {
-            const post = posts.find(p => p.id === id);
-            if (!post) return;
+        function navigateHome() {
+            closeModal();
+            filterPosts('All');
+        }
 
-            document.getElementById('modal-image').src = post.image;
-            document.getElementById('modal-category').textContent = post.category;
-            document.getElementById('modal-title').textContent = post.title;
-            document.getElementById('modal-desc').textContent = post.desc;
-            document.getElementById('modal-prompt').textContent = post.prompt;
-            document.getElementById('modal-download-btn').href = post.image;
+        // Meta Tags Updater
+        function updateMetaTags(post) {
+            if (post) {
+                document.title = `${post.title} | Canvas Era`;
+                document.querySelector('meta[property="og:title"]').setAttribute('content', post.title);
+                document.querySelector('meta[property="og:description"]').setAttribute('content', post.desc);
+                document.querySelector('meta[property="og:image"]').setAttribute('content', post.image);
+                document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.origin + '/?art=' + post.slug);
+            } else {
+                document.title = 'Canvas Era | AI Art & Prompts';
+                document.querySelector('meta[property="og:title"]').setAttribute('content', 'Canvas Era | AI Art & Prompts');
+                document.querySelector('meta[property="og:description"]').setAttribute('content', 'Discover how AI images were created, and copy the prompts.');
+                document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.origin);
+            }
+        }
+
+        // Open Modal (Deep Linking Support)
+        function openModal(id, pushState = true) {
+            currentPost = posts.find(p => p.id === id);
+            if (!currentPost) return;
+
+            document.getElementById('modal-image').src = currentPost.image;
+            document.getElementById('modal-category').textContent = currentPost.category;
+            document.getElementById('modal-title').textContent = currentPost.title;
+            document.getElementById('modal-desc').textContent = currentPost.desc;
+            document.getElementById('modal-prompt').textContent = currentPost.prompt;
+            document.getElementById('modal-download-btn').href = currentPost.image;
             
-            document.getElementById('modal-copy-btn').onclick = () => copyText(post.prompt);
-            document.getElementById('modal-share-btn').onclick = () => sharePost(post.title, post.desc);
+            updateLikeUI();
 
-            // Render "More like this"
+            document.getElementById('modal-copy-btn').onclick = () => copyText(currentPost.prompt);
+            document.getElementById('modal-share-btn').onclick = () => sharePost(currentPost.title, currentPost.desc);
+
+            // Render "More like this" + Inject Ad after 3rd item
             const relatedContainer = document.getElementById('related-posts');
             relatedContainer.innerHTML = '';
-            const related = posts.filter(p => p.category === post.category && p.id !== post.id);
+            const related = posts.filter(p => p.category === currentPost.category && p.id !== currentPost.id);
 
-            related.slice(0, 4).forEach(rel => {
+            related.slice(0, 6).forEach((rel, idx) => {
                 const item = document.createElement('div');
-                item.className = 'rounded-xl overflow-hidden cursor-pointer group bg-gray-100';
+                item.className = 'masonry-item rounded-xl overflow-hidden cursor-pointer group bg-gray-100';
                 item.onclick = () => openModal(rel.id);
-                item.innerHTML = `<img src="${rel.image}" alt="${rel.title}" class="w-full h-28 object-cover group-hover:scale-105 transition-transform duration-300">`;
+                item.innerHTML = `<img src="${rel.image}" alt="${rel.title}" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300">`;
                 relatedContainer.appendChild(item);
+
+                // Inject 1 Native In-Feed ad after 3 real related cards
+                if (idx === 2) {
+                    relatedContainer.insertAdjacentHTML('beforeend', getAdCardHTML());
+                }
             });
 
             document.getElementById('image-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
+            document.body.style.overflow = 'hidden';
+            
+            // Re-observe injected ads in modal
+            observeAds();
+
+            // Handle URL changes
+            if (pushState) {
+                history.pushState({ postId: id }, '', '?art=' + currentPost.slug);
+            }
+            updateMetaTags(currentPost);
         }
 
         // Close Modal
-        function closeModal() {
+        function closeModal(pushState = true) {
             document.getElementById('image-modal').classList.add('hidden');
-            document.body.style.overflow = 'auto'; // Restore scrolling
+            document.body.style.overflow = 'auto';
+            currentPost = null;
+
+            if (pushState) {
+                // Remove ?art= parameter
+                const newUrl = window.location.pathname;
+                history.pushState(null, '', newUrl);
+            }
+            updateMetaTags(null);
         }
 
-        // Close modal on clicking outside background
-        document.getElementById('image-modal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
+        // Handle Browser Back/Forward Buttons
+        window.addEventListener('popstate', (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const artSlug = urlParams.get('art');
+            
+            if (artSlug) {
+                const post = posts.find(p => p.slug === artSlug);
+                if (post) openModal(post.id, false);
+            } else {
+                closeModal(false); // false means don't push state again
+            }
         });
 
-        // Copy Text Function
+        // Check for Deep Link on Page Load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPosts('All');
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const artSlug = urlParams.get('art');
+            if (artSlug) {
+                const post = posts.find(p => p.slug === artSlug);
+                if (post) openModal(post.id, false);
+            }
+        });
+
+        // Toggle Like Function
+        function toggleLike() {
+            if (!currentPost) return;
+            if (currentPost.isLiked) {
+                currentPost.likes -= 1;
+                currentPost.isLiked = false;
+            } else {
+                currentPost.likes += 1;
+                currentPost.isLiked = true;
+            }
+            updateLikeUI();
+        }
+
+        function updateLikeUI() {
+            document.getElementById('modal-likes-count').textContent = currentPost.likes;
+            const btn = document.getElementById('modal-like-btn');
+            const icon = document.getElementById('modal-like-icon');
+
+            if (currentPost.isLiked) {
+                btn.className = "flex items-center gap-1 bg-red-50 text-red-600 px-3 sm:px-3.5 py-2 rounded-xl text-sm font-medium transition-colors";
+                icon.setAttribute('fill', 'currentColor');
+            } else {
+                btn.className = "flex items-center gap-1 bg-gray-100 hover:bg-red-50 text-gray-700 px-3 sm:px-3.5 py-2 rounded-xl text-sm font-medium transition-colors";
+                icon.setAttribute('fill', 'none');
+            }
+        }
+
         function copyText(text) {
             navigator.clipboard.writeText(text).then(() => {
                 showToast("Prompt copied successfully! 🎨");
-            }).catch(err => {
-                console.error("Failed to copy", err);
-            });
+            }).catch(err => console.error("Failed to copy", err));
         }
 
-        // Share Function
+        // Updated Share Post (Now shares specific URL)
         function sharePost(title, desc) {
+            const shareUrl = window.location.origin + window.location.pathname + '?art=' + currentPost.slug;
+            
             if (navigator.share) {
                 navigator.share({
                     title: title,
                     text: desc + "\n\nDiscover more at Canvas Era:",
-                    url: window.location.href
+                    url: shareUrl
                 }).catch((err) => console.log('Share error:', err));
             } else {
-                navigator.clipboard.writeText(window.location.href);
+                navigator.clipboard.writeText(shareUrl);
                 showToast("Link copied to clipboard! 🔗");
             }
         }
@@ -406,27 +599,18 @@
             const toast = document.getElementById("toast");
             toast.textContent = message;
             toast.className = "show";
-            
             clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => { 
-                toast.className = toast.className.replace("show", ""); 
-            }, 3000);
+            toastTimeout = setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
         }
 
         // Mobile Menu Toggle
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        function closeMobileMenu() { menu.classList.add('hidden'); }
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        function closeMobileMenu() {
-            menu.classList.add('hidden');
-        }
-
-        // Initial Load
-        renderPosts('All');
     </script>
 </body>
 </html>
+
+```
