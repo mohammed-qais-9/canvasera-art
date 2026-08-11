@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canvas Era | AI Art & Prompts</title>
-
+    
     <!-- Dynamic Meta Tags (Fallback) -->
     <meta property="og:title" content="Canvas Era | AI Art & Prompts">
     <meta property="og:description" content="Discover how AI images were created, and copy the prompts with a single click.">
@@ -109,17 +109,33 @@
                     </a>
                 </div>
 
-                <!-- Desktop Menu -->
-                <nav class="hidden md:flex space-x-8 items-center">
+                <!-- Desktop Menu & Search -->
+                <nav class="hidden md:flex space-x-8 items-center h-full">
                     <button onclick="filterPosts('All')" class="category-btn text-gray-900 font-bold px-3 py-2 text-sm transition-colors">Home</button>
                     <button onclick="filterPosts('Culture')" class="category-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors">Culture</button>
                     <button onclick="filterPosts('Art')" class="category-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors">Art</button>
                     <button onclick="filterPosts('Anime')" class="category-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors">Anime</button>
+                    
                     <!-- Saved Tab -->
                     <button id="nav-Saved" onclick="filterPosts('Saved')" class="category-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1.5 ml-4 border-l border-gray-300 pl-6">
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                         Saved
                     </button>
+
+                    <!-- Desktop Search Bar -->
+                    <div class="relative flex items-center h-full pl-2">
+                        <button id="search-toggle-btn" onclick="toggleSearchBar()" class="text-gray-600 hover:text-gray-900 p-2 focus:outline-none transition-opacity duration-300" title="Search artworks">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </button>
+                        
+                        <div id="desktop-search-container" class="absolute right-0 bg-white border border-gray-300 rounded-full flex items-center px-3 py-2 shadow-sm transition-all duration-300 opacity-0 invisible w-0 overflow-hidden z-50">
+                            <svg class="w-4 h-4 text-gray-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            <input type="text" id="desktop-search-input" oninput="executeSearch(this.value)" placeholder="Search babil, anime, art..." class="outline-none text-sm text-gray-700 bg-transparent w-48 focus:ring-0">
+                            <button onclick="clearSearch()" class="text-gray-400 hover:text-gray-600 ml-2 focus:outline-none flex-shrink-0 bg-gray-100 hover:bg-gray-200 rounded-full p-1 transition-colors">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            </button>
+                        </div>
+                    </div>
                 </nav>
 
                 <!-- Mobile menu button -->
@@ -135,6 +151,15 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <!-- Mobile Search -->
+            <div class="p-4 border-b border-gray-100 bg-gray-50">
+                <div class="bg-white border border-gray-200 rounded-xl flex items-center px-3 py-2 shadow-inner">
+                    <svg class="w-4 h-4 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <input type="text" id="mobile-search-input" oninput="executeSearch(this.value)" placeholder="Search babil, anime, art..." class="w-full bg-transparent outline-none text-sm text-gray-700">
+                    <button onclick="clearSearch()" id="mobile-search-clear" class="hidden text-gray-400 hover:text-gray-600 bg-gray-100 rounded-full p-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                </div>
+            </div>
+            <!-- Menu Links -->
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
                 <button onclick="filterPosts('All'); closeMobileMenu();" class="block w-full px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-50">Home</button>
                 <button onclick="filterPosts('Culture'); closeMobileMenu();" class="block w-full px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-50">Culture</button>
@@ -149,7 +174,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-[50vh]">
         
         <div class="mb-10 text-center md:text-left">
             <h1 id="category-title" class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-3">Latest Artworks</h1>
@@ -162,6 +187,35 @@
         </div>
 
     </main>
+
+    <!-- Telegram Newsletter Section -->
+    <section class="bg-[#f0ece5] py-20 px-4 mt-8 border-t border-gray-200">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">Join the Inner Circle</h2>
+            <p class="text-gray-600 text-lg md:text-xl mb-8 font-medium">Get 5 exclusive AI artworks + prompts every week, before anyone else.</p>
+            <a href="https://t.me/canvasera" target="_blank" class="inline-flex items-center justify-center gap-3 bg-[#2AABEE] hover:bg-[#229ED9] text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:scale-95 text-lg w-full sm:w-auto">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.896-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                Join on Telegram - It's Free
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+            <a href="/" onclick="event.preventDefault(); navigateHome();" class="font-serif text-2xl font-bold text-gray-900 mb-6">Canvas Era</a>
+            <p class="text-gray-500 text-sm mb-8 text-center max-w-md">Your premier destination for learning AI image creation and discovering the best ready-to-use prompts.</p>
+            <div class="flex flex-wrap justify-center gap-6 mb-8">
+                <!-- Pinterest -->
+                <a href="#" class="text-gray-400 hover:text-[#E60023] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.17 0 7.41 2.967 7.41 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.592 0 12.017 0z"/></svg></a>
+                <!-- Dribbble -->
+                <a href="#" class="text-gray-400 hover:text-[#EA4C89] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.373 12-12S18.627 0 12 0zm.14 22.038c-1.396 0-2.731-.305-3.953-.842 1.353-2.008 2.528-4.27 3.328-6.685.24.06.486.115.736.16 2.053.376 3.65.234 4.887-.432a9.98 9.98 0 0 1-5 7.799zm-6.61-3.045C2.868 16.592 2.015 13.911 2.015 12c0-1.854.512-3.593 1.393-5.077 2.664.88 5.674 1.156 8.358.91-1.077 2.115-2.502 4.14-4.223 5.92-.375.388-.775.765-1.189 1.135-1.464 1.36-2.528 3.036-2.824 4.095zM12.983 2.023c2.613 0 4.993 1.002 6.776 2.647-1.465 1.543-3.692 2.454-6.425 2.636-1.57-.45-3.055-.98-4.436-1.58C10.024 3.738 11.45 2.023 12.983 2.023zm8.384 10.375c-1.44-.122-3.14-.377-5.035-1.116.892-2.11 1.488-4.323 1.76-6.52A9.97 9.97 0 0 1 22.016 12c0 1.258-.237 2.463-.649 3.598-1.543-.593-3.504-.848-5.367-.428a17.261 17.261 0 0 0-3.017 1.228z"/></svg></a>
+                <!-- Tumblr -->
+                <a href="#" class="text-gray-400 hover:text-[#35465C] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.271 2.215 2.271 1.395 0 2.586-.612 3.032-1.153l1.202 3.203c-.53 1.063-2.105 2.462-5.383 2.462z"/></svg></a>
+            </div>
+            <div class="text-gray-400 text-sm">&copy; 2026 Canvas Era. All rights reserved.</div>
+        </div>
+    </footer>
 
     <!-- POPUP MODAL VIEW -->
     <div id="image-modal" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden overflow-y-auto backdrop-blur-sm flex justify-center p-0 sm:p-4">
@@ -233,7 +287,7 @@
                         <p id="modal-prompt" class="text-sm font-mono text-gray-800 break-words"></p>
                     </div>
 
-                    <!-- 4. Affiliate CTA (Multi-Choice Button) -->
+                    <!-- 4. Affiliate CTA -->
                     <div class="sticky bottom-2 z-20 md:static md:bottom-auto">
                         <button id="create-ai-btn" onclick="openAffiliatePopup()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transform transition-transform active:scale-95 text-sm sm:text-base flex justify-center items-center gap-2">
                             ✨ Create this with AI &rarr;
@@ -303,33 +357,19 @@
         </button>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 mt-12 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-            <a href="/" onclick="event.preventDefault(); navigateHome();" class="font-serif text-2xl font-bold text-gray-900 mb-6">Canvas Era</a>
-            <p class="text-gray-500 text-sm mb-8 text-center max-w-md">Your premier destination for learning AI image creation and discovering the best ready-to-use prompts.</p>
-            <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-8">
-                <!-- Social Icons -->
-                <a href="#" class="text-gray-400 hover:text-[#E60023] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.17 0 7.41 2.967 7.41 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.592 0 12.017 0z"/></svg></a>
-                <a href="#" class="text-gray-400 hover:text-black transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
-            </div>
-            <div class="text-gray-400 text-sm">&copy; 2026 Canvas Era. All rights reserved.</div>
-        </div>
-    </footer>
-
     <!-- Toast Notification -->
     <div id="toast"></div>
 
     <!-- JavaScript logic -->
     <script>
-        // 1. Affiliate Links Placeholders
+        // Affiliate Links Placeholders
         const AFFILIATE_LINKS = {
             imagineart: 'https://www.imagine.art/?ref=YOUR_IMAGINEART_ID',
             openart: 'https://openart.ai/?via=YOUR_OPENART_ID',
             getimg: 'https://getimg.ai/?via=YOUR_GETIMG_ID'
         };
 
-        // Data Structure with Slugs for Deep Linking
+        // Data Structure
         const posts = [
             {
                 id: 1,
@@ -398,6 +438,62 @@
 
         let currentCategory = 'All';
         let currentPost = null;
+        let searchQuery = '';
+
+        // --- Search System Logic ---
+        function toggleSearchBar() {
+            const container = document.getElementById('desktop-search-container');
+            const btn = document.getElementById('search-toggle-btn');
+            
+            if (container.classList.contains('invisible')) {
+                // Expand
+                container.classList.remove('invisible', 'opacity-0', 'w-0');
+                container.classList.add('opacity-100', 'w-64');
+                btn.classList.add('opacity-0', 'pointer-events-none');
+                document.getElementById('desktop-search-input').focus();
+            } else {
+                // Collapse
+                container.classList.add('invisible', 'opacity-0', 'w-0');
+                container.classList.remove('opacity-100', 'w-64');
+                btn.classList.remove('opacity-0', 'pointer-events-none');
+                clearSearch();
+            }
+        }
+
+        function executeSearch(query) {
+            searchQuery = query.toLowerCase().trim();
+            
+            // Show/Hide mobile clear button
+            const mobileClearBtn = document.getElementById('mobile-search-clear');
+            if(mobileClearBtn) {
+                if(searchQuery.length > 0) mobileClearBtn.classList.remove('hidden');
+                else mobileClearBtn.classList.add('hidden');
+            }
+            
+            renderPosts(currentCategory);
+        }
+
+        function clearSearch() {
+            searchQuery = '';
+            document.getElementById('desktop-search-input').value = '';
+            
+            const mobileInput = document.getElementById('mobile-search-input');
+            const mobileClearBtn = document.getElementById('mobile-search-clear');
+            if (mobileInput) mobileInput.value = '';
+            if (mobileClearBtn) mobileClearBtn.classList.add('hidden');
+            
+            renderPosts(currentCategory);
+        }
+
+        // Helper to escape HTML for displaying search query safely
+        function escapeHtml(unsafe) {
+            return unsafe
+                 .replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, "&quot;")
+                 .replace(/'/g, "&#039;");
+        }
 
         // --- Save System Logic ---
         function getSavedPosts() {
@@ -417,11 +513,9 @@
             const isSaving = index === -1;
             
             if (isSaving) {
-                // Save post
                 saved.push(id);
                 localStorage.setItem('canvasEra_saved', JSON.stringify(saved));
                 
-                // Trigger Flying Animation
                 let sourceImg = null;
                 if (event && event.currentTarget.closest('article')) {
                     sourceImg = event.currentTarget.closest('article').querySelector('img');
@@ -432,14 +526,12 @@
 
                 showToast(`Saved to your collection ✓ - <a href="#" onclick="filterPosts('Saved'); return false;" class="underline font-bold hover:text-gray-200 ml-1">View Saved</a>`, true);
             } else {
-                // Unsave post
                 saved.splice(index, 1);
                 localStorage.setItem('canvasEra_saved', JSON.stringify(saved));
                 showToast("Removed from saved collection.", false);
             }
             
-            // Re-render immediately if on Saved Tab, else just update SVG visuals without reload
-            if (currentCategory === 'Saved') {
+            if (currentCategory === 'Saved' && !searchQuery) {
                 renderPosts('Saved');
             } else if (event && event.currentTarget) {
                 const svg = event.currentTarget.querySelector('svg');
@@ -454,7 +546,6 @@
                 }
             }
 
-            // Update modal save button if open
             if (currentPost && currentPost.id === id && !document.getElementById('image-modal').classList.contains('hidden')) {
                 updateModalSaveBtn(isSaving);
             }
@@ -473,7 +564,6 @@
 
         function animateFlyingImage(sourceImg) {
             const rect = sourceImg.getBoundingClientRect();
-            // Determine target: Desktop Tab or Mobile Menu Button
             const targetId = window.innerWidth >= 768 ? 'nav-Saved' : 'mobile-menu-btn';
             const targetElement = document.getElementById(targetId);
             if (!targetElement) return;
@@ -495,11 +585,8 @@
             clone.style.boxShadow = '0 10px 25px rgba(0,0,0,0.2)';
             
             document.body.appendChild(clone);
+            clone.getBoundingClientRect(); // Reflow
 
-            // Reflow
-            clone.getBoundingClientRect();
-
-            // Animate to Target
             clone.style.top = (targetRect.top + targetRect.height / 2 - 20) + 'px';
             clone.style.left = (targetRect.left + targetRect.width / 2 - 20) + 'px';
             clone.style.width = '40px';
@@ -545,12 +632,42 @@
             
             let filteredPosts = [];
             
+            // 1. Filter by category or saved
             if (category === 'Saved') {
                 const savedIds = getSavedPosts();
                 filteredPosts = posts.filter(p => savedIds.includes(p.id));
+            } else {
+                filteredPosts = category === 'All' ? posts : posts.filter(p => p.category === category);
+            }
+
+            // 2. Filter by search query if exists
+            if (searchQuery) {
+                filteredPosts = filteredPosts.filter(p => 
+                    p.title.toLowerCase().includes(searchQuery) ||
+                    p.desc.toLowerCase().includes(searchQuery) ||
+                    p.prompt.toLowerCase().includes(searchQuery) ||
+                    p.category.toLowerCase().includes(searchQuery)
+                );
+            }
+
+            // 3. Handle Empty States
+            if (filteredPosts.length === 0) {
+                container.classList.add('masonry-empty');
                 
-                if (filteredPosts.length === 0) {
-                    container.classList.add('masonry-empty');
+                if (searchQuery) {
+                    // Empty Search State
+                    container.innerHTML = `
+                        <div class="flex flex-col items-center justify-center py-20 text-center w-full max-w-lg mx-auto">
+                            <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-5">
+                                <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            </div>
+                            <h2 class="text-2xl font-serif font-bold text-gray-900 mb-2">No results found</h2>
+                            <p class="text-gray-500 mb-8 leading-relaxed">We couldn't find any artworks matching "${escapeHtml(searchQuery)}". Try different keywords.</p>
+                            <button onclick="clearSearch()" class="bg-gray-900 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-gray-800 transition-colors shadow-lg active:scale-95 transform">Clear Search</button>
+                        </div>
+                    `;
+                } else if (category === 'Saved') {
+                    // Empty Saved State
                     container.innerHTML = `
                         <div class="flex flex-col items-center justify-center py-20 text-center w-full max-w-lg mx-auto">
                             <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-5">
@@ -561,15 +678,13 @@
                             <button onclick="filterPosts('All')" class="bg-gray-900 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-gray-800 transition-colors shadow-lg active:scale-95 transform">Explore Artworks</button>
                         </div>
                     `;
-                    return;
-                } else {
-                    container.classList.remove('masonry-empty');
                 }
+                return; // Stop rendering cards
             } else {
                 container.classList.remove('masonry-empty');
-                filteredPosts = category === 'All' ? posts : posts.filter(p => p.category === category);
             }
 
+            // 4. Render Cards
             filteredPosts.forEach((post, index) => {
                 const isSaved = isPostSaved(post.id);
                 const article = document.createElement('article');
@@ -609,7 +724,6 @@
                 `;
                 container.appendChild(article);
 
-                // Inject Ad Card after every 6 real cards
                 if ((index + 1) % 6 === 0) {
                     container.insertAdjacentHTML('beforeend', getAdCardHTML());
                 }
@@ -623,6 +737,12 @@
             currentCategory = category;
             const titleEl = document.getElementById('category-title');
             const descEl = document.getElementById('category-desc');
+            
+            // Auto close search bar on desktop if open when clicking tabs
+            const desktopSearch = document.getElementById('desktop-search-container');
+            if (desktopSearch && !desktopSearch.classList.contains('invisible')) {
+                toggleSearchBar();
+            }
             
             if (category === 'Saved') {
                 titleEl.textContent = 'Your Saved Artworks';
@@ -718,6 +838,11 @@
                     closeAffiliatePopup();
                 } else if (!document.getElementById('image-modal').classList.contains('hidden')) {
                     closeModal();
+                } else {
+                    const desktopSearch = document.getElementById('desktop-search-container');
+                    if (desktopSearch && !desktopSearch.classList.contains('invisible')) {
+                        toggleSearchBar();
+                    }
                 }
             }
         });
@@ -738,7 +863,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderPosts('All');
             
-            // Handle Deep Link
             const urlParams = new URLSearchParams(window.location.search);
             const artSlug = urlParams.get('art');
             if (artSlug) {
@@ -746,7 +870,6 @@
                 if (post) openModal(post.id, false);
             }
 
-            // Cookie Banner Logic
             if (!localStorage.getItem('cookieConsent')) {
                 document.getElementById('cookie-banner').classList.remove('hidden');
             }
@@ -764,7 +887,6 @@
         function closeAffiliatePopup() {
             document.getElementById('affiliate-popup').classList.add('hidden');
         }
-
         function handleAffiliateClick(platform) {
             if (!currentPost) return;
             try {
