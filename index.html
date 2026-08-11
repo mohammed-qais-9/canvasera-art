@@ -192,7 +192,7 @@
     <section class="bg-[#f0ece5] py-20 px-4 mt-8 border-t border-gray-200">
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">Join the Inner Circle</h2>
-            <p class="text-gray-600 text-lg md:text-xl mb-8 font-medium">Get 5 exclusive AI artworks + prompts every week, before anyone else.</p>
+            <p class="text-gray-600 text-lg md:text-xl mb-8 font-medium">Get prompts before they hit the website + unreleased culture artworks</p>
             <a href="https://t.me/canvasera" target="_blank" class="inline-flex items-center justify-center gap-3 bg-[#2AABEE] hover:bg-[#229ED9] text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:scale-95 text-lg w-full sm:w-auto">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.896-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                 Join on Telegram - It's Free
@@ -360,81 +360,20 @@
     <!-- Toast Notification -->
     <div id="toast"></div>
 
+    <!-- Import External Data -->
+    <script src="posts.js"></script>
+
     <!-- JavaScript logic -->
     <script>
+        // Safety Fallback: Ensure site doesn't break if posts.js is empty or missing
+        const getAllPosts = () => typeof posts !== 'undefined' ? posts : [];
+
         // Affiliate Links Placeholders
         const AFFILIATE_LINKS = {
             imagineart: 'https://www.imagine.art/?ref=YOUR_IMAGINEART_ID',
             openart: 'https://openart.ai/?via=YOUR_OPENART_ID',
             getimg: 'https://getimg.ai/?via=YOUR_GETIMG_ID'
         };
-
-        // Data Structure
-        const posts = [
-            {
-                id: 1,
-                slug: "cyberpunk-neon-city",
-                image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                category: "Anime",
-                title: "Cyberpunk Neon City",
-                desc: "A detailed and heartwarming modern anime artwork of a girl enjoying a quiet evening.",
-                prompt: "Anime style illustration of a girl looking over a cyberpunk city, glowing neon signs, rain, cinematic lighting, Makoto Shinkai style, masterpiece, highly detailed --ar 16:9"
-            },
-            {
-                id: 2,
-                slug: "modern-abstract-fluidity",
-                image: "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                category: "Art",
-                title: "Modern Abstract Fluidity",
-                desc: "Abstract shapes and fluid colors blending seamlessly together.",
-                prompt: "Abstract fluid art, 3D render, flowing shapes, soft pastel colors, gold accents, elegant composition, high quality, octane render."
-            },
-            {
-                id: 3,
-                slug: "traditional-mexican-ceramics",
-                image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                category: "Culture",
-                title: "Traditional Mexican Ceramics",
-                desc: "Colorful traditional Mexican ceramic pots sitting on a vibrant hand-woven rug.",
-                prompt: "Traditional Mexican ceramic pots on a vibrant woven rug, natural lighting, sharp focus, cultural photography, vibrant colors, 4k."
-            },
-            {
-                id: 4,
-                slug: "samurai-on-a-mountain",
-                image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                category: "Anime",
-                title: "Samurai on a Mountain",
-                desc: "Anime style portrait of a warrior standing on a snowy peak.",
-                prompt: "Anime style portrait of a samurai standing on a snowy mountain peak, dramatic lighting, clouds, masterpiece, detailed --ar 16:9"
-            },
-            {
-                id: 5,
-                slug: "digital-portrait-art",
-                image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                category: "Art",
-                title: "Digital Portrait Art",
-                desc: "Detailed digital painting with abstract aesthetic elements.",
-                prompt: "Detailed digital painting of a face with integrated abstract patterns, vibrant colors, intricate details, highly detailed, Arstation --ar 4:5"
-            },
-            {
-                id: 6,
-                slug: "japanese-zen-garden",
-                image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                category: "Culture",
-                title: "Japanese Zen Garden",
-                desc: "Peaceful photograph of a raked Japanese Zen rock garden.",
-                prompt: "Peaceful photograph of a raked Japanese Zen rock garden, moss, stones, soft lighting, 4k resolution --ar 3:2"
-            },
-            {
-                id: 7,
-                slug: "golden-hour-coffee",
-                image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                category: "Culture",
-                title: "Golden Hour Coffee",
-                desc: "A warm cup of coffee resting on a wooden table bathed in golden hour light.",
-                prompt: "A ceramic coffee cup on a rustic wooden table, golden hour sunlight streaming through a window, photorealistic, 8k, cinematic lighting --ar 16:9"
-            }
-        ];
 
         let currentCategory = 'All';
         let currentPost = null;
@@ -631,13 +570,14 @@
             container.innerHTML = '';
             
             let filteredPosts = [];
+            const allSafePosts = getAllPosts();
             
             // 1. Filter by category or saved
             if (category === 'Saved') {
                 const savedIds = getSavedPosts();
-                filteredPosts = posts.filter(p => savedIds.includes(p.id));
+                filteredPosts = allSafePosts.filter(p => savedIds.includes(p.id));
             } else {
-                filteredPosts = category === 'All' ? posts : posts.filter(p => p.category === category);
+                filteredPosts = category === 'All' ? allSafePosts : allSafePosts.filter(p => p.category === category);
             }
 
             // 2. Filter by search query if exists
@@ -654,7 +594,18 @@
             if (filteredPosts.length === 0) {
                 container.classList.add('masonry-empty');
                 
-                if (searchQuery) {
+                if (allSafePosts.length === 0 && !searchQuery && category !== 'Saved') {
+                    // Empty Global State (posts.js is empty)
+                    container.innerHTML = `
+                        <div class="flex flex-col items-center justify-center py-20 text-center w-full max-w-lg mx-auto">
+                            <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-5">
+                                <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <h2 class="text-2xl font-serif font-bold text-gray-900 mb-2">Coming Soon</h2>
+                            <p class="text-gray-500 mb-8 leading-relaxed">We are currently preparing amazing new artworks and prompts. Check back later!</p>
+                        </div>
+                    `;
+                } else if (searchQuery) {
                     // Empty Search State
                     container.innerHTML = `
                         <div class="flex flex-col items-center justify-center py-20 text-center w-full max-w-lg mx-auto">
@@ -676,6 +627,18 @@
                             <h2 class="text-2xl font-serif font-bold text-gray-900 mb-2">No saved yet</h2>
                             <p class="text-gray-500 mb-8 leading-relaxed">You haven't saved any prompts yet. Explore our collection and save your favorites to easily access them later.</p>
                             <button onclick="filterPosts('All')" class="bg-gray-900 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-gray-800 transition-colors shadow-lg active:scale-95 transform">Explore Artworks</button>
+                        </div>
+                    `;
+                } else {
+                    // Fallback for empty categories
+                    container.innerHTML = `
+                        <div class="flex flex-col items-center justify-center py-20 text-center w-full max-w-lg mx-auto">
+                            <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-5">
+                                <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <h2 class="text-2xl font-serif font-bold text-gray-900 mb-2">Nothing here yet</h2>
+                            <p class="text-gray-500 mb-8 leading-relaxed">We are currently preparing artworks for this category. Check back later!</p>
+                            <button onclick="filterPosts('All')" class="bg-gray-900 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-gray-800 transition-colors shadow-lg active:scale-95 transform">View All</button>
                         </div>
                     `;
                 }
@@ -777,7 +740,8 @@
 
         // Open Modal (Deep Linking Support)
         function openModal(id, pushState = true) {
-            currentPost = posts.find(p => p.id === id);
+            const allSafePosts = getAllPosts();
+            currentPost = allSafePosts.find(p => p.id === id);
             if (!currentPost) return;
 
             document.getElementById('modal-image').src = currentPost.image;
@@ -794,7 +758,7 @@
 
             const relatedContainer = document.getElementById('related-posts');
             relatedContainer.innerHTML = '';
-            const related = posts.filter(p => p.category === currentPost.category && p.id !== currentPost.id);
+            const related = allSafePosts.filter(p => p.category === currentPost.category && p.id !== currentPost.id);
 
             related.slice(0, 6).forEach((rel, idx) => {
                 const item = document.createElement('div');
@@ -852,7 +816,8 @@
             const artSlug = urlParams.get('art'); 
             
             if (artSlug) {
-                const post = posts.find(p => p.slug === artSlug);
+                const allSafePosts = getAllPosts();
+                const post = allSafePosts.find(p => p.slug === artSlug);
                 if (post) openModal(post.id, false);
             } else {
                 closeModal(false); 
@@ -866,7 +831,8 @@
             const urlParams = new URLSearchParams(window.location.search);
             const artSlug = urlParams.get('art');
             if (artSlug) {
-                const post = posts.find(p => p.slug === artSlug);
+                const allSafePosts = getAllPosts();
+                const post = allSafePosts.find(p => p.slug === artSlug);
                 if (post) openModal(post.id, false);
             }
 
