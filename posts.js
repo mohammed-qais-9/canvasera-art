@@ -19,10 +19,23 @@ const posts = [
     desc: "A captivating digital oil painting of a woman merged with glowing cosmic nebula and golden floral elements.",
     description: "A captivating digital oil painting of a woman merged with glowing cosmic nebula and golden floral elements.",
     prompt: "Surreal digital portrait painting of a woman's side profile, blending seamlessly into a glowing galaxy nebula and gold leaf flowers, expressive brush strokes, dramatic chiaroscuro lighting, dark background, fine art style, trending on ArtStation --ar 3:4",
-    image: "images/cosmic-memory.jpg",
+    image: "images/cosmic-memory.JPG",
     tags: ["Surreal", "Portrait", "Cosmic", "Oil Painting"],
     category: "Art",
     author: "Canvas Era",
     date: "2026-05-14"
+  },
+  {
+    id: 3,
+    title: "Neo-Kyo Cyber Fashion Icon",
+    slug: "neo-kyo-cyber-fashion-icon",
+    desc: "Futuristic cyberpunk anime portrait of a girl in high-tech streetwear with holographic visor in a neon-drenched rainy Tokyo night.",
+    description: "Futuristic cyberpunk anime portrait of a girl in high-tech streetwear with holographic visor in a neon-drenched rainy Tokyo night.",
+    prompt: "Cyberpunk fashion portrait, anime girl wearing a translucent futuristic visor and techwear jacket, vibrant neon bokeh background with city lights, soft rain streaks, blue and magenta color grading, sharp focus on expressive eyes, cinematic composition, futuristic urban aesthetic, masterpiece --ar 9:16",
+    image: "images/anime-cyber-fashion.jpg",
+    tags: ["Anime", "Cyberpunk", "Techwear", "Neon", "Futuristic"],
+    category: "Anime",
+    author: "Canvas Era",
+    date: "2026-05-15"
   }
 ];
