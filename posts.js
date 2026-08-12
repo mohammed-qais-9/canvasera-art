@@ -50,5 +50,31 @@ const posts = [
     category: "Art",
     author: "Canvas Era",
     date: "2026-05-16"
+  },
+  {
+    id: 5,
+    title: "Transform Your Photos with Ancient History and 2D Comic Style",
+    slug: "babylonian-king-thumbsup-mixed-media",
+    desc: "A friendly giant 2D Babylonian King gives a thumbs-up while hugging a real woman in ancient Babylonian ruins with Ziggurat view.",
+    description: "A unique blend of reality and imagination - merge high-detail photorealism with fun 2D black-and-white comic character in ancient Babylonian ruins.",
+    prompt: "A striking mixed-media photograph of a smiling young woman sitting cross-legged on an ancient oriental rug amidst stone ruins with a distant Ziggurat. Behind her stands a giant, friendly 2D comic line-art illustration of an Ancient Babylonian King with a cuneiform-engraved gold crown and braided square beard, hugging her playfully and giving an enthusiastic thumbs-up. Warm golden hour lighting, strong visual contrast between photorealistic environment and 2D ink line-art character, high resolution, cinematic composition --ar 9:16",
+    image: "images/babylon-king-thumbsup.jpg",
+    tags: ["Babylonian", "Mixed Media", "Ziggurat", "Ancient History", "Comic"],
+    category: "Culture",
+    author: "Canvas Era",
+    date: "2026-05-17"
+  },
+  {
+    id: 6,
+    title: "Bring Ancient Egyptian Mythology to Life with Mixed-Media AI Art",
+    slug: "egyptian-anubis-guardian-mixed-media",
+    desc: "Photorealistic woman sketching in Egyptian desert with a giant friendly 2D Anubis guardian smiling behind her at golden sunset.",
+    description: "Creative mixed-media concept blending stunning realism of a desert photograph with fun illustrative style of a 2D comic Anubis guardian.",
+    prompt: "A realistic photo of a smiling young woman sitting cross-legged on a small vintage oriental rug on the desert sand, holding a sketchbook and pen. Ancient Egyptian pyramid ruins are in the background during a beautiful golden sunset. Behind her, a giant cute 2D cartoon illustration of Anubis with black jackal ears and an Egyptian collar, drawn in clean 2D black-and-white comic line-art style. The cartoon Anubis is acting as a gentle protective guardian, resting his hands softly near her shoulders with a big, wholesome, friendly smile. Mixed media art, real photograph combined with a 2D cartoon drawing, high contrast, cinematic lighting, highly detailed --ar 9:16",
+    image: "images/egypt-anubis-guardian.jpg",
+    tags: ["Egyptian", "Anubis", "Mixed Media", "Pyramids", "Ancient Egypt"],
+    category: "Culture",
+    author: "Canvas Era",
+    date: "2026-05-18"
   }
 ];
