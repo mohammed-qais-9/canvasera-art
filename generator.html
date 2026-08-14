@@ -1,98 +1,528 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Canvas Era - Generator</title>
-<style>
-:root{--bg:#faf8f5;--card:#fff;--ink:#111;--muted:#888;--line:#ece8e3}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui;background:var(--bg);color:var(--ink)}
-.wrap{max-width:1100px;margin:0 auto;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media(max-width:900px){.wrap{grid-template-columns:1fr}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 4px 24px rgba(0,0,0,.04)}
-h2{margin:0 0 6px;font-size:20px} .sub{color:var(--muted);font-size:13px;margin-bottom:14px}
-label{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-top:12px;display:block}
-input,textarea,select{width:100%;padding:12px 12px;border:1px solid var(--line);border-radius:12px;margin-top:6px;font-size:14px;background:#fffdfb}
-textarea{resize:vertical} .row{display:flex;gap:10px}
-.btn{padding:12px 16px;border:none;border-radius:12px;background:var(--ink);color:#fff;font-weight:700;cursor:pointer;width:100%;margin-top:10px}
-.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
-.btn.small{padding:8px 12px;font-size:13px;width:auto}
-.tag{display:inline-block;background:#111;color:#fff;border-radius:20px;padding:4px 10px;font-size:12px;margin:4px 4px 0 0}
-pre{background:#0e0e0e;color:#e8e8e8;border-radius:14px;padding:14px;overflow:auto;font-size:13px;line-height:1.5;max-height:70vh}
-.hint{background:#fff6d6;border:1px dashed #e6c86a;border-radius:12px;padding:12px;font-size:13px;margin-top:12px}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canvas Era - Post Code Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    body {
+      background-color: #faf8f5;
+      color: #121212;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .code-font {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .card-rounded {
+      border-radius: 18px;
+    }
+
+    .soft-shadow {
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 4px 12px -2px rgba(0, 0, 0, 0.02);
+    }
+
+    input, textarea, select {
+      background-color: #fcfbf9;
+      border: 1px solid #e8e4de;
+      transition: all 0.2s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #121212;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(18, 18, 18, 0.05);
+    }
+
+    /* Custom scrollbar for dark code block */
+    .custom-scroll::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #0e0e0e;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #2a2a2a;
+      border-radius: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #3d3d3d;
+    }
+  </style>
 </head>
-<body>
-<div style="text-align:center;padding:22px 0 0"><h1 style="margin:0">Canvas Era — Code Generator</h1><p class="sub">ارفع العنوان والوصف والبرومبت → انسخ الكود → الصقه في posts.js</p></div>
-<div class="wrap">
-<div class="card">
-<h2>1. معلومات المقالة</h2>
-<label>Next ID</label><input id="id" type="number" value="8">
-<label>Title *</label><input id="title" placeholder="Rainy Day Serenity: A Childhood Memory">
-<label>Slug (يتولد تلقائياً)</label><input id="slug" placeholder="rainy-day-serenity">
-<label>Description (desc + description)</label><textarea id="desc" rows="3" placeholder="Embrace the comfort of a rainy afternoon..."></textarea>
-<label>Prompt (مع --ar 2:3)</label><textarea id="prompt" rows="6" placeholder="A whimsical illustration... --ar 2:3"></textarea>
-<div class="row"><div style="flex:1"><label>Category</label><select id="cat"><option>Culture</option><option>Art</option><option>Anime</option><option>History</option><option>Portrait</option><option>Illustration</option></select></div><div style="flex:1"><label>Date</label><input id="date" type="date"></div></div>
-<label>Tags (بفاصلة)</label><input id="tags" placeholder="Cozy, Umbrella, Rainy, Childhood">
-<div id="tagsPreview"></div>
-<label>Image extension</label><select id="ext"><option value="jpg">.jpg</option><option value="png">.png</option><option value="webp">.webp</option></select>
-<label>Image name (يتولد تلقائياً)</label><input id="imgName" placeholder="rainy-day-serenity.jpg">
-<div class="hint">💡 <b>طريقة الاستخدام:</b><br>1. ارفع الصورة يدوياً إلى مجلد <code>images/</code> بنفس الاسم اللي فوق<br>2. انسخ الكود من اليمين<br>3. افتح <code>posts.js</code> في GitHub والصق الكود قبل <code>];</code> الأخير<br>4. لا تنسى الفاصلة <code>,</code> بين المقالات</div>
-</div>
-<div class="card">
-<h2>2. الكود الجاهز</h2>
-<div class="row"><button class="btn small ghost" onclick="copyObj()">Copy Object</button><button class="btn small ghost" onclick="copyFull()">Copy with Comma</button><button class="btn small ghost" onclick="copyImg()">Copy Image Name</button></div>
-<pre id="code"></pre>
-<div class="row"><button class="btn" onclick="copyObj()">نسخ الكود</button><button class="btn ghost" onclick="downloadImgName()">تحميل اسم الصورة كـ txt</button></div>
-<h3 style="font-size:14px;margin-top:16px">اقتراحات اسم الصورة:</h3><div id="suggest"></div>
-</div>
-</div>
-<script>
-const $=id=>document.getElementById(id);
-$('date').valueAsDate=new Date();
-function slugify(s){return s.toLowerCase().trim().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'').slice(0,60)}
-function gen(){
- let t=$('title').value||'Untitled';
- let sl=slugify(t);
- if(!$('slug').dataset.manual) $('slug').value=sl;
- let s=$('slug').value||sl;
- let ext=$('ext').value;
- if(!$('imgName').dataset.manual) $('imgName').value=s+'.'+ext;
- let id=parseInt($('id').value)||8;
- let desc=$('desc').value.replace(/"/g,'\\"');
- let prompt=$('prompt').value.replace(/"/g,'\\"').replace(/\n/g,' ');
- let tags=$('tags').value.split(',').map(x=>x.trim()).filter(Boolean);
- let cat=$('cat').value;
- let date=$('date').value||new Date().toISOString().slice(0,10);
- let img='images/'+$('imgName').value;
- let obj=`  {
-    "id": ${id},
-    "title": "${$('title').value.replace(/"/g,'\\"')}",
-    "slug": "${s}",
-    "desc": "${$('desc').value.replace(/"/g,'\\"')}",
-    "description": "${$('desc').value.replace(/"/g,'\\"')}",
-    "prompt": "${$('prompt').value.replace(/"/g,'\\"')}",
-    "image": "${img}",
-    "tags": [${tags.map(t=>`"${t}"`).join(', ')}],
-    "category": "${cat}",
-    "author": "Canvas Era",
-    "date": "${date}"
-  }`;
- $('code').textContent=obj;
- $('tagsPreview').innerHTML=tags.map(x=>`<span class="tag">${x}</span>`).join('');
- // suggestions
- let words=s.split('-').slice(0,3).join('-');
- $('suggest').innerHTML=`<span class="tag">${s+'.'+ext}</span> <span class="tag">${words+'.'+ext}</span> <span class="tag">${s.slice(0,15)+'.'+ext}</span>`;
-}
-['title','slug','desc','prompt','cat','tags','ext','imgName','id','date'].forEach(id=>{
- $(id).addEventListener('input',()=>{if(id==='slug'||id==='imgName')$(id).dataset.manual=1; gen()});
-});
-$('ext').addEventListener('change',gen);
-setInterval(gen,500);
-function copyObj(){navigator.clipboard.writeText($('code').textContent);alert('تم النسخ!')}
-function copyFull(){navigator.clipboard.writeText('  ,\n'+$('code').textContent);alert('تم النسخ مع الفاصلة - الصقه مباشرة!')}
-function copyImg(){navigator.clipboard.writeText($('imgName').value);alert($('imgName').value)}
-function downloadImgName(){let b=new Blob([$('imgName').value],{type:'text/plain'});let a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='image-name.txt';a.click()}
-gen();
-</script>
+<body class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+
+  <div class="max-w-7xl mx-auto space-y-6">
+
+    <!-- Top Banner / Header -->
+    <header class="bg-white p-6 card-rounded soft-shadow border border-[#f0ece6] flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div>
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 bg-black text-white rounded-lg flex items-center justify-center font-bold text-sm tracking-wider">CE</div>
+          <h1 class="text-2xl font-bold tracking-tight text-gray-900">Canvas Era Generator</h1>
+        </div>
+        <p class="text-sm text-gray-500 mt-1">Offline post JSON formatter for your art catalog</p>
+      </div>
+
+      <!-- SEO Notice -->
+      <div class="bg-[#f5f1ea] px-4 py-3 rounded-xl border border-[#e8e2d8] flex items-center gap-3 text-xs sm:text-sm font-medium text-amber-950">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+        <span><strong>Pro Tip:</strong> Paste new code at <u>TOP</u> for newest first — this helps SEO & Pinterest indexing.</span>
+      </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- LEFT COLUMN: Form (7 cols) -->
+      <div class="lg:col-span-7 bg-white p-6 sm:p-8 card-rounded soft-shadow border border-[#f0ece6] space-y-5">
+        
+        <div class="flex items-center justify-between pb-3 border-b border-gray-100">
+          <h2 class="text-lg font-bold text-gray-900">Post Details</h2>
+          <span class="text-xs text-gray-400 font-medium">* Required fields</span>
+        </div>
+
+        <!-- Title -->
+        <div>
+          <label for="title" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Title *</label>
+          <input type="text" id="title" placeholder="e.g. Cyberpunk Samurai in Neo Tokyo" class="w-full px-4 py-3 rounded-xl text-sm font-medium" />
+        </div>
+
+        <!-- Slug -->
+        <div>
+          <div class="flex justify-between items-center mb-1">
+            <label for="slug" class="block text-xs font-bold uppercase tracking-wider text-gray-700">Slug</label>
+            <span class="text-[11px] text-gray-400">Auto-generated</span>
+          </div>
+          <input type="text" id="slug" placeholder="cyberpunk-samurai-in-neo-tokyo" class="w-full px-4 py-2.5 rounded-xl text-sm font-mono text-gray-600" />
+        </div>
+
+        <!-- Description -->
+        <div>
+          <label for="desc" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Description / desc *</label>
+          <textarea id="desc" rows="3" placeholder="Write a short engaging description of the piece..." class="w-full px-4 py-3 rounded-xl text-sm font-medium resize-y"></textarea>
+        </div>
+
+        <!-- Prompt -->
+        <div>
+          <label for="prompt" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Prompt *</label>
+          <textarea id="prompt" rows="3" placeholder="A dramatic portrait of a cyberpunk samurai, neon lighting --ar 2:3 --v 6.0" class="w-full px-4 py-3 rounded-xl text-sm font-mono text-gray-800 resize-y"></textarea>
+        </div>
+
+        <!-- Category & Date Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Category -->
+          <div>
+            <label for="category" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Category</label>
+            <select id="category" class="w-full px-4 py-3 rounded-xl text-sm font-medium cursor-pointer">
+              <option value="Culture">Culture</option>
+              <option value="Art" selected>Art</option>
+              <option value="Anime">Anime</option>
+              <option value="History">History</option>
+              <option value="Portrait">Portrait</option>
+              <option value="Illustration">Illustration</option>
+            </select>
+          </div>
+
+          <!-- Date -->
+          <div>
+            <label for="date" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Date</label>
+            <input type="date" id="date" class="w-full px-4 py-3 rounded-xl text-sm font-medium" />
+          </div>
+        </div>
+
+        <!-- Tags Input & Pill Preview -->
+        <div>
+          <label for="tags" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Tags (Comma Separated)</label>
+          <input type="text" id="tags" placeholder="Cyberpunk, Samurai, Neon, Digital Art" class="w-full px-4 py-3 rounded-xl text-sm font-medium" />
+          
+          <!-- Live Tag Pills -->
+          <div id="tagPills" class="flex flex-wrap gap-1.5 mt-2.5 min-h-[28px]">
+            <!-- Dynamic pills inserted here -->
+          </div>
+        </div>
+
+        <!-- Image Settings Container -->
+        <div class="p-4 bg-[#fcfaf7] rounded-xl border border-[#ece6dc] space-y-3">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            
+            <!-- Image Extension -->
+            <div>
+              <label for="ext" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Image Ext</label>
+              <select id="ext" class="w-full px-3 py-2 rounded-lg text-sm font-medium cursor-pointer">
+                <option value="jpg" selected>jpg</option>
+                <option value="png">png</option>
+                <option value="webp">webp</option>
+              </select>
+            </div>
+
+            <!-- Image Name -->
+            <div class="sm:col-span-2">
+              <label for="imageName" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Image File Name</label>
+              <input type="text" id="imageName" placeholder="my-title.jpg" class="w-full px-3 py-2 rounded-lg text-sm font-mono" />
+            </div>
+          </div>
+
+          <!-- Name Suggestions -->
+          <div>
+            <span class="text-[11px] font-semibold text-gray-500 uppercase tracking-wider block mb-1">Suggested Name Options:</span>
+            <div id="suggestions" class="flex flex-wrap gap-2">
+              <!-- Dynamic suggestions inserted here -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Output & Actions (5 cols) -->
+      <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-8">
+        
+        <!-- Live Code Block Card -->
+        <div class="bg-white p-6 card-rounded soft-shadow border border-[#f0ece6] space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+              <span>Code Output</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            </h2>
+            <span class="text-xs font-mono text-gray-400">JSON (No ID)</span>
+          </div>
+
+          <!-- Code Display Container -->
+          <div class="relative group">
+            <pre class="bg-[#0e0e0e] text-emerald-400 p-5 rounded-2xl code-font text-xs sm:text-sm overflow-x-auto leading-relaxed custom-scroll border border-gray-800 min-h-[280px] max-h-[450px]" id="codeOutput"></pre>
+          </div>
+
+          <!-- Primary Action Buttons -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
+            <button id="btnCopyObj" onclick="copyToClipboard('object')" class="w-full py-3 px-4 bg-black hover:bg-gray-800 text-white font-medium text-xs rounded-xl transition duration-200 flex items-center justify-center gap-2 shadow-sm active:scale-[0.98]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              Copy Object
+            </button>
+
+            <button id="btnCopyComma" onclick="copyToClipboard('comma')" class="w-full py-3 px-4 bg-amber-600 hover:bg-amber-700 text-white font-medium text-xs rounded-xl transition duration-200 flex items-center justify-center gap-2 shadow-sm active:scale-[0.98]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              Copy with Comma
+            </button>
+
+            <button id="btnCopyImg" onclick="copyToClipboard('image')" class="w-full py-2.5 px-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium text-xs rounded-xl transition duration-200 flex items-center justify-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              Copy Image Path
+            </button>
+
+            <button id="btnSavePrompt" onclick="downloadPromptText()" class="w-full py-2.5 px-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium text-xs rounded-xl transition duration-200 flex items-center justify-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Save Prompt (.txt)
+            </button>
+          </div>
+        </div>
+
+        <!-- Arabic Instructions Hint Box -->
+        <div class="bg-[#faf5ee] p-5 card-rounded border border-[#ebdccb] text-right space-y-3" dir="rtl">
+          <div class="flex items-center gap-2 text-amber-900 font-bold text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>خطوات إضافة المنشور في posts.js:</span>
+          </div>
+
+          <ol class="text-xs text-amber-950/80 space-y-2 pr-4 list-decimal font-medium leading-relaxed">
+            <li>قم برفع الصورة إلى المجلد <code class="bg-amber-100/80 px-1.5 py-0.5 rounded text-amber-900 font-mono">images/</code> بالاسم المقترح.</li>
+            <li>افتح ملف <code class="bg-amber-100/80 px-1.5 py-0.5 rounded text-amber-900 font-mono">posts.js</code> في محررك.</li>
+            <li>الصق الكود في **أعلى القائمة** تماماً بعد السطر <code class="bg-amber-100/80 px-1.5 py-0.5 rounded text-amber-900 font-mono">const posts = [</code> مباشرة.</li>
+            <li>تأكد دائماً من الإبقاء على <code class="bg-amber-100/80 px-1.5 py-0.5 rounded text-amber-900 font-mono">];</code> في نهاية الملف.</li>
+          </ol>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Toast Notification element -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-gray-900 text-white px-5 py-3 rounded-xl shadow-2xl text-xs font-semibold tracking-wide opacity-0 transform translate-y-4 transition-all duration-300 pointer-events-none z-50 flex items-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+    </svg>
+    <span id="toastMsg">Copied!</span>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // State Tracking
+    let isSlugManual = false;
+    let isImageNameManual = false;
+
+    // DOM Elements
+    const titleEl = document.getElementById('title');
+    const slugEl = document.getElementById('slug');
+    const descEl = document.getElementById('desc');
+    const promptEl = document.getElementById('prompt');
+    const categoryEl = document.getElementById('category');
+    const dateEl = document.getElementById('date');
+    const tagsEl = document.getElementById('tags');
+    const tagPillsEl = document.getElementById('tagPills');
+    const extEl = document.getElementById('ext');
+    const imageNameEl = document.getElementById('imageName');
+    const suggestionsEl = document.getElementById('suggestions');
+    const codeOutputEl = document.getElementById('codeOutput');
+
+    // Set Default Date to Today (YYYY-MM-DD)
+    const today = new Date().toISOString().split('T')[0];
+    dateEl.value = today;
+
+    // Slugify Helper Function
+    function slugify(text) {
+      return text
+        .toString()
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, '')  // remove non-alphanumeric chars
+        .replace(/\s+/g, '-')          // replace spaces with hyphens
+        .slice(0, 60);                  // cap length
+    }
+
+    // Input Listeners
+    titleEl.addEventListener('input', () => {
+      if (!isSlugManual) {
+        const generatedSlug = slugify(titleEl.value);
+        slugEl.value = generatedSlug;
+        if (!isImageNameManual) {
+          updateImageNameFromSlug(generatedSlug);
+        }
+      }
+      updateAll();
+    });
+
+    slugEl.addEventListener('input', () => {
+      isSlugManual = slugEl.value.trim().length > 0;
+      if (!isImageNameManual) {
+        updateImageNameFromSlug(slugEl.value);
+      }
+      updateAll();
+    });
+
+    extEl.addEventListener('change', () => {
+      if (!isImageNameManual) {
+        updateImageNameFromSlug(slugEl.value);
+      } else {
+        // preserve current name root, change ext
+        const current = imageNameEl.value;
+        const lastDot = current.lastIndexOf('.');
+        if (lastDot !== -1) {
+          imageNameEl.value = current.substring(0, lastDot) + '.' + extEl.value;
+        } else {
+          imageNameEl.value = current + '.' + extEl.value;
+        }
+      }
+      updateAll();
+    });
+
+    imageNameEl.addEventListener('input', () => {
+      isImageNameManual = imageNameEl.value.trim().length > 0;
+      updateAll();
+    });
+
+    descEl.addEventListener('input', updateAll);
+    promptEl.addEventListener('input', updateAll);
+    categoryEl.addEventListener('change', updateAll);
+    dateEl.addEventListener('change', updateAll);
+    tagsEl.addEventListener('input', () => {
+      renderTagPills();
+      updateAll();
+    });
+
+    function updateImageNameFromSlug(slugVal) {
+      const ext = extEl.value || 'jpg';
+      const cleanSlug = slugVal || 'untitled';
+      imageNameEl.value = `${cleanSlug}.${ext}`;
+    }
+
+    // Render visual tag pills under tags input
+    function getParsedTags() {
+      if (!tagsEl.value.trim()) return [];
+      return tagsEl.value
+        .split(',')
+        .map(t => t.trim())
+        .filter(t => t.length > 0);
+    }
+
+    function renderTagPills() {
+      const tags = getParsedTags();
+      tagPillsEl.innerHTML = '';
+      
+      if (tags.length === 0) {
+        tagPillsEl.innerHTML = `<span class="text-xs text-gray-400 italic">No tags added yet</span>`;
+        return;
+      }
+
+      tags.forEach(tag => {
+        const pill = document.createElement('span');
+        pill.className = 'bg-black text-white px-2.5 py-1 rounded-full text-xs font-semibold tracking-wide inline-flex items-center';
+        pill.textContent = tag;
+        tagPillsEl.appendChild(pill);
+      });
+    }
+
+    // Generate suggested image names
+    function updateSuggestions() {
+      suggestionsEl.innerHTML = '';
+      const baseSlug = slugEl.value.trim() || 'my-title';
+      const ext = extEl.value || 'jpg';
+
+      const words = baseSlug.split('-').filter(Boolean);
+      
+      const option1 = `${baseSlug}.${ext}`;
+      let option2 = option1;
+      let option3 = option1;
+
+      if (words.length > 2) {
+        option2 = `${words.slice(0, 2).join('-')}.${ext}`;
+        option3 = `${words.slice(0, 3).join('-')}-art.${ext}`;
+      } else if (words.length === 2) {
+        option2 = `${words[0]}.${ext}`;
+        option3 = `${baseSlug}-ce.${ext}`;
+      } else if (words.length === 1) {
+        option2 = `ce-${words[0]}.${ext}`;
+        option3 = `${words[0]}-art.${ext}`;
+      }
+
+      const uniqueOptions = [...new Set([option1, option2, option3])];
+
+      uniqueOptions.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'text-xs bg-white hover:bg-black hover:text-white border border-gray-300 px-2.5 py-1 rounded-lg font-mono transition duration-150 text-gray-700';
+        btn.textContent = opt;
+        btn.onclick = () => {
+          imageNameEl.value = opt;
+          isImageNameManual = true;
+          updateAll();
+        };
+        suggestionsEl.appendChild(btn);
+      });
+    }
+
+    // Construct Post Data Object (Strict JSON format without ID)
+    function buildDataObject() {
+      const title = titleEl.value.trim() || "My Title";
+      const slug = slugEl.value.trim() || slugify(title) || "my-title";
+      const descriptionVal = descEl.value.trim() || "My description";
+      const promptVal = promptEl.value.trim() || "My prompt --ar 2:3";
+      const categoryVal = categoryEl.value || "Art";
+      const tagsArray = getParsedTags();
+      const rawImage = imageNameEl.value.trim() || `${slug}.${extEl.value || 'jpg'}`;
+      
+      // Ensure 'images/' prefix
+      const finalImage = rawImage.startsWith('images/') ? rawImage : `images/${rawImage}`;
+      const finalDate = dateEl.value || today;
+
+      return {
+        title: title,
+        slug: slug,
+        desc: descriptionVal,
+        description: descriptionVal,
+        prompt: promptVal,
+        image: finalImage,
+        tags: tagsArray.length > 0 ? tagsArray : ["Art"],
+        category: categoryVal,
+        author: "Canvas Era",
+        date: finalDate
+      };
+    }
+
+    // Master update function
+    function updateAll() {
+      renderTagPills();
+      updateSuggestions();
+
+      const dataObj = buildDataObject();
+      const jsonText = JSON.stringify(dataObj, null, 2);
+      codeOutputEl.textContent = jsonText;
+    }
+
+    // Copying logic using fallback for robust browser support
+    function copyToClipboard(type) {
+      const dataObj = buildDataObject();
+      let textToCopy = '';
+
+      if (type === 'object') {
+        textToCopy = JSON.stringify(dataObj, null, 2);
+      } else if (type === 'comma') {
+        textToCopy = ',\n' + JSON.stringify(dataObj, null, 2);
+      } else if (type === 'image') {
+        textToCopy = dataObj.image;
+      }
+
+      // Execute copy using legacy document.execCommand for maximum compatibility in iframe
+      const tempTextArea = document.createElement('textarea');
+      tempTextArea.value = textToCopy;
+      document.body.appendChild(tempTextArea);
+      tempTextArea.select();
+      
+      let success = false;
+      try {
+        success = document.execCommand('copy');
+      } catch (err) {
+        console.error('Failed to copy', err);
+      }
+      document.body.removeChild(tempTextArea);
+
+      if (success) {
+        showToast(type === 'comma' ? 'Copied with leading comma!' : type === 'image' ? 'Image path copied!' : 'Object copied!');
+      } else {
+        showToast('Failed to copy. Please copy manually.');
+      }
+    }
+
+    // Download Prompt as TXT File
+    function downloadPromptText() {
+      const promptText = promptEl.value.trim();
+      if (!promptText) {
+        showToast('Prompt is empty!');
+        return;
+      }
+
+      const slug = slugEl.value.trim() || 'prompt';
+      const filename = `${slug}-prompt.txt`;
+      
+      const blob = new Blob([promptText], { type: 'text/plain;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      showToast('Prompt file saved!');
+    }
+
+    // Toast Notification helper
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = msg;
+
+      toast.classList.remove('opacity-0', 'translate-y-4');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-4');
+      }, 2500);
+    }
+
+    // Initial load execution
+    updateAll();
+  </script>
 </body>
 </html>
+
