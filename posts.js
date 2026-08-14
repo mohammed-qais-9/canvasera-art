@@ -141,6 +141,18 @@ const posts = [
     "date": "2026-05-13"
   },
     {
+    "title": "Lamassu Guardian Thumbs Up",
+    "slug": "lamassu-guardian-thumbs-up",
+    "desc": "Man beside a stone lamassu, giant comic Ashurbanipal gives a thumbs up",
+    "description": "Man beside a stone lamassu, giant comic Ashurbanipal gives a thumbs up",
+    "prompt": "photorealistic smiling man in simple linen tunic sitting on a woven oriental rug beside the massive stone winged-bull lamassu statue at the gates of ancient Nineveh, weathered limestone texture and cuneiform carvings visible, giant friendly 2D black-and-white comic line-art of King Ashurbanipal standing tall behind him giving an enthusiastic thumbs up with a huge grin, playful scale contrast between comic king and real ruins, cinematic golden hour light raking across the stone, dust motes, highly detailed photoreal and ink linework mix --ar 9:16",
+    "image": "images/lamassu-guardian-thumbs-up.jpg",
+    "tags": [],
+    "category": "Culture",
+    "author": "Canvas Era",
+    "date": "2026-08-14"
+    },
+    {
     "title": "Magical Café in Floating Islands",
     "slug": "magical-caf-in-floating-islands",
     "desc": "A cozy fantasy coffee shop perched on a floating island above the clouds, serving magical creatures.",
