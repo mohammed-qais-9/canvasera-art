@@ -70,7 +70,6 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-05-17"
   },
-    ,
   {
     "title": "Spirit of the Storm",
     "slug": "spirit-of-the-storm",
