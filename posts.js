@@ -70,6 +70,19 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-05-17"
   },
+    ,
+  {
+    "title": "Spirit of the Storm",
+    "slug": "spirit-of-the-storm",
+    "desc": "A dynamic action shot of a spirit warrior summoning wind and lightning, perfect for an intense anime poster.",
+    "description": "A dynamic action shot of a spirit warrior summoning wind and lightning, perfect for an intense anime poster.",
+    "prompt": "​Dynamic anime action shot, a spirit warrior summoning wind and lightning energy, flowing robes, glowing azure energy surrounding the character, dramatic low angle, high motion, intense atmosphere, sharp details, masterful composition, sparks and particles, epic anime battle aesthetic, 8k resolution --ar 2:3",
+    "image": "images/spirit-of-the-storm.jpg",
+    "tags": [],
+    "category": "Anime",
+    "author": "Canvas Era",
+    "date": "2026-08-14"
+  },
   {
     "title": "Bring Ancient Egyptian Mythology to Life with Mixed-Media AI Art",
     "slug": "egyptian-anubis-guardian-mixed-media",
