@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    
 <head>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5RYTLTMEKT"></script>
@@ -10,13 +9,10 @@
   gtag('js', new Date());
   gtag('config', 'G-5RYTLTMEKT');
 </script>
-
-    <link rel="manifest" href="/manifest.json">
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canvas Era | AI Art & Prompts</title>
-    
+
     <!-- Favicon - Canvas Era Logo -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
@@ -210,7 +206,6 @@
           <a href="https://ko-fi.com/canvasera" target="_blank" class="inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white px-7 py-3.5 rounded-full font-bold text-sm">☕ Buy me a coffee on Ko-fi</a>
           <a href="https://www.buymeacoffee.com/canvasera" target="_blank" class="inline-flex items-center gap-2 bg-white border border-gray-300 text-gray-900 px-7 py-3.5 rounded-full font-bold text-sm">Support</a>
         </div>
-        <p class="text-xs text-gray-400 mt-5">No ads. No spam. Just art.</p>
       </div>
     </section>
 
@@ -380,6 +375,11 @@
         </div>
     </div>
 
+    <div id="floating-support" class="fixed bottom-4 right-4 z-[85] hidden md:flex items-center gap-2 bg-gray-900 text-white px-4 py-2.5 rounded-full shadow-xl hover:bg-black transition-all hover:scale-105 cursor-pointer" onclick="document.querySelector('section.bg-\\[\\#faf8f5\\]').scrollIntoView({behavior:'smooth'})">
+        <span class="text-sm">☕</span>
+        <span class="text-xs font-bold">Support</span>
+    </div>
+
     <!-- Toast Notification -->
     <div id="toast"></div>
 
@@ -494,7 +494,7 @@
             }
             
             if (currentCategory === 'Saved' && !searchQuery) {
-                renderPosts('Saved');
+                setTimeout(() => renderPosts('Saved'), 50);
             } else if (event && event.currentTarget) {
                 const svg = event.currentTarget.querySelector('svg');
                 if (svg) {
@@ -700,7 +700,13 @@
             // Auto close search bar on desktop if open when clicking tabs
             const desktopSearch = document.getElementById('desktop-search-container');
             if (desktopSearch && !desktopSearch.classList.contains('invisible')) {
-                toggleSearchBar();
+                desktopSearch.classList.add('invisible','opacity-0','w-0');
+                desktopSearch.classList.remove('opacity-100','w-64');
+                document.getElementById('search-toggle-btn').classList.remove('opacity-0','pointer-events-none');
+                document.getElementById('desktop-search-input').value = '';
+                const mobileInput = document.getElementById('mobile-search-input');
+                if (mobileInput) mobileInput.value = '';
+                searchQuery = '';
             }
             
             if (category === 'Saved') {
@@ -939,6 +945,19 @@
           showToast("Canvas Era installed! 🎉");
         });
 
+        // --- Floating Support Button Logic ---
+        window.addEventListener('scroll', () => {
+          const floatBtn = document.getElementById('floating-support');
+          const supportSection = document.querySelector('section.bg-\\[\\#faf8f5\\]');
+          if (!floatBtn || !supportSection) return;
+          const supportTop = supportSection.getBoundingClientRect().top;
+          if (window.scrollY > 600 && supportTop > 200) {
+            floatBtn.classList.remove('hidden');
+          } else {
+            floatBtn.classList.add('hidden');
+          }
+        });
+
         // Mobile Menu Toggle
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
@@ -958,5 +977,3 @@
     
 </body>
 </html>
-
-
