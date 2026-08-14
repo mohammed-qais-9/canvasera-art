@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Canvas Era - Generator</title>
+<style>
+:root{--bg:#faf8f5;--card:#fff;--ink:#111;--muted:#888;--line:#ece8e3}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui;background:var(--bg);color:var(--ink)}
+.wrap{max-width:1100px;margin:0 auto;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 4px 24px rgba(0,0,0,.04)}
+h2{margin:0 0 6px;font-size:20px} .sub{color:var(--muted);font-size:13px;margin-bottom:14px}
+label{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-top:12px;display:block}
+input,textarea,select{width:100%;padding:12px 12px;border:1px solid var(--line);border-radius:12px;margin-top:6px;font-size:14px;background:#fffdfb}
+textarea{resize:vertical} .row{display:flex;gap:10px}
+.btn{padding:12px 16px;border:none;border-radius:12px;background:var(--ink);color:#fff;font-weight:700;cursor:pointer;width:100%;margin-top:10px}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.small{padding:8px 12px;font-size:13px;width:auto}
+.tag{display:inline-block;background:#111;color:#fff;border-radius:20px;padding:4px 10px;font-size:12px;margin:4px 4px 0 0}
+pre{background:#0e0e0e;color:#e8e8e8;border-radius:14px;padding:14px;overflow:auto;font-size:13px;line-height:1.5;max-height:70vh}
+.hint{background:#fff6d6;border:1px dashed #e6c86a;border-radius:12px;padding:12px;font-size:13px;margin-top:12px}
+</style>
+</head>
+<body>
+<div style="text-align:center;padding:22px 0 0"><h1 style="margin:0">Canvas Era — Code Generator</h1><p class="sub">ارفع العنوان والوصف والبرومبت → انسخ الكود → الصقه في posts.js</p></div>
+<div class="wrap">
+<div class="card">
+<h2>1. معلومات المقالة</h2>
+<label>Next ID</label><input id="id" type="number" value="8">
+<label>Title *</label><input id="title" placeholder="Rainy Day Serenity: A Childhood Memory">
+<label>Slug (يتولد تلقائياً)</label><input id="slug" placeholder="rainy-day-serenity">
+<label>Description (desc + description)</label><textarea id="desc" rows="3" placeholder="Embrace the comfort of a rainy afternoon..."></textarea>
+<label>Prompt (مع --ar 2:3)</label><textarea id="prompt" rows="6" placeholder="A whimsical illustration... --ar 2:3"></textarea>
+<div class="row"><div style="flex:1"><label>Category</label><select id="cat"><option>Culture</option><option>Art</option><option>Anime</option><option>History</option><option>Portrait</option><option>Illustration</option></select></div><div style="flex:1"><label>Date</label><input id="date" type="date"></div></div>
+<label>Tags (بفاصلة)</label><input id="tags" placeholder="Cozy, Umbrella, Rainy, Childhood">
+<div id="tagsPreview"></div>
+<label>Image extension</label><select id="ext"><option value="jpg">.jpg</option><option value="png">.png</option><option value="webp">.webp</option></select>
+<label>Image name (يتولد تلقائياً)</label><input id="imgName" placeholder="rainy-day-serenity.jpg">
+<div class="hint">💡 <b>طريقة الاستخدام:</b><br>1. ارفع الصورة يدوياً إلى مجلد <code>images/</code> بنفس الاسم اللي فوق<br>2. انسخ الكود من اليمين<br>3. افتح <code>posts.js</code> في GitHub والصق الكود قبل <code>];</code> الأخير<br>4. لا تنسى الفاصلة <code>,</code> بين المقالات</div>
+</div>
+<div class="card">
+<h2>2. الكود الجاهز</h2>
+<div class="row"><button class="btn small ghost" onclick="copyObj()">Copy Object</button><button class="btn small ghost" onclick="copyFull()">Copy with Comma</button><button class="btn small ghost" onclick="copyImg()">Copy Image Name</button></div>
+<pre id="code"></pre>
+<div class="row"><button class="btn" onclick="copyObj()">نسخ الكود</button><button class="btn ghost" onclick="downloadImgName()">تحميل اسم الصورة كـ txt</button></div>
+<h3 style="font-size:14px;margin-top:16px">اقتراحات اسم الصورة:</h3><div id="suggest"></div>
+</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+$('date').valueAsDate=new Date();
+function slugify(s){return s.toLowerCase().trim().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'').slice(0,60)}
+function gen(){
+ let t=$('title').value||'Untitled';
+ let sl=slugify(t);
+ if(!$('slug').dataset.manual) $('slug').value=sl;
+ let s=$('slug').value||sl;
+ let ext=$('ext').value;
+ if(!$('imgName').dataset.manual) $('imgName').value=s+'.'+ext;
+ let id=parseInt($('id').value)||8;
+ let desc=$('desc').value.replace(/"/g,'\\"');
+ let prompt=$('prompt').value.replace(/"/g,'\\"').replace(/\n/g,' ');
+ let tags=$('tags').value.split(',').map(x=>x.trim()).filter(Boolean);
+ let cat=$('cat').value;
+ let date=$('date').value||new Date().toISOString().slice(0,10);
+ let img='images/'+$('imgName').value;
+ let obj=`  {
+    "id": ${id},
+    "title": "${$('title').value.replace(/"/g,'\\"')}",
+    "slug": "${s}",
+    "desc": "${$('desc').value.replace(/"/g,'\\"')}",
+    "description": "${$('desc').value.replace(/"/g,'\\"')}",
+    "prompt": "${$('prompt').value.replace(/"/g,'\\"')}",
+    "image": "${img}",
+    "tags": [${tags.map(t=>`"${t}"`).join(', ')}],
+    "category": "${cat}",
+    "author": "Canvas Era",
+    "date": "${date}"
+  }`;
+ $('code').textContent=obj;
+ $('tagsPreview').innerHTML=tags.map(x=>`<span class="tag">${x}</span>`).join('');
+ // suggestions
+ let words=s.split('-').slice(0,3).join('-');
+ $('suggest').innerHTML=`<span class="tag">${s+'.'+ext}</span> <span class="tag">${words+'.'+ext}</span> <span class="tag">${s.slice(0,15)+'.'+ext}</span>`;
+}
+['title','slug','desc','prompt','cat','tags','ext','imgName','id','date'].forEach(id=>{
+ $(id).addEventListener('input',()=>{if(id==='slug'||id==='imgName')$(id).dataset.manual=1; gen()});
+});
+$('ext').addEventListener('change',gen);
+setInterval(gen,500);
+function copyObj(){navigator.clipboard.writeText($('code').textContent);alert('تم النسخ!')}
+function copyFull(){navigator.clipboard.writeText('  ,\n'+$('code').textContent);alert('تم النسخ مع الفاصلة - الصقه مباشرة!')}
+function copyImg(){navigator.clipboard.writeText($('imgName').value);alert($('imgName').value)}
+function downloadImgName(){let b=new Blob([$('imgName').value],{type:'text/plain'});let a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='image-name.txt';a.click()}
+gen();
+</script>
+</body>
+</html>
