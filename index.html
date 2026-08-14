@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-5RYTLTMEKT');
 </script>
     <meta charset="UTF-8">
@@ -74,13 +73,9 @@
             overflow: visible; 
         }
 
-        /* Ad Slots CSS */
-        .ad-slot--in-article {
-            min-height: 250px; 
-        }
-        .ad-card--in-feed {
-            min-height: 320px;
-        }
+        /* PWA Install Banner */
+        #pwa-install-banner { transform: translateY(100%); transition: transform 0.4s ease; }
+        #pwa-install-banner.show { transform: translateY(0); }
 
         /* Toast Notification */
         #toast {
@@ -202,16 +197,17 @@
 
     </main>
 
-    <!-- Telegram Newsletter Section -->
-    <section class="bg-[#f0ece5] py-20 px-4 mt-8 border-t border-gray-200">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">Join the Inner Circle</h2>
-            <p class="text-gray-600 text-lg md:text-xl mb-8 font-medium">Get prompts before they hit the website + unreleased culture artworks</p>
-            <a href="https://t.me/canvasera" target="_blank" class="inline-flex items-center justify-center gap-3 bg-[#2AABEE] hover:bg-[#229ED9] text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:scale-95 text-lg w-full sm:w-auto">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.896-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                Join on Telegram - It's Free
-            </a>
+    <!-- Support the Studio Section -->
+    <section class="bg-[#faf8f5] py-16 px-4 mt-8 border-t border-gray-200">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-3">Support the Studio</h2>
+        <p class="text-gray-600 text-base md:text-lg mb-6 max-w-xl mx-auto leading-relaxed">Canvas Era is a solo project crafted with love for culture & art. If you enjoy the prompts, consider supporting to keep it ad-free & growing.</p>
+        <div class="flex gap-3 justify-center flex-wrap">
+          <a href="https://ko-fi.com/canvasera" target="_blank" class="inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white px-7 py-3.5 rounded-full font-bold text-sm">☕ Buy me a coffee on Ko-fi</a>
+          <a href="https://www.buymeacoffee.com/canvasera" target="_blank" class="inline-flex items-center gap-2 bg-white border border-gray-300 text-gray-900 px-7 py-3.5 rounded-full font-bold text-sm">Support</a>
         </div>
+        <p class="text-xs text-gray-400 mt-5">No ads. No spam. Just art.</p>
+      </div>
     </section>
 
     <!-- Footer -->
@@ -308,17 +304,11 @@
                         </button>
                     </div>
 
-                    <!-- 5. Ad Slot 1 (In-Article) -->
-                    <div class="ad-slot ad-slot--in-article bg-gray-50 border border-gray-200 border-dashed rounded-xl flex flex-col items-center justify-center relative overflow-hidden" id="monetag-in-article-1" data-ad="in-article-1">
-                        <span class="absolute top-2 text-[10px] text-gray-400 font-bold uppercase tracking-widest z-0">Advertisement</span>
-                        <div class="relative z-10 text-gray-400 text-xs mt-4">Ad Space: 300x250</div>
-                    </div>
-
-                    <!-- 6. More Like This Section -->
+                    <!-- 5. More Like This Section -->
                     <div class="pt-6 border-t border-gray-100">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 font-serif">More like this</h3>
                         <div class="masonry-grid" id="related-posts" style="column-count: 2;">
-                            <!-- Related images populated dynamically + Ad injected here -->
+                            <!-- Related images populated dynamically -->
                         </div>
                     </div>
 
@@ -369,6 +359,21 @@
         <button onclick="acceptCookies()" class="bg-white text-gray-900 px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-gray-200 transition-colors whitespace-nowrap active:scale-95 transform">
             Accept
         </button>
+    </div>
+
+    <!-- PWA Install Banner -->
+    <div id="pwa-install-banner" class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-8px_30px_rgba(0,0,0,0.1)] z-[90] p-4 flex justify-between items-center sm:flex-row flex-col gap-4 hidden">
+        <div class="flex items-center gap-3 w-full sm:w-auto">
+            <img src="favicon_32x32.png" alt="Canvas Era Icon" class="w-10 h-10 rounded shadow-sm">
+            <div>
+                <p class="font-bold text-sm text-gray-900">Install Canvas Era</p>
+                <p class="text-xs text-gray-500">Add to Home Screen for quick access</p>
+            </div>
+        </div>
+        <div class="flex gap-2 w-full sm:w-auto">
+            <button onclick="dismissPWA()" class="flex-1 sm:flex-none px-4 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">Not now</button>
+            <button id="pwa-install-btn" onclick="installPWA()" class="flex-1 sm:flex-none px-4 py-2 text-sm font-bold text-white bg-gray-900 rounded-lg hover:bg-black transition-colors">Install</button>
+        </div>
     </div>
 
     <!-- Toast Notification -->
@@ -554,30 +559,6 @@
             }, 700);
         }
 
-        // --- Ad System ---
-        const adObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    adObserver.unobserve(entry.target);
-                }
-            });
-        }, { rootMargin: '100px' });
-
-        function observeAds() {
-            document.querySelectorAll('.ad-slot, .ad-card--in-feed').forEach(ad => {
-                adObserver.observe(ad);
-            });
-        }
-
-        function getAdCardHTML() {
-            return `
-                <article class="masonry-item ad-card--in-feed bg-gray-50 rounded-2xl border border-gray-200 border-dashed flex flex-col justify-center items-center relative overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-                    <div class="absolute top-4 text-[10px] text-gray-400 font-bold uppercase tracking-widest">Advertisement</div>
-                    <div class="text-gray-400 text-xs">Ad Space: 300x250 or 300x600</div>
-                </article>
-            `;
-        }
-
         // --- Render Posts ---
         function renderPosts(category = 'All') {
             const container = document.getElementById('posts-container');
@@ -640,6 +621,9 @@
                             </div>
                             <h2 class="text-2xl font-serif font-bold text-gray-900 mb-2">No saved yet</h2>
                             <p class="text-gray-500 mb-8 leading-relaxed">You haven't saved any prompts yet. Explore our collection and save your favorites to easily access them later.</p>
+                            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8 text-left w-full">
+                                <p class="text-xs text-amber-800 leading-relaxed"><span class="font-bold">⚠️ Important:</span> Your saved artworks are stored locally in your browser (localStorage). Clearing cookies, cache, or site data will remove them.</p>
+                            </div>
                             <button onclick="filterPosts('All')" class="bg-gray-900 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-gray-800 transition-colors shadow-lg active:scale-95 transform">Explore Artworks</button>
                         </div>
                     `;
@@ -700,13 +684,7 @@
                     </div>
                 `;
                 container.appendChild(article);
-
-                if ((index + 1) % 6 === 0) {
-                    container.insertAdjacentHTML('beforeend', getAdCardHTML());
-                }
             });
-            
-            observeAds();
         }
 
         // Filter Category
@@ -723,7 +701,7 @@
             
             if (category === 'Saved') {
                 titleEl.textContent = 'Your Saved Artworks';
-                descEl.textContent = 'Your personal collection of prompts and AI generated masterpieces.';
+                descEl.textContent = 'Your personal collection - stored locally. Clearing cookies will remove them.';
             } else {
                 titleEl.textContent = category === 'All' ? 'Latest Artworks' : category + ' Artworks';
                 descEl.textContent = 'Discover how these images were created, and copy the prompts with a single click to start your own creative journey.';
@@ -780,17 +758,11 @@
                 item.onclick = () => openModal(rel.id);
                 item.innerHTML = `<img src="${rel.image}" alt="${rel.title}" loading="lazy" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300">`;
                 relatedContainer.appendChild(item);
-
-                if (idx === 2) {
-                    relatedContainer.insertAdjacentHTML('beforeend', getAdCardHTML());
-                }
             });
 
             document.getElementById('image-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             
-            observeAds();
-
             if (pushState) {
                 const fullSlug = currentPost.slug;
                 history.pushState({ postId: id }, '', '?art=' + fullSlug);
@@ -925,6 +897,44 @@
             toastTimeout = setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 4000);
         }
 
+        // --- PWA Install Logic (Fix) ---
+        let deferredPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {
+          e.preventDefault();
+          deferredPrompt = e;
+          const banner = document.getElementById('pwa-install-banner');
+          if (!localStorage.getItem('pwa-dismissed')) {
+            setTimeout(() => {
+              banner.classList.remove('hidden');
+              setTimeout(() => banner.classList.add('show'), 100);
+            }, 8000);
+          }
+        });
+        function installPWA() {
+          if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(() => {
+              deferredPrompt = null;
+              hidePWABanner();
+            });
+          }
+        }
+        function dismissPWA() {
+          localStorage.setItem('pwa-dismissed', 'true');
+          hidePWABanner();
+        }
+        function hidePWABanner() {
+          const b = document.getElementById('pwa-install-banner');
+          if (b) {
+            b.classList.remove('show');
+            setTimeout(() => b.classList.add('hidden'), 400);
+          }
+        }
+        window.addEventListener('appinstalled', () => {
+          hidePWABanner();
+          showToast("Canvas Era installed! 🎉");
+        });
+
         // Mobile Menu Toggle
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
@@ -944,3 +954,5 @@
     
 </body>
 </html>
+
+
