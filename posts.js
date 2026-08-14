@@ -100,20 +100,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-14"
     },
-  {
-  "title": "Alchemist's Cozy Corner",
-  "slug": "alchemists-cozy-corner",
-  "desc": "A cozy, cluttered room filled with glowing potion bottles, ancient books, and a little cat wearing a wizard hat.",
-  "description": "A cozy, cluttered room filled with glowing potion bottles, ancient books, and a little cat wearing a wizard hat.",
-  "prompt": "​Anime illustration, interior of a cozy witch's alchemy workshop, shelves stacked with glowing colorful potion jars and leather-bound books, soft golden light filtering through a stained glass window, a cute small black cat wearing a tiny wizard hat sitting on a desk, whimsical and magical atmosphere, warm tones, Studio Pierrot style, highly detailed, vibrant colors --ar 4:5",
-  "image": "images/alchemists-cozy-corner.jpg",
-  "tags": [
-    "Art"
-  ],
-  "category": "Anime",
-  "author": "Canvas Era",
-  "date": "2026-08-14"
-  },
+    {
+    "title": "Alchemist's Cozy Corner",
+    "slug": "alchemists-cozy-corner",
+    "desc": "A cozy, cluttered room filled with glowing potion bottles, ancient books, and a little cat wearing a wizard hat",
+    "description": "A cozy, cluttered room filled with glowing potion bottles, ancient books, and a little cat wearing a wizard hat",
+    "prompt": "​Anime illustration, interior of a cozy witch's alchemy workshop, shelves stacked with glowing colorful potion jars and leather-bound books, soft golden light filtering through a stained glass window, a cute small black cat wearing a tiny wizard hat sitting on a desk, whimsical and magical atmosphere, warm tones, Studio Pierrot style, highly detailed, vibrant colors --ar 4:5",
+    "image": "images/alchemists-cozy-corner.jpg",
+    "tags": [],
+    "category": "Anime",
+    "author": "Canvas Era",
+    "date": "2026-08-14"
+    },
   {
     "title": "Embrace the Power of Assyrian Mythology with Mixed-Media AI Art",
     "slug": "assyrian-lamassu-mixed-media",
