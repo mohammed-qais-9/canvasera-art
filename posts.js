@@ -148,7 +148,7 @@ const posts = [
     "prompt": "A charming anime-style café built on a floating island above cotton candy clouds, outdoor terrace with wooden tables and magical floating lanterns, a friendly witch barista serving glowing latte art to a small dragon and a cat familiar, whimsical fantasy architecture with climbing ivy and flower boxes, sunset golden hour lighting, vibrant colors, detailed background with other floating islands visible, cozy atmosphere, Kyoto Animation style --ar 4:3",
     "image": "images/magical-caf-in-floating-islands.jpg",
     "tags": [],
-    "category": "Art",
+    "category": "Anime",
     "author": "Canvas Era",
     "date": "2026-08-14"
     },
