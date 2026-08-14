@@ -1,4 +1,16 @@
 const posts = [
+    {
+    "title": "Hammurabi's Law Ziggurat",
+    "slug": "hammurabis-law-ziggurat",
+    "desc": "Man before a Babylon ziggurat, giant comic Hammurabi holds up his law code",
+    "description": "Man before a Babylon ziggurat, giant comic Hammurabi holds up his law code",
+    "prompt": "photorealistic smiling man in earth-toned robes sitting on a patterned oriental rug at the base of a reconstructed mudbrick ziggurat in ancient Babylon, warm terracotta tones and mudbrick texture, giant friendly 2D black-and-white comic line-art of King Hammurabi standing behind him proudly holding up a huge stone law tablet with a warm smile, playful scale contrast, cinematic golden hour lighting, dust haze over the plain, highly detailed photoreal and ink linework mix --ar 9:16",
+    "image": "images/hammurabis-law-ziggurat.jpg",
+    "tags": [],
+    "category": "Culture",
+    "author": "Canvas Era",
+    "date": "2026-08-14"
+    },
   {
     "title": "Cosmic Memory Portrait",
     "slug": "cosmic-memory-portrait",
