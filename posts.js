@@ -1,6 +1,5 @@
 const posts = [
   {
-    "id": 1,
     "title": "Embrace the Power of Assyrian Mythology with Mixed-Media AI Art",
     "slug": "assyrian-lamassu-mixed-media",
     "desc": "A beautiful blend of realistic photography and Assyrian heritage. A guardian Lamassu drawn in elegant ink protects the modern muse.",
@@ -17,7 +16,6 @@ const posts = [
     "date": "2026-05-13"
   },
   {
-    "id": 2,
     "title": "Cosmic Memory Portrait",
     "slug": "cosmic-memory-portrait",
     "desc": "A captivating digital oil painting of a woman merged with glowing cosmic nebula and golden floral elements.",
@@ -35,7 +33,6 @@ const posts = [
     "date": "2026-05-14"
   },
   {
-    "id": 3,
     "title": "Neo-Kyo Cyber Fashion Icon",
     "slug": "neo-kyo-cyber-fashion-icon",
     "desc": "Futuristic cyberpunk anime portrait of a girl in high-tech streetwear with holographic visor in a neon-drenched rainy Tokyo night.",
@@ -54,7 +51,6 @@ const posts = [
     "date": "2026-05-15"
   },
   {
-    "id": 4,
     "title": "The Feathered Adventures - Cozy Bookshop Storybook Art",
     "slug": "cozy-bookshop-storybook-art",
     "desc": "Whimsical children's book illustration of a cozy bookshop girl reading about birds with warm pastel colors and storybook charm.",
@@ -73,7 +69,6 @@ const posts = [
     "date": "2026-05-16"
   },
   {
-    "id": 5,
     "title": "Transform Your Photos with Ancient History and 2D Comic Style",
     "slug": "babylonian-king-thumbsup-mixed-media",
     "desc": "A friendly giant 2D Babylonian King gives a thumbs-up while hugging a real woman in ancient Babylonian ruins with Ziggurat view.",
@@ -92,7 +87,6 @@ const posts = [
     "date": "2026-05-17"
   },
   {
-    "id": 6,
     "title": "Bring Ancient Egyptian Mythology to Life with Mixed-Media AI Art",
     "slug": "egyptian-anubis-guardian-mixed-media",
     "desc": "Photorealistic woman sketching in Egyptian desert with a giant friendly 2D Anubis guardian smiling behind her at golden sunset.",
@@ -111,7 +105,6 @@ const posts = [
     "date": "2026-05-18"
   },
     {
-    "id": 7,
     "title": "Rainy Day Serenity: A Childhood Memory",
     "slug": "rainy-day-serenity-a-childhood-memory",
     "desc": "Embrace the comfort of a rainy afternoon with this enchanting illustration. Featuring a joyful girl and her faithful white cat amidst a garden of blooming roses, this piece perfectly captures the innocence, warmth, and nostalgia of childhood on a gentle rainy day.",
