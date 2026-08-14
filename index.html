@@ -698,6 +698,7 @@
             const descEl = document.getElementById('category-desc');
             
             // Auto close search bar on desktop if open when clicking tabs
+            // BUG 1 FIX: close search WITHOUT calling toggleSearchBar() (which triggers clearSearch -> renderPosts with stale timing)
             const desktopSearch = document.getElementById('desktop-search-container');
             if (desktopSearch && !desktopSearch.classList.contains('invisible')) {
                 desktopSearch.classList.add('invisible','opacity-0','w-0');
@@ -945,7 +946,7 @@
           showToast("Canvas Era installed! 🎉");
         });
 
-        // --- Floating Support Button Logic ---
+        // --- Floating Support Button Logic (BUG 2 FIX) ---
         window.addEventListener('scroll', () => {
           const floatBtn = document.getElementById('floating-support');
           const supportSection = document.querySelector('section.bg-\\[\\#faf8f5\\]');
@@ -959,9 +960,9 @@
         });
 
         // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        mobileMenuBtn.addEventListener('click', () => menu.classList.toggle('hidden'));
         function closeMobileMenu() { menu.classList.add('hidden'); }
 
     </script>
