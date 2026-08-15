@@ -7,7 +7,7 @@ const posts = [
     "prompt": "photorealistic smiling woman in soft earth-tone robes sitting on an oriental rug amid the excavated ruins of Nineveh's royal library, broken clay tablets scattered artfully nearby, giant friendly 2D black-and-white comic line-art of King Ashurbanipal sitting behind her unrolling a huge scroll and reading aloud with a warm expression, comic linework contrasting the photoreal stone rubble, cinematic golden hour lighting, dust motes drifting, highly detailed --ar 9:16",
     "image": "images/ashurbanipals-library.jpg",
     "tags": [],
-    "category": "Art",
+    "category": "Culture",
     "author": "Canvas Era",
     "date": "2026-08-15"
               },
