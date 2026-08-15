@@ -260,6 +260,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-05-13"
   },
+        {
+    "title": "The Clockmaker's Apprentice",
+    "slug": "the-clockmakers-apprentice",
+    "desc": "A boy sitting at a desk filled with gears and clocks, working with a small tool under the warm light of a desk lamp.",
+    "description": "A boy sitting at a desk filled with gears and clocks, working with a small tool under the warm light of a desk lamp.",
+    "prompt": "Charming digital illustration of a young boy working on a vintage wooden clock at a cluttered wooden desk, surrounded by gears and tools, warm amber desk lamp lighting, cozy rustic workshop, soft shadows, intricate details, gentle focus, warm color palette (browns, creams, gold), storybook illustration, peaceful and focused atmosphere --ar 4:5\"",
+    "image": "images/the-clockmakers-apprentice.jpg",
+    "tags": [],
+    "category": "Art",
+    "author": "Canvas Era",
+    "date": "2026-08-15"
+          },
     {
     "title": "Lamassu Guardian Thumbs Up",
     "slug": "lamassu-guardian-thumbs-up",
@@ -284,5 +296,6 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-14"
     },
+          
   
 ];
