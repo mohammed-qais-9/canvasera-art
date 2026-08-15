@@ -1,4 +1,16 @@
 const posts = [
+          {
+    "title": "Cozy Bookshop Bird Watcher",
+    "slug": "cozy-bookshop-bird-watcher",
+    "desc": "Messy-haired girl with cherry clips reads a bird book in a warm little bookshop",
+    "description": "Messy-haired girl with cherry clips reads a bird book in a warm little bookshop",
+    "prompt": "cozy bookshop girl with messy brown hair, cherry-shaped hair clips, round wire glasses, oversized cream cardigan, curled up in a window nook reading a large illustrated bird book, a small sparrow perched on her shoulder, towering wooden bookshelves and hanging plants around her, warm afternoon light through rain-speckled glass, Studio Ghibli meets children's storybook illustration, soft pastel palette, delicate ink linework, cozy warm atmosphere --ar 2:3",
+    "image": "images/cozy-bookshop-bird-watcher.jpg",
+    "tags": [],
+    "category": "Art",
+    "author": "Canvas Era",
+    "date": "2026-08-15"
+          },
         {
     "title": "Rooftop Stargazer and Cat",
     "slug": "rooftop-stargazer-and-cat",
