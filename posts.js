@@ -1,4 +1,16 @@
 const posts = [
+            {
+    "title": "Sargon's Palace Welcome",
+    "slug": "sargons-palace-welcome",
+    "desc": "Man in Nineveh's palace ruins, giant comic Sargon II welcomes him warmly",
+    "description": "Man in Nineveh's palace ruins, giant comic Sargon II welcomes him warmly",
+    "prompt": "photorealistic smiling man in a woven earth-tone robe sitting on an oriental rug inside the roofless ruins of an Assyrian palace, carved stone reliefs of hunting scenes visible on the walls behind him, giant friendly 2D black-and-white comic line-art of King Sargon II standing behind him with arms open wide in a warm welcoming gesture, comic linework contrasting the photoreal stone reliefs, cinematic golden hour lighting, dust particles in the air, highly detailed --ar 9:16",
+    "image": "images/sargons-palace-welcome.jpg",
+    "tags": [],
+    "category": "Culture",
+    "author": "Canvas Era",
+    "date": "2026-08-15"
+            },
           {
     "title": "Cozy Bookshop Bird Watcher",
     "slug": "cozy-bookshop-bird-watcher",
