@@ -577,35 +577,34 @@
             }, 700);
         }
 
-        // --- Render Posts ---
-        function executeSearch(query) {
-    searchQuery = query.toLowerCase().trim();
-    const mobileClearBtn = document.getElementById('mobile-search-clear');
-    if(mobileClearBtn) {
-        if(searchQuery.length > 0) mobileClearBtn.classList.remove('hidden');
-        else mobileClearBtn.classList.add('hidden');
-    }
-    if(searchQuery){
-        currentCategory = 'All';
-        document.getElementById('category-title').textContent = `Search: "${query}"`;
-        document.getElementById('category-desc').textContent = `Found ${getAllPosts().filter(p => {
-            const t = (p.title || '').toLowerCase();
-            const d = (p.desc || p.description || '').toLowerCase();
-            const pr = (p.prompt || '').toLowerCase();
-            const c = (p.category || '').toLowerCase();
-            return t.includes(searchQuery) || d.includes(searchQuery) || pr.includes(searchQuery) || c.includes(searchQuery);
-        }).length} results for "${query}"`;
-    } else {
-        document.getElementById('category-title').textContent = 'Latest Artworks';
-        document.getElementById('category-desc').textContent = 'Discover how these images were created, and copy the prompts with a single click to start your own creative journey.';
-    }
-    renderPosts('All');
-}
+            // --- Render Posts ---
+    function renderPosts(category = 'All') {
+        const container = document.getElementById('posts-container');
+        container.innerHTML = '';
+        let filteredPosts = [];
+        const allSafePosts = getAllPosts();
+        if (searchQuery) {
+            filteredPosts = allSafePosts;
+        } else {
+            if (category === 'Saved') {
+                const savedSlugs = getSavedPosts();
+                filteredPosts = allSafePosts.filter(p => savedSlugs.includes(p.slug));
+            } else {
+                filteredPosts = category === 'All' ? allSafePosts : allSafePosts.filter(p => p.category === category);
+            }
+        }
+        if (searchQuery) {
+            filteredPosts = filteredPosts.filter(p => {
+                const t = (p.title || '').toLowerCase();
+                const d = (p.desc || p.description || '').toLowerCase();
+                const pr = (p.prompt || '').toLowerCase();
+                const c = (p.category || '').toLowerCase();
+                return t.includes(searchQuery) || d.includes(searchQuery) || pr.includes(searchQuery) || c.includes(searchQuery);
+            });
+        }
 
-            // 3. Handle Empty States
-            if (filteredPosts.length === 0) {
-                container.classList.add('masonry-empty');
-                
+    if (filteredPosts.length === 0) {
+        container.classList.add('masonry-empty');        
                 if (allSafePosts.length === 0 && !searchQuery && category !== 'Saved') {
                     // Empty Global State (posts.js is empty)
                     container.innerHTML = `
