@@ -1,18 +1,16 @@
 const posts = [
-    {
+      {
     "title": "The Magic Bakery",
     "slug": "the-magic-bakery",
-    "desc": "A young girl preparing magical pastries in a cozy, sunlit kitchen filled with floating flour particles and glowing jars.
-",
-    "description": "A young girl preparing magical pastries in a cozy, sunlit kitchen filled with floating flour particles and glowing jars.
-",
+    "desc": "A young girl preparing magical pastries in a cozy, sunlit kitchen filled with floating flour particles and glowing jars",
+    "description": "A young girl preparing magical pastries in a cozy, sunlit kitchen filled with floating flour particles and glowing jars",
     "prompt": "​Anime style, cozy bakery kitchen interior, warm golden hour sunlight, a cute girl with braided hair baking magical sweets, floating flour dust particles, copper kitchen tools, soft and nostalgic aesthetic, Kyoto Animation style, highly detailed, vibrant and warm colors, masterpiece, peaceful mood --ar 4:5",
     "image": "images/the-magic-bakery.jpg",
     "tags": [],
     "category": "Anime",
     "author": "Canvas Era",
     "date": "2026-08-15"
-    },
+      },
                 {
     "title": "Ashurbanipal's Library ",
     "slug": "ashurbanipals-library",
