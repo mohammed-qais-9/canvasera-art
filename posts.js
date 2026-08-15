@@ -1,4 +1,16 @@
 const posts = [
+            {
+    "title": "Horus Wings Over Karnak",
+    "slug": "horus-wings-over-karnak",
+    "desc": "Woman among Karnak's columns, giant 2D comic Horus spreads his wings",
+    "description": "Woman among Karnak's columns, giant 2D comic Horus spreads his wings",
+    "prompt": "photorealistic smiling woman in flowing white linen sitting on an oriental rug between the towering carved columns of Karnak Temple, sunlight streaming through the stone pillars, giant friendly 2D black-and-white comic line-art of falcon-headed god Horus standing behind her with huge wings spread protectively around her, comic linework popping against the photoreal sandstone columns, cinematic golden hour lighting, warm dust particles, highly detailed --ar 9:16",
+    "image": "images/horus-wings-over-karnak.jpg",
+    "tags": [],
+    "category": "Art",
+    "author": "Canvas Era",
+    "date": "2026-08-15"
+            },
           {
     "title": "Morning Tea in the Woods",
     "slug": "morning-tea-in-the-woods",
