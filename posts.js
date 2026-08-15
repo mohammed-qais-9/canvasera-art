@@ -1,4 +1,16 @@
 const posts = [
+        {
+    "title": "Rooftop Stargazer and Cat",
+    "slug": "rooftop-stargazer-and-cat",
+    "desc": "Girl in a knit sweater stargazes on a cottage rooftop with her sleepy cat",
+    "description": "Girl in a knit sweater stargazes on a cottage rooftop with her sleepy cat",
+    "prompt": "cozy storybook girl with a loose braid and oversized knit sweater sitting on a slanted cottage rooftop, peering through a small brass telescope at a starry sky, a fluffy orange cat curled asleep beside her, warm string lights strung along the chimney, twinkling fireflies drifting near soft glowing windows below, Studio Ghibli meets children's book illustration, soft pastel palette, gentle ink linework, dreamy nighttime mood --ar 2:3",
+    "image": "images/rooftop-stargazer-and-cat.jpg",
+    "tags": [],
+    "category": "Art",
+    "author": "Canvas Era",
+    "date": "2026-08-15"
+        },
       {
     "title": "Rainy Window Letter Writer",
     "slug": "rainy-window-letter-writer",
