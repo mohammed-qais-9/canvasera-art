@@ -432,16 +432,21 @@
         }
 
         function executeSearch(query) {
-            searchQuery = query.toLowerCase().trim();
-            
-            // Show/Hide mobile clear button
-            const mobileClearBtn = document.getElementById('mobile-search-clear');
-            if(mobileClearBtn) {
-                if(searchQuery.length > 0) mobileClearBtn.classList.remove('hidden');
-                else mobileClearBtn.classList.add('hidden');
-            }
-            
-            renderPosts(currentCategory);
+    searchQuery = query.toLowerCase().trim();
+    const mobileClearBtn = document.getElementById('mobile-search-clear');
+    if(mobileClearBtn) {
+        if(searchQuery.length > 0) mobileClearBtn.classList.remove('hidden');
+        else mobileClearBtn.classList.add('hidden');
+    }
+    if(searchQuery){
+        document.getElementById('category-title').textContent = `Search: "${query}"`;
+        document.getElementById('category-desc').textContent = `Showing results for "${query}"`;
+    } else {
+        const cat = currentCategory;
+        document.getElementById('category-title').textContent = cat === 'All' ? 'Latest Artworks' : (cat === 'Saved' ? 'Your Saved Artworks' : cat + ' Artworks');
+        document.getElementById('category-desc').textContent = cat === 'Saved' ? 'Your personal collection - stored locally. Clearing cookies will remove them.' : 'Discover how these images were created, and copy the prompts with a single click to start your own creative journey.';
+    }
+    renderPosts(currentCategory);
         }
 
         function clearSearch() {
@@ -590,13 +595,14 @@
 
             // 2. Filter by search query if exists
             if (searchQuery) {
-                filteredPosts = filteredPosts.filter(p => 
-                    p.title.toLowerCase().includes(searchQuery) ||
-                    p.desc.toLowerCase().includes(searchQuery) ||
-                    p.prompt.toLowerCase().includes(searchQuery) ||
-                    p.category.toLowerCase().includes(searchQuery)
-                );
-            }
+    filteredPosts = filteredPosts.filter(p => {
+        const t = (p.title || '').toLowerCase();
+        const d = (p.desc || p.description || '').toLowerCase();
+        const pr = (p.prompt || '').toLowerCase();
+        const c = (p.category || '').toLowerCase();
+        return t.includes(searchQuery) || d.includes(searchQuery) || pr.includes(searchQuery) || c.includes(searchQuery);
+    });
+}
 
             // 3. Handle Empty States
             if (filteredPosts.length === 0) {
@@ -701,31 +707,31 @@
         }
 
         // Filter Category
-        function filterPosts(category) {
-            currentCategory = category;
-            const titleEl = document.getElementById('category-title');
-            const descEl = document.getElementById('category-desc');
-            
-            const desktopSearch = document.getElementById('desktop-search-container');
-            if (desktopSearch && !desktopSearch.classList.contains('invisible')) {
-                desktopSearch.classList.add('invisible','opacity-0','w-0');
-                desktopSearch.classList.remove('opacity-100','w-64');
-                document.getElementById('search-toggle-btn').classList.remove('opacity-0','pointer-events-none');
-                document.getElementById('desktop-search-input').value = '';
-                const mobileInput = document.getElementById('mobile-search-input');
-                if (mobileInput) mobileInput.value = '';
-                searchQuery = '';
-            }
-            
-            if (category === 'Saved') {
-                titleEl.textContent = 'Your Saved Artworks';
-                descEl.textContent = 'Your personal collection - stored locally. Clearing cookies will remove them.';
-            } else {
-                titleEl.textContent = category === 'All' ? 'Latest Artworks' : category + ' Artworks';
-                descEl.textContent = 'Discover how these images were created, and copy the prompts with a single click to start your own creative journey.';
-            }
-            renderPosts(category);
-        }
+       function filterPosts(category) {
+    currentCategory = category;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const titleEl = document.getElementById('category-title');
+    const descEl = document.getElementById('category-desc');
+    const desktopSearch = document.getElementById('desktop-search-container');
+    if (desktopSearch && !desktopSearch.classList.contains('invisible')) {
+        desktopSearch.classList.add('invisible','opacity-0','w-0');
+        desktopSearch.classList.remove('opacity-100','w-64');
+        document.getElementById('search-toggle-btn').classList.remove('opacity-0','pointer-events-none');
+        document.getElementById('desktop-search-input').value = '';
+        const mobileInput = document.getElementById('mobile-search-input');
+        if (mobileInput) mobileInput.value = '';
+        searchQuery = '';
+    }
+    if (category === 'Saved') {
+        titleEl.textContent = 'Your Saved Artworks';
+        descEl.textContent = 'Your personal collection - stored locally. Clearing cookies will remove them.';
+    } else {
+        titleEl.textContent = category === 'All' ? 'Latest Artworks' : category + ' Artworks';
+        descEl.textContent = 'Discover how these images were created, and copy the prompts with a single click to start your own creative journey.';
+    }
+    renderPosts(category);
+    closeMobileMenu();
+} 
 
         function navigateHome() {
             closeModal();
