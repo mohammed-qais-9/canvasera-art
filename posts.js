@@ -1,4 +1,16 @@
 const posts = [
+      {
+    "title": "Rainy Window Letter Writer",
+    "slug": "rainy-window-letter-writer",
+    "desc": "Girl in a wool shawl writes a letter by candlelight as rain taps the window",
+    "description": "Girl in a wool shawl writes a letter by candlelight as rain taps the window",
+    "prompt": "cozy storybook girl with soft curly hair, thick wool shawl, sitting at a small wooden desk writing a letter by candlelight, a steaming teacup and pressed flowers beside her, rain streaking down the tall window overlooking a foggy little town, a curious cat watching from the windowsill, Studio Ghibli meets children's book illustration, soft pastel palette, gentle ink linework, quiet rainy-day mood --ar 2:3",
+    "image": "images/rainy-window-letter-writer.jpg",
+    "tags": [],
+    "category": "Art",
+    "author": "Canvas Era",
+    "date": "2026-08-15"
+      },
     {
     "title": "Hammurabi's Law Ziggurat",
     "slug": "hammurabis-law-ziggurat",
