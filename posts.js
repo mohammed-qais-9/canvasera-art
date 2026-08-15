@@ -1,4 +1,16 @@
 const posts = [
+              {
+    "title": "Ashurbanipal's Library ",
+    "slug": "ashurbanipals-library",
+    "desc": "Woman at Nineveh's ruins, giant comic Ashurbanipal reads her a ",
+    "description": "Woman at Nineveh's ruins, giant comic Ashurbanipal reads her a ",
+    "prompt": "photorealistic smiling woman in soft earth-tone robes sitting on an oriental rug amid the excavated ruins of Nineveh's royal library, broken clay tablets scattered artfully nearby, giant friendly 2D black-and-white comic line-art of King Ashurbanipal sitting behind her unrolling a huge scroll and reading aloud with a warm expression, comic linework contrasting the photoreal stone rubble, cinematic golden hour lighting, dust motes drifting, highly detailed --ar 9:16",
+    "image": "images/ashurbanipals-library.jpg",
+    "tags": [],
+    "category": "Art",
+    "author": "Canvas Era",
+    "date": "2026-08-15"
+              },
             {
     "title": "Sargon's Palace Welcome",
     "slug": "sargons-palace-welcome",
