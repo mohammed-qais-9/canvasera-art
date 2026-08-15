@@ -260,6 +260,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-05-13"
   },
+          {
+    "title": "The Greenhouse Botanist",
+    "slug": "the-greenhouse-botanist",
+    "desc": "A gentle boy tending to his lush indoor greenhouse, surrounded by hanging plants, sunlight, and a small watering can.",
+    "description": "A gentle boy tending to his lush indoor greenhouse, surrounded by hanging plants, sunlight, and a small watering can.",
+    "prompt": "Soft digital illustration of a young boy in a sweater tending to an indoor greenhouse, lush hanging plants and vines everywhere, sunbeams streaming through glass windows, cozy cottage-core aesthetic, warm golden light, gentle expression, detailed botanical elements, clean soft lines, warm earth tones, storybook illustration style, high quality --ar 2:3",
+    "image": "images/the-greenhouse-botanist.jpg",
+    "tags": [],
+    "category": "Art",
+    "author": "Canvas Era",
+    "date": "2026-08-15"
+  },
         {
     "title": "The Clockmaker's Apprentice",
     "slug": "the-clockmakers-apprentice",
