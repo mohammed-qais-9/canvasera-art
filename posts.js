@@ -94,6 +94,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-05-17"
   },
+        {
+    "title": "Cottage Kitchen Bread",
+    "slug": "cottage-kitchen-bread",
+    "desc": "Apron-clad girl kneads dough in a flour-dusted cottage kitchen at sunrise",
+    "description": "Apron-clad girl kneads dough in a flour-dusted cottage kitchen at sunrise",
+    "prompt": "cozy storybook girl with pigtail buns, flour-dusted apron, sleeves rolled up, kneading bread dough on a wooden table in a warm cottage kitchen, copper pots hanging above, a small mouse peeking from a bread basket, morning sunlight streaming through a herb-filled windowsill, Studio Ghibli meets children's book illustration, soft pastel palette, delicate ink linework, warm nostalgic mood --ar 2:3",
+    "image": "images/cottage-kitchen-bread.jpg",
+    "tags": [],
+    "category": "Art",
+    "author": "Canvas Era",
+    "date": "2026-08-15"
+        },
     {
     "title": "Midnight Neon Dreamer",
     "slug": "midnight-neon-dreamer",
