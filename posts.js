@@ -7,7 +7,7 @@ const posts = [
     "prompt": "​Shoujo anime style, an elegant girl with flowing silver hair standing above a calm moonlit ocean, weaving glowing stardust threads into the sky, celestial jewelry, sparkles and magical light effects, dreamy and ethereal atmosphere, soft dreamy colors, intricate dress design, high quality, digital art, masterpiece --ar 2:3",
     "image": "images/starlight-weaver.jpg",
     "tags": [],
-    "category": "Art",
+    "category": "Anime",
     "author": "Canvas Era",
     "date": "2026-08-15"
         },
