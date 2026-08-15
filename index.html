@@ -298,6 +298,30 @@
                         <p id="modal-prompt" class="text-sm font-mono text-gray-800 break-words"></p>
                     </div>
 
+                    <!-- 3.5. Quick Remix Section (NEW) -->
+                    <div class="mt-5">
+                        <h4 class="text-sm font-bold text-gray-900 mb-3 flex items-center gap-1.5 font-serif">
+                            ✨ Try a Quick Remix
+                        </h4>
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <button onclick="applyRemix('night')" class="px-3.5 py-1.5 bg-[#f0ece5] hover:bg-[#e4dfd6] text-gray-800 text-xs font-semibold rounded-full transition-colors border border-gray-200">🌙 Night Version</button>
+                            <button onclick="applyRemix('winter')" class="px-3.5 py-1.5 bg-[#f0ece5] hover:bg-[#e4dfd6] text-gray-800 text-xs font-semibold rounded-full transition-colors border border-gray-200">❄️ Winter Version</button>
+                            <button onclick="applyRemix('cat')" class="px-3.5 py-1.5 bg-[#f0ece5] hover:bg-[#e4dfd6] text-gray-800 text-xs font-semibold rounded-full transition-colors border border-gray-200">🐱 Add a Cat</button>
+                        </div>
+                        
+                        <!-- Remixed Prompt Display -->
+                        <div id="remix-container" class="hidden bg-[#faf8f5] border border-[#e4dfd6] rounded-xl p-4 relative transition-all duration-300">
+                            <div class="flex justify-between items-start mb-2 gap-4">
+                                <span class="text-xs font-bold text-purple-600 uppercase tracking-widest">Remixed Prompt</span>
+                                <button onclick="copyRemix()" class="text-xs bg-gray-900 hover:bg-gray-800 text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                                    Copy Remix
+                                </button>
+                            </div>
+                            <p id="modal-remix-prompt" class="text-sm font-mono text-gray-800 break-words"></p>
+                        </div>
+                    </div>
+
                     <!-- 4. Affiliate CTA -->
                     <div class="sticky bottom-2 z-20 md:static md:bottom-auto">
                         <button id="create-ai-btn" onclick="openAffiliatePopup()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transform transition-transform active:scale-95 text-sm sm:text-base flex justify-center items-center gap-2">
@@ -410,6 +434,37 @@
         let currentCategory = 'All';
         let currentPost = null;
         let searchQuery = '';
+        let currentRemixedPrompt = ""; // State for Remixed Prompt
+
+        // --- Quick Remix Logic ---
+        function applyRemix(type) {
+            if (!currentPost || !currentPost.prompt) return;
+            
+            let suffix = "";
+            switch (type) {
+                case 'night': 
+                    suffix = ", night time, moonlight through window, warm lamp glow, cozy night atmosphere"; 
+                    break;
+                case 'winter': 
+                    suffix = ", winter snow outside window, snowflakes, warm indoor light, cozy winter"; 
+                    break;
+                case 'cat': 
+                    suffix = ", cute cat sleeping nearby"; 
+                    break;
+            }
+            
+            currentRemixedPrompt = currentPost.prompt + suffix;
+            
+            // Update UI
+            document.getElementById('modal-remix-prompt').textContent = currentRemixedPrompt;
+            document.getElementById('remix-container').classList.remove('hidden');
+        }
+
+        function copyRemix() {
+            if (currentRemixedPrompt) {
+                copyText(currentRemixedPrompt);
+            }
+        }
 
         // --- Search System Logic ---
         function toggleSearchBar() {
@@ -417,13 +472,11 @@
             const btn = document.getElementById('search-toggle-btn');
             
             if (container.classList.contains('invisible')) {
-                // Expand
                 container.classList.remove('invisible', 'opacity-0', 'w-0');
                 container.classList.add('opacity-100', 'w-64');
                 btn.classList.add('opacity-0', 'pointer-events-none');
                 document.getElementById('desktop-search-input').focus();
             } else {
-                // Collapse
                 container.classList.add('invisible', 'opacity-0', 'w-0');
                 container.classList.remove('opacity-100', 'w-64');
                 btn.classList.remove('opacity-0', 'pointer-events-none');
@@ -431,7 +484,6 @@
             }
         }
 
-        // Updated executeSearch function
         function executeSearch(query) {
             searchQuery = query.toLowerCase().trim();
             const mobileClearBtn = document.getElementById('mobile-search-clear');
@@ -453,7 +505,6 @@
             }
         }
 
-        // Updated clearSearch function
         function clearSearch() {
             searchQuery = '';
             const desktopInput = document.getElementById('desktop-search-input');
@@ -477,7 +528,6 @@
             renderPosts(currentCategory);
         }
 
-        // Helper to escape HTML for displaying search query safely
         function escapeHtml(unsafe) {
             return unsafe
                  .replace(/&/g, "&amp;")
@@ -577,7 +627,7 @@
             clone.style.boxShadow = '0 10px 25px rgba(0,0,0,0.2)';
             
             document.body.appendChild(clone);
-            clone.getBoundingClientRect(); // Reflow
+            clone.getBoundingClientRect(); 
 
             clone.style.top = (targetRect.top + targetRect.height / 2 - 20) + 'px';
             clone.style.left = (targetRect.left + targetRect.width / 2 - 20) + 'px';
@@ -622,7 +672,6 @@
             if (filteredPosts.length === 0) {
                 container.classList.add('masonry-empty');        
                 if (allSafePosts.length === 0 && !searchQuery && category !== 'Saved') {
-                    // Empty Global State (posts.js is empty)
                     container.innerHTML = `
                         <div class="flex flex-col items-center justify-center py-20 text-center w-full max-w-lg mx-auto">
                             <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-5">
@@ -633,7 +682,6 @@
                         </div>
                     `;
                 } else if (searchQuery) {
-                    // Empty Search State
                     container.innerHTML = `
                         <div class="flex flex-col items-center justify-center py-20 text-center w-full max-w-lg mx-auto">
                             <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-5">
@@ -645,7 +693,6 @@
                         </div>
                     `;
                 } else if (category === 'Saved') {
-                    // Empty Saved State
                     container.innerHTML = `
                         <div class="flex flex-col items-center justify-center py-20 text-center w-full max-w-lg mx-auto">
                             <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-5">
@@ -660,7 +707,6 @@
                         </div>
                     `;
                 } else {
-                    // Fallback for empty categories
                     container.innerHTML = `
                         <div class="flex flex-col items-center justify-center py-20 text-center w-full max-w-lg mx-auto">
                             <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-5">
@@ -672,12 +718,11 @@
                         </div>
                     `;
                 }
-                return; // Stop rendering cards
+                return;
             } else {
                 container.classList.remove('masonry-empty');
             }
 
-            // 4. Render Cards
             filteredPosts.forEach((post, index) => {
                 const isSaved = isPostSaved(post.slug);
                 const article = document.createElement('article');
@@ -719,7 +764,6 @@
             });
         }
 
-        // Updated filterPosts function
         function filterPosts(category) {
             currentCategory = category;
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -757,7 +801,6 @@
             filterPosts('All');
         }
 
-        // Meta Tags Updater
         function updateMetaTags(post) {
             if (post) {
                 document.title = `${post.title} | Canvas Era`;
@@ -773,7 +816,6 @@
             }
         }
 
-        // Open Modal (Slug-based support)
         function openModal(identifier, pushState = true) {
             const allSafePosts = getAllPosts();
             currentPost = allSafePosts.find(p => p.id === identifier || p.slug === identifier);
@@ -790,6 +832,11 @@
 
             document.getElementById('modal-copy-btn').onclick = () => copyText(currentPost.prompt);
             document.getElementById('modal-share-btn').onclick = () => sharePost(currentPost.title, currentPost.desc);
+
+            // Hide the remix container and reset it whenever modal opens
+            const remixContainer = document.getElementById('remix-container');
+            if (remixContainer) remixContainer.classList.add('hidden');
+            currentRemixedPrompt = "";
 
             const relatedContainer = document.getElementById('related-posts');
             relatedContainer.innerHTML = '';
@@ -817,7 +864,7 @@
             document.getElementById('image-modal').classList.add('hidden');
             document.body.style.overflow = 'auto';
             currentPost = null;
-
+            
             if (pushState) {
                 const newUrl = window.location.pathname;
                 history.pushState(null, '', newUrl);
@@ -853,7 +900,6 @@
             }
         });
 
-        // Initialize App & Cookie Banner Check
         document.addEventListener('DOMContentLoaded', () => {
             renderPosts('All');
             
@@ -875,7 +921,6 @@
             document.getElementById('cookie-banner').classList.add('hidden');
         }
 
-        // Affiliate Popup Logic
         function openAffiliatePopup() {
             document.getElementById('affiliate-popup').classList.remove('hidden');
         }
@@ -898,7 +943,6 @@
             }
         }
 
-        // Action Utilities
         function copyText(text) {
             navigator.clipboard.writeText(text).then(() => {
                 showToast("Prompt copied successfully! 🎨");
@@ -940,7 +984,7 @@
             toastTimeout = setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 4000);
         }
 
-        // --- PWA Install Logic (Fix) ---
+        // --- PWA Install Logic ---
         let deferredPrompt = null;
         window.addEventListener('beforeinstallprompt', (e) => {
           e.preventDefault();
@@ -978,7 +1022,7 @@
           showToast("Canvas Era installed! 🎉");
         });
 
-        // --- Floating Support Button Logic (BUG 2 FIX) ---
+        // --- Floating Support Button Logic ---
         window.addEventListener('scroll', () => {
           const floatBtn = document.getElementById('floating-support');
           const supportSection = document.querySelector('section.bg-\\[\\#faf8f5\\]');
@@ -1010,3 +1054,4 @@
     
 </body>
 </html>
+
