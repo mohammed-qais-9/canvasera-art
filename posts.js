@@ -321,6 +321,18 @@ const posts = [
     "date": "2026-08-15"
           },
     {
+    "title": "Sakura Blade Spirit",
+    "slug": "sakura-blade-spirit",
+    "desc": "A samurai girl in traditional attire standing amidst a storm of falling cherry blossoms",
+    "description": "A samurai girl in traditional attire standing amidst a storm of falling cherry blossoms",
+    "prompt": "​Anime illustration, beautiful samurai girl wearing a traditional kimono with intricate floral patterns, standing in the middle of a massive cherry blossom storm, petals flying everywhere, serene expression, sunset lighting, ukiyo-e inspired colors mixed with modern anime style, sharp details, atmospheric, epic composition, ultra-fine art --ar 2:3",
+    "image": "images/sakura-blade-spirit.jpg",
+    "tags": [],
+    "category": "Anime",
+    "author": "Canvas Era",
+    "date": "2026-08-15"
+    },
+    {
     "title": "Lamassu Guardian Thumbs Up",
     "slug": "lamassu-guardian-thumbs-up",
     "desc": "Man beside a stone lamassu, giant comic Ashurbanipal gives a thumbs up",
