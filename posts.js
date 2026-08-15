@@ -1,5 +1,5 @@
 const posts = [
-              {
+                {
     "title": "Ashurbanipal's Library ",
     "slug": "ashurbanipals-library",
     "desc": "Woman at Nineveh's ruins, giant comic Ashurbanipal reads her a ",
@@ -10,7 +10,7 @@ const posts = [
     "category": "Culture",
     "author": "Canvas Era",
     "date": "2026-08-15"
-              },
+                },
             {
     "title": "Sargon's Palace Welcome",
     "slug": "sargons-palace-welcome",
