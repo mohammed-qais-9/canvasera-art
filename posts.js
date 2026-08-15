@@ -1,4 +1,16 @@
 const posts = [
+        {
+    "title": "Starlight Weaver",
+    "slug": "starlight-weaver",
+    "desc": "A goddess-like girl weaving starlight into the fabric of the night sky above a calm ocean.\n",
+    "description": "A goddess-like girl weaving starlight into the fabric of the night sky above a calm ocean.\n",
+    "prompt": "​Shoujo anime style, an elegant girl with flowing silver hair standing above a calm moonlit ocean, weaving glowing stardust threads into the sky, celestial jewelry, sparkles and magical light effects, dreamy and ethereal atmosphere, soft dreamy colors, intricate dress design, high quality, digital art, masterpiece --ar 2:3",
+    "image": "images/starlight-weaver.jpg",
+    "tags": [],
+    "category": "Art",
+    "author": "Canvas Era",
+    "date": "2026-08-15"
+        },
       {
     "title": "The Magic Bakery",
     "slug": "the-magic-bakery",
