@@ -76,6 +76,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-05-16"
   },
+        {
+    "title": "Fire Escape Cat Cyberpunk",
+    "slug": "fire-escape-cat-cyberpunk",
+    "desc": "Techwear girl and her cat watch neon rain from a fire ",
+    "description": "Techwear girl and her cat watch neon rain from a fire ",
+    "prompt": "cyberpunk girl with silver-streaked hair, oversized techwear jacket, sitting on a rusty fire escape with a small robotic cat curled beside her, rainy neon Tokyo alley glowing below with pink and blue signage, warm golden light spilling from her apartment window behind her, steam rising from a nearby vent, cozy plus futuristic mood, soft bokeh lights, cinematic detail --ar 9:16",
+    "image": "images/fire-escape-cat-cyberpunk.jpg",
+    "tags": [],
+    "category": "Anime",
+    "author": "Canvas Era",
+    "date": "2026-08-15"
+        },
   {
     "title": "Transform Your Photos with Ancient History and 2D Comic Style",
     "slug": "babylonian-king-thumbsup-mixed-media",
