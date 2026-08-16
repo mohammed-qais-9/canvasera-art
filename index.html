@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -194,7 +195,7 @@
 
         <!-- Gallery Grid -->
         <div class="masonry-grid" id="posts-container">
-            <!-- Cards populated dynamically -->
+            <!-- Cards and Ads populated dynamically -->
         </div>
 
     </main>
@@ -203,10 +204,9 @@
     <section class="bg-[#faf8f5] py-16 px-4 mt-8 border-t border-gray-200">
       <div class="max-w-2xl mx-auto text-center">
         <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-3">Support the Studio</h2>
-        <p class="text-gray-600 text-base md:text-lg mb-6 max-w-xl mx-auto leading-relaxed">Canvas Era is a solo project crafted with love for culture & art. If you enjoy the prompts, consider supporting to keep it ad-free & growing.</p>
+        <p class="text-gray-600 text-base md:text-lg mb-6 max-w-xl mx-auto leading-relaxed">Canvas Era is a solo project crafted with love for culture & art. Ads help keep this library free for everyone. If you love the prompts, you can also support directly to help it grow faster.</p>
         <div class="flex gap-3 justify-center flex-wrap">
           <a href="https://ko-fi.com/canvasera" target="_blank" class="inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white px-7 py-3.5 rounded-full font-bold text-sm">☕ Buy me a coffee on Ko-fi</a>
-          <a href="https://www.buymeacoffee.com/canvasera" target="_blank" class="inline-flex items-center gap-2 bg-white border border-gray-300 text-gray-900 px-7 py-3.5 rounded-full font-bold text-sm">Support</a>
         </div>
       </div>
     </section>
@@ -298,7 +298,7 @@
                         <p id="modal-prompt" class="text-sm font-mono text-gray-800 break-words"></p>
                     </div>
 
-                    <!-- 3.5. Quick Remix Section (NEW) -->
+                    <!-- 3.5. Quick Remix Section -->
                     <div class="mt-5">
                         <h4 class="text-sm font-bold text-gray-900 mb-3 flex items-center gap-1.5 font-serif">
                             ✨ Try a Quick Remix
@@ -322,56 +322,20 @@
                         </div>
                     </div>
 
-                    <!-- 4. Affiliate CTA -->
-                    <div class="sticky bottom-2 z-20 md:static md:bottom-auto">
-                        <button id="create-ai-btn" onclick="openAffiliatePopup()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transform transition-transform active:scale-95 text-sm sm:text-base flex justify-center items-center gap-2">
-                            ✨ Create this with AI &rarr;
-                        </button>
+                    <!-- NATIVE AD: Hidden Modal Placement 1 (After Prompt Box) -->
+                    <div class="ad-native hidden bg-[#f9f9f9] rounded-xl border border-gray-200 min-h-[250px] mt-6 w-full" data-ad>
+                        <!-- ADSTERRA/MONETAG NATIVE CODE HERE -->
                     </div>
 
-                    <!-- 5. More Like This Section -->
+                    <!-- 4. More Like This Section -->
                     <div class="pt-6 border-t border-gray-100">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 font-serif">More like this</h3>
                         <div class="masonry-grid" id="related-posts" style="column-count: 2;">
-                            <!-- Related images populated dynamically -->
+                            <!-- Related images and ads populated dynamically -->
                         </div>
                     </div>
 
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- AFFILIATE POPUP MODAL -->
-    <div id="affiliate-popup" class="fixed inset-0 bg-black/60 z-[60] hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity">
-        <div class="fixed inset-0 cursor-pointer" onclick="closeAffiliatePopup()"></div>
-        <div class="bg-white rounded-2xl w-full max-w-md p-6 relative z-10 shadow-2xl">
-            <button onclick="closeAffiliatePopup()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <h3 class="text-xl font-bold font-serif mb-5 text-gray-900">Choose AI Generator</h3>
-            <div class="space-y-3">
-                <button onclick="handleAffiliateClick('imagineart')" class="w-full flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-purple-500 hover:bg-purple-50 transition-colors group">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">🎨</span>
-                        <span class="font-bold text-gray-800">ImagineArt</span>
-                    </div>
-                    <span class="bg-purple-100 text-purple-700 text-xs font-bold px-2.5 py-1 rounded-md">Best Quality</span>
-                </button>
-                <button onclick="handleAffiliateClick('openart')" class="w-full flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-purple-500 hover:bg-purple-50 transition-colors group">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">✨</span>
-                        <span class="font-bold text-gray-800">OpenArt</span>
-                    </div>
-                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-md">Most Similar</span>
-                </button>
-                <button onclick="handleAffiliateClick('getimg')" class="w-full flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-purple-500 hover:bg-purple-50 transition-colors group">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">🚀</span>
-                        <span class="font-bold text-gray-800">Getimg.ai</span>
-                    </div>
-                    <span class="bg-green-100 text-green-700 text-xs font-bold px-2.5 py-1 rounded-md">Free to Try</span>
-                </button>
             </div>
         </div>
     </div>
@@ -424,17 +388,10 @@
             }));
         };
 
-        // Affiliate Links Placeholders
-        const AFFILIATE_LINKS = {
-            imagineart: 'https://www.imagine.art/?ref=YOUR_IMAGINEART_ID',
-            openart: 'https://openart.ai/?via=YOUR_OPENART_ID',
-            getimg: 'https://getimg.ai/?via=YOUR_GETIMG_ID'
-        };
-
         let currentCategory = 'All';
         let currentPost = null;
         let searchQuery = '';
-        let currentRemixedPrompt = ""; // State for Remixed Prompt
+        let currentRemixedPrompt = "";
 
         // --- Quick Remix Logic ---
         function applyRemix(type) {
@@ -455,7 +412,6 @@
             
             currentRemixedPrompt = currentPost.prompt + suffix;
             
-            // Update UI
             document.getElementById('modal-remix-prompt').textContent = currentRemixedPrompt;
             document.getElementById('remix-container').classList.remove('hidden');
         }
@@ -537,7 +493,7 @@
                  .replace(/'/g, "&#039;");
         }
 
-        // --- Save System Logic (v2 using slug) ---
+        // --- Save System Logic ---
         function getSavedPosts() {
             try { return JSON.parse(localStorage.getItem('canvasEra_saved_v2')) || []; }
             catch (e) { return []; }
@@ -643,7 +599,7 @@
             }, 700);
         }
 
-        // --- Render Posts ---
+        // --- Render Posts and Inject Native Ads ---
         function renderPosts(category = 'All') {
             const container = document.getElementById('posts-container');
             container.innerHTML = '';
@@ -669,6 +625,7 @@
                 });
             }
 
+            // Handle Empty States (including saved warning condition)
             if (filteredPosts.length === 0) {
                 container.classList.add('masonry-empty');        
                 if (allSafePosts.length === 0 && !searchQuery && category !== 'Saved') {
@@ -693,6 +650,7 @@
                         </div>
                     `;
                 } else if (category === 'Saved') {
+                    // Empty Saved State - Will naturally only show when saved length is 0
                     container.innerHTML = `
                         <div class="flex flex-col items-center justify-center py-20 text-center w-full max-w-lg mx-auto">
                             <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-5">
@@ -723,6 +681,7 @@
                 container.classList.remove('masonry-empty');
             }
 
+            // Render valid posts + Inject Hidden Ad blocks
             filteredPosts.forEach((post, index) => {
                 const isSaved = isPostSaved(post.slug);
                 const article = document.createElement('article');
@@ -747,311 +706,7 @@
                         <p class="text-gray-600 text-sm mb-4 line-clamp-2">${post.desc}</p>
                         
                         <div class="mt-auto pt-4 border-t border-gray-100 flex gap-2 flex-wrap">
-                            <button onclick="event.stopPropagation(); copyText('${post.prompt.replace(/'/g, "\\'")}')" class="flex-grow flex items-center justify-center gap-2 bg-[#f0ece5] hover:bg-gray-800 hover:text-white text-gray-800 py-2.5 px-3 rounded-xl font-medium transition-colors text-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
-                                Copy Prompt
-                            </button>
-                            ${category === 'Saved' ? `
-                            <button onclick="event.stopPropagation(); copyImageLink('${post.image}')" class="flex-grow flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 py-2.5 px-3 rounded-xl font-medium transition-colors text-sm" title="Copy direct image link">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
-                                Image Link
-                            </button>
-                            ` : ''}
-                        </div>
-                    </div>
-                `;
-                container.appendChild(article);
-            });
-        }
+                            <button onclick="event.stopPropagation(); copyText('${post.prompt.replace(/'/g, "\\'")}')" class="flex-grow flex items-center justify-center gap-2 bg-[#f0ece5] hover
 
-        function filterPosts(category) {
-            currentCategory = category;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            searchQuery = '';
-            const desktopInput = document.getElementById('desktop-search-input');
-            const mobileInput = document.getElementById('mobile-search-input');
-            const mobileClearBtn = document.getElementById('mobile-search-clear');
-            const desktopSearch = document.getElementById('desktop-search-container');
-            const searchBtn = document.getElementById('search-toggle-btn');
-            
-            if (desktopInput) desktopInput.value = '';
-            if (mobileInput) mobileInput.value = '';
-            if (mobileClearBtn) mobileClearBtn.classList.add('hidden');
-            if (desktopSearch && !desktopSearch.classList.contains('invisible')) {
-                desktopSearch.classList.add('invisible','opacity-0','w-0');
-                desktopSearch.classList.remove('opacity-100','w-64');
-                if(searchBtn) searchBtn.classList.remove('opacity-0','pointer-events-none');
-            }
 
-            const titleEl = document.getElementById('category-title');
-            const descEl = document.getElementById('category-desc');
-            if (category === 'Saved') {
-                titleEl.textContent = 'Your Saved Artworks';
-                descEl.textContent = 'Your personal collection - stored locally. Clearing cookies will remove them.';
-            } else {
-                titleEl.textContent = category === 'All' ? 'Latest Artworks' : category + ' Artworks';
-                descEl.textContent = 'Discover how these images were created, and copy the prompts with a single click to start your own creative journey.';
-            }
-            renderPosts(category);
-            closeMobileMenu();
-        } 
-
-        function navigateHome() {
-            closeModal();
-            filterPosts('All');
-        }
-
-        function updateMetaTags(post) {
-            if (post) {
-                document.title = `${post.title} | Canvas Era`;
-                document.querySelector('meta[property="og:title"]').setAttribute('content', post.title);
-                document.querySelector('meta[property="og:description"]').setAttribute('content', post.desc);
-                document.querySelector('meta[property="og:image"]').setAttribute('content', post.image);
-                document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.origin + '/?art=' + post.slug);
-            } else {
-                document.title = 'Canvas Era | AI Art & Prompts';
-                document.querySelector('meta[property="og:title"]').setAttribute('content', 'Canvas Era | AI Art & Prompts');
-                document.querySelector('meta[property="og:description"]').setAttribute('content', 'Discover how AI images were created, and copy the prompts.');
-                document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.origin);
-            }
-        }
-
-        function openModal(identifier, pushState = true) {
-            const allSafePosts = getAllPosts();
-            currentPost = allSafePosts.find(p => p.id === identifier || p.slug === identifier);
-            if (!currentPost) return;
-
-            document.getElementById('modal-image').src = currentPost.image;
-            document.getElementById('modal-category').textContent = currentPost.category;
-            document.getElementById('modal-title').textContent = currentPost.title;
-            document.getElementById('modal-desc').textContent = currentPost.desc;
-            document.getElementById('modal-prompt').textContent = currentPost.prompt;
-            document.getElementById('modal-download-btn').href = currentPost.image;
-            
-            updateModalSaveBtn(isPostSaved(currentPost.slug));
-
-            document.getElementById('modal-copy-btn').onclick = () => copyText(currentPost.prompt);
-            document.getElementById('modal-share-btn').onclick = () => sharePost(currentPost.title, currentPost.desc);
-
-            // Hide the remix container and reset it whenever modal opens
-            const remixContainer = document.getElementById('remix-container');
-            if (remixContainer) remixContainer.classList.add('hidden');
-            currentRemixedPrompt = "";
-
-            const relatedContainer = document.getElementById('related-posts');
-            relatedContainer.innerHTML = '';
-            const related = allSafePosts.filter(p => p.category === currentPost.category && p.slug !== currentPost.slug);
-
-            related.slice(0, 6).forEach((rel, idx) => {
-                const item = document.createElement('div');
-                item.className = 'masonry-item rounded-xl overflow-hidden cursor-pointer group bg-gray-100';
-                item.onclick = () => openModal(rel.slug);
-                item.innerHTML = `<img src="${rel.image}" alt="${rel.title}" loading="lazy" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300">`;
-                relatedContainer.appendChild(item);
-            });
-
-            document.getElementById('image-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            
-            if (pushState) {
-                const fullSlug = currentPost.slug;
-                history.pushState({ postSlug: fullSlug }, '', '?art=' + fullSlug);
-            }
-            updateMetaTags(currentPost);
-        }
-
-        function closeModal(pushState = true) {
-            document.getElementById('image-modal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            currentPost = null;
-            
-            if (pushState) {
-                const newUrl = window.location.pathname;
-                history.pushState(null, '', newUrl);
-            }
-            updateMetaTags(null);
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                if (!document.getElementById('affiliate-popup').classList.contains('hidden')) {
-                    closeAffiliatePopup();
-                } else if (!document.getElementById('image-modal').classList.contains('hidden')) {
-                    closeModal();
-                } else {
-                    const desktopSearch = document.getElementById('desktop-search-container');
-                    if (desktopSearch && !desktopSearch.classList.contains('invisible')) {
-                        toggleSearchBar();
-                    }
-                }
-            }
-        });
-
-        window.addEventListener('popstate', (event) => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const artSlug = urlParams.get('art'); 
-            
-            if (artSlug) {
-                const allSafePosts = getAllPosts();
-                const post = allSafePosts.find(p => p.slug === artSlug);
-                if (post) openModal(post.slug, false);
-            } else {
-                closeModal(false); 
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderPosts('All');
-            
-            const urlParams = new URLSearchParams(window.location.search);
-            const artSlug = urlParams.get('art');
-            if (artSlug) {
-                const allSafePosts = getAllPosts();
-                const post = allSafePosts.find(p => p.slug === artSlug);
-                if (post) openModal(post.slug, false);
-            }
-
-            if (!localStorage.getItem('cookieConsent')) {
-                document.getElementById('cookie-banner').classList.remove('hidden');
-            }
-        });
-
-        function acceptCookies() {
-            localStorage.setItem('cookieConsent', 'true');
-            document.getElementById('cookie-banner').classList.add('hidden');
-        }
-
-        function openAffiliatePopup() {
-            document.getElementById('affiliate-popup').classList.remove('hidden');
-        }
-        function closeAffiliatePopup() {
-            document.getElementById('affiliate-popup').classList.add('hidden');
-        }
-        function handleAffiliateClick(platform) {
-            if (!currentPost) return;
-            try {
-                const url = new URL(AFFILIATE_LINKS[platform]);
-                url.searchParams.append('prompt', currentPost.prompt);
-                
-                if (typeof gtag === 'function') {
-                    gtag('event', 'affiliate_click', { 'platform': platform });
-                }
-                
-                window.open(url.toString(), '_blank');
-            } catch (e) {
-                console.error("Invalid Affiliate URL", e);
-            }
-        }
-
-        function copyText(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                showToast("Prompt copied successfully! 🎨");
-            }).catch(err => console.error("Failed to copy", err));
-        }
-
-        function copyImageLink(url) {
-            navigator.clipboard.writeText(url).then(() => {
-                showToast("Image link copied to clipboard! 🔗");
-            }).catch(err => console.error("Failed to copy", err));
-        }
-
-        function sharePost(title, desc) {
-            const fullSlug = currentPost.slug;
-            const shareUrl = window.location.origin + window.location.pathname + '?art=' + fullSlug;
-            
-            if (navigator.share) {
-                navigator.share({
-                    title: title,
-                    text: desc + "\n\nDiscover more at Canvas Era:",
-                    url: shareUrl
-                }).catch((err) => console.log('Share error:', err));
-            } else {
-                navigator.clipboard.writeText(shareUrl);
-                showToast("Link copied to clipboard! 🔗");
-            }
-        }
-
-        let toastTimeout;
-        function showToast(message, isHTML = false) {
-            const toast = document.getElementById("toast");
-            if (isHTML) {
-                toast.innerHTML = message;
-            } else {
-                toast.textContent = message;
-            }
-            toast.className = "show";
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 4000);
-        }
-
-        // --- PWA Install Logic ---
-        let deferredPrompt = null;
-        window.addEventListener('beforeinstallprompt', (e) => {
-          e.preventDefault();
-          deferredPrompt = e;
-          const banner = document.getElementById('pwa-install-banner');
-          if (!localStorage.getItem('pwa-dismissed')) {
-            setTimeout(() => {
-              banner.classList.remove('hidden');
-              setTimeout(() => banner.classList.add('show'), 100);
-            }, 8000);
-          }
-        });
-        function installPWA() {
-          if (deferredPrompt) {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then(() => {
-              deferredPrompt = null;
-              hidePWABanner();
-            });
-          }
-        }
-        function dismissPWA() {
-          localStorage.setItem('pwa-dismissed', 'true');
-          hidePWABanner();
-        }
-        function hidePWABanner() {
-          const b = document.getElementById('pwa-install-banner');
-          if (b) {
-            b.classList.remove('show');
-            setTimeout(() => b.classList.add('hidden'), 400);
-          }
-        }
-        window.addEventListener('appinstalled', () => {
-          hidePWABanner();
-          showToast("Canvas Era installed! 🎉");
-        });
-
-        // --- Floating Support Button Logic ---
-        window.addEventListener('scroll', () => {
-          const floatBtn = document.getElementById('floating-support');
-          const supportSection = document.querySelector('section.bg-\\[\\#faf8f5\\]');
-          if (!floatBtn || !supportSection) return;
-          const supportTop = supportSection.getBoundingClientRect().top;
-          if (window.scrollY > 600 && supportTop > 200) {
-            floatBtn.classList.remove('hidden');
-          } else {
-            floatBtn.classList.add('hidden');
-          }
-        });
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => menu.classList.toggle('hidden'));
-        function closeMobileMenu() { menu.classList.add('hidden'); }
-
-    </script>
-    
-<footer style="text-align:center; padding:40px 20px; border-top:1px solid #222; margin-top:60px; color:#666; font-size:14px;">
-  <p>© 2026 Canvas Era • 
-    <a href="/about.html" style="color:#aaa; text-decoration:none;">About</a> • 
-    <a href="/contact.html" style="color:#aaa; text-decoration:none;">Contact</a> • 
-    <a href="/privacy.html" style="color:#aaa; text-decoration:none;">Privacy Policy</a>
-  </p>
-  <p style="margin-top:8px;">contact@canvasera.art</p>
-</footer>
-    
-</body>
-</html>
-
+```
