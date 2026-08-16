@@ -4,9 +4,9 @@ const posts = [
     "slug": "the-attic-artist",
     "desc": "A girl sitting on the floor of a sunlit attic, painting on a small canvas, surrounded by messy paint tubes and sketches.",
     "description": "A girl sitting on the floor of a sunlit attic, painting on a small canvas, surrounded by messy paint tubes and sketches.",
-    "prompt": "Whimsical digital illustration of a girl painting on a canvas in a sunlit cozy attic, messy art supplies, scattered sketches, soft dust motes dancing in the light, warm inviting atmosphere, nostalgic aesthetic, soft painterly brushstrokes, detailed background, warm beige and pastel colors, storybook art style, highly detailed --ar 2:3\"",
+    "prompt": "Whimsical digital illustration of a girl painting on a canvas in a sunlit cozy attic, messy art supplies, scattered sketches, soft dust motes dancing in the light, warm inviting atmosphere, nostalgic aesthetic, soft painterly brushstrokes, detailed background, warm beige and pastel colors, storybook art style, highly detailed --ar 2:3",
     "image": "images/the-attic-artist.jpg",
-    "tags": [],
+    "tags": ["cozy", "art studio", "ghibli"],
     "category": "Art",
     "author": "Canvas Era",
     "date": "2026-08-15"
@@ -28,9 +28,9 @@ const posts = [
     "slug": "morning-tea-in-the-woods",
     "desc": "A girl sitting on a porch chair overlooking a misty forest, holding a warm cup of tea, with a peaceful expression.",
     "description": "A girl sitting on a porch chair overlooking a misty forest, holding a warm cup of tea, with a peaceful expression.",
-    "prompt": "A beautiful digital illustration of a girl sitting in a wooden porch chair holding a steaming cup of tea, looking out at a serene misty forest, wearing a cozy oversized cardigan, soft morning lighting, intricate foliage, serene and peaceful expression, warm natural tones, soft lines, storybook illustration, highly detailed, whimsical and calm aesthetic --ar 2:3\"",
+    "prompt": "A beautiful digital illustration of a girl sitting in a wooden porch chair holding a steaming cup of tea, looking out at a serene misty forest, wearing a cozy oversized cardigan, soft morning lighting, intricate foliage, serene and peaceful expression, warm natural tones, soft lines, storybook illustration, highly detailed, whimsical and calm aesthetic --ar 2:3",
     "image": "images/morning-tea-in-the-woods.jpg",
-    "tags": [],
+    "tags": ["cozy", "forest", "morning"],
     "category": "Art",
     "author": "Canvas Era",
     "date": "2026-08-15"
