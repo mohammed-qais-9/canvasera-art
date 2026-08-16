@@ -187,44 +187,43 @@
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-[50vh]">
         
-        <div class="mb-10 text-center md:text-left">
+        <div class="mb-8 text-center md:text-left">
             <h1 id="category-title" class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-3">Latest Artworks</h1>
             <p id="category-desc" class="text-gray-600 max-w-2xl">Discover how these images were created, and copy the prompts with a single click to start your own creative journey.</p>
         </div>
 
+        <!-- Dynamic Warning Banner Placeholder (For Saved items) -->
+        <div id="dynamic-banner-container" class="mb-8"></div>
+
         <!-- Gallery Grid -->
         <div class="masonry-grid" id="posts-container">
-            <!-- Cards and Ads populated dynamically -->
+            <!-- Cards populated dynamically -->
         </div>
 
     </main>
 
-    <!-- Support the Studio Section -->
-    <section class="bg-[#faf8f5] py-16 px-4 mt-8 border-t border-gray-200">
-      <div class="max-w-2xl mx-auto text-center">
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-3">Support the Studio</h2>
-        <p class="text-gray-600 text-base md:text-lg mb-6 max-w-xl mx-auto leading-relaxed">Canvas Era is a solo project crafted with love for culture & art. Ads help keep this library free for everyone. If you love the prompts, you can also support directly to help it grow faster.</p>
-        <div class="flex gap-3 justify-center flex-wrap">
-          <a href="https://ko-fi.com/canvasera" target="_blank" class="inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white px-7 py-3.5 rounded-full font-bold text-sm">☕ Buy me a coffee on Ko-fi</a>
-        </div>
-      </div>
-    </section>
+    <!-- Support Section - Clean Version -->
+    <div style="text-align:center; max-width:600px; margin:60px auto; padding: 0 20px;">
+      <h2 style="font-size:26px; margin-bottom:16px; font-family: 'Playfair Display', serif; font-weight: 700; color: #111;">💛 Support the Studio</h2>
+      <p style="color:#666; line-height:1.7; font-size: 16px;">
+        Canvas Era is a solo project crafted with love in Erbil for culture & art.<br>
+        It's 100% free and ad-free — no popups, no spam, just art & prompts.<br>
+        If you love what I do, you can support directly to help it grow faster.
+      </p>
+      <a href="https://ko-fi.com/canvasera" target="_blank" style="display:inline-block; margin-top:24px; background:#111; color:#fff; padding:14px 28px; border-radius:999px; text-decoration:none; font-weight:600; font-size: 15px; transition: background 0.2s ease;" onmouseover="this.style.background='#000'" onmouseout="this.style.background='#111'">
+        ☕ Buy me a coffee on Ko-fi
+      </a>
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-            <a href="/" onclick="event.preventDefault(); navigateHome();" class="font-serif text-2xl font-bold text-gray-900 mb-6">Canvas Era</a>
-            <p class="text-gray-500 text-sm mb-8 text-center max-w-md">Your premier destination for learning AI image creation and discovering the best ready-to-use prompts.</p>
-            <div class="flex flex-wrap justify-center gap-6 mb-8">
-                <!-- Pinterest -->
-                <a href="#" class="text-gray-400 hover:text-[#E60023] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.17 0 7.41 2.967 7.41 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.592 0 12.017 0z"/></svg></a>
-                <!-- Dribbble -->
-                <a href="#" class="text-gray-400 hover:text-[#EA4C89] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.373 12-12S18.627 0 12 0zm.14 22.038c-1.396 0-2.731-.305-3.953-.842 1.353-2.008 2.528-4.27 3.328-6.685.24.06.486.115.736.16 2.053.376 3.65.234 4.887-.432a9.98 9.98 0 0 1-5 7.799zm-6.61-3.045C2.868 16.592 2.015 13.911 2.015 12c0-1.854.512-3.593 1.393-5.077 2.664.88 5.674 1.156 8.358.91-1.077 2.115-2.502 4.14-4.223 5.92-.375.388-.775.765-1.189 1.135-1.464 1.36-2.528 3.036-2.824 4.095zM12.983 2.023c2.613 0 4.993 1.002 6.776 2.647-1.465 1.543-3.692 2.454-6.425 2.636-1.57-.45-3.055-.98-4.436-1.58C10.024 3.738 11.45 2.023 12.983 2.023zm8.384 10.375c-1.44-.122-3.14-.377-5.035-1.116.892-2.11 1.488-4.323 1.76-6.52A9.97 9.97 0 0 1 22.016 12c0 1.258-.237 2.463-.649 3.598-1.543-.593-3.504-.848-5.367-.428a17.261 17.261 0 0 0-3.017 1.228z"/></svg></a>
-                <!-- Tumblr -->
-                <a href="#" class="text-gray-400 hover:text-[#35465C] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.271 2.215 2.271 1.395 0 2.586-.612 3.032-1.153l1.202 3.203c-.53 1.063-2.105 2.462-5.383 2.462z"/></svg></a>
-            </div>
-            <div class="text-gray-400 text-sm">&copy; 2026 Canvas Era. All rights reserved.</div>
-        </div>
+    <footer style="text-align:center; padding:40px 20px; border-top:1px solid #e5e5e5; margin-top:60px; color:#666; font-size:14px; background-color: #fff;">
+      <p style="font-family: 'Playfair Display', serif; font-size: 20px; font-weight: bold; color: #111; margin-bottom: 12px;">Canvas Era</p>
+      <p style="margin-bottom: 20px;">© 2026 Canvas Era • 
+        <a href="/about.html" style="color:#888; text-decoration:none; transition: color 0.2s;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#888'">About</a> • 
+        <a href="/contact.html" style="color:#888; text-decoration:none; transition: color 0.2s;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#888'">Contact</a> • 
+        <a href="/privacy.html" style="color:#888; text-decoration:none; transition: color 0.2s;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#888'">Privacy Policy</a>
+      </p>
+      <p style="margin-top:8px;">contact@canvasera.art</p>
     </footer>
 
     <!-- POPUP MODAL VIEW -->
@@ -321,16 +320,11 @@
                         </div>
                     </div>
 
-                    <!-- NATIVE AD: Hidden Modal Placement 1 (After Prompt Box) -->
-                    <div class="ad-native hidden bg-[#f9f9f9] rounded-xl border border-gray-200 min-h-[250px] mt-6 w-full" data-ad>
-                        <!-- ADSTERRA/MONETAG NATIVE CODE HERE -->
-                    </div>
-
                     <!-- 4. More Like This Section -->
-                    <div class="pt-6 border-t border-gray-100">
+                    <div class="pt-6 border-t border-gray-100 mt-6">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 font-serif">More like this</h3>
                         <div class="masonry-grid" id="related-posts" style="column-count: 2;">
-                            <!-- Related images and ads populated dynamically -->
+                            <!-- Related images populated dynamically -->
                         </div>
                     </div>
 
@@ -364,7 +358,7 @@
         </div>
     </div>
 
-    <div id="floating-support" class="fixed bottom-4 right-4 z-[85] hidden md:flex items-center gap-2 bg-gray-900 text-white px-4 py-2.5 rounded-full shadow-xl hover:bg-black transition-all hover:scale-105 cursor-pointer" onclick="document.querySelector('section.bg-\\[\\#faf8f5\\]').scrollIntoView({behavior:'smooth'})">
+    <div id="floating-support" class="fixed bottom-4 right-4 z-[85] hidden md:flex items-center gap-2 bg-gray-900 text-white px-4 py-2.5 rounded-full shadow-xl hover:bg-black transition-all hover:scale-105 cursor-pointer" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})">
         <span class="text-sm">☕</span>
         <span class="text-xs font-bold">Support</span>
     </div>
@@ -454,9 +448,7 @@
                 document.getElementById('category-desc').textContent = `Found results for "${query}"`;
                 renderPosts('All');
             } else {
-                document.getElementById('category-title').textContent = currentCategory === 'All' ? 'Latest Artworks' : currentCategory + ' Artworks';
-                document.getElementById('category-desc').textContent = 'Discover how these images were created, and copy the prompts with a single click to start your own creative journey.';
-                renderPosts(currentCategory);
+                filterPosts(currentCategory);
             }
         }
 
@@ -478,9 +470,7 @@
                 if(searchBtn) searchBtn.classList.remove('opacity-0','pointer-events-none');
             }
 
-            document.getElementById('category-title').textContent = currentCategory === 'All' ? 'Latest Artworks' : currentCategory + ' Artworks';
-            document.getElementById('category-desc').textContent = 'Discover how these images were created, and copy the prompts with a single click to start your own creative journey.';
-            renderPosts(currentCategory);
+            filterPosts(currentCategory);
         }
 
         function escapeHtml(unsafe) {
@@ -598,10 +588,12 @@
             }, 700);
         }
 
-        // --- Render Posts and Inject Native Ads ---
+        // --- Render Posts ---
         function renderPosts(category = 'All') {
             const container = document.getElementById('posts-container');
+            const dynamicBanner = document.getElementById('dynamic-banner-container');
             container.innerHTML = '';
+            dynamicBanner.innerHTML = ''; // Reset banner
             
             // Debug check for posts.js
             if (typeof posts === 'undefined') {
@@ -621,9 +613,6 @@
 
             let filteredPosts = [];
             const allSafePosts = getAllPosts();
-            
-            // Console debug 
-            console.log("Total posts loaded from posts.js:", allSafePosts.length);
 
             if (searchQuery) {
                 filteredPosts = allSafePosts;
@@ -645,7 +634,19 @@
                 });
             }
 
-            // Handle Empty States (including saved warning condition)
+            // --- Saved Category Warning Display ---
+            // If category is Saved and we HAVE items, show the warning above the grid
+            if (category === 'Saved' && filteredPosts.length > 0 && !searchQuery) {
+                dynamicBanner.innerHTML = `
+                <div style="background:#1a1a00; border:1px solid #333300; border-radius: 12px; padding: 16px; margin-bottom:20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                  <p style="margin:0; font-size:13px; color:#ffcc00; font-weight: 500;">
+                    ⚠️ Important: Your saved artworks are stored locally in your browser (localStorage). Clearing cookies, cache, or site data will remove them.
+                  </p>
+                </div>
+                `;
+            }
+
+            // Handle Empty States
             if (filteredPosts.length === 0) {
                 container.classList.add('masonry-empty');        
                 if (allSafePosts.length === 0 && !searchQuery && category !== 'Saved') {
@@ -670,7 +671,7 @@
                         </div>
                     `;
                 } else if (category === 'Saved') {
-                    // Empty Saved State - Will naturally only show when saved length is 0
+                    // Empty Saved State - Cleaned out the warning, pure empty state
                     container.innerHTML = `
                         <div class="flex flex-col items-center justify-center py-20 text-center w-full max-w-lg mx-auto">
                             <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-5">
@@ -678,9 +679,6 @@
                             </div>
                             <h2 class="text-2xl font-serif font-bold text-gray-900 mb-2">No saved yet</h2>
                             <p class="text-gray-500 mb-8 leading-relaxed">You haven't saved any prompts yet. Explore our collection and save your favorites to easily access them later.</p>
-                            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8 text-left w-full">
-                                <p class="text-xs text-amber-800 leading-relaxed"><span class="font-bold">⚠️ Important:</span> Your saved artworks are stored locally in your browser (localStorage). Clearing cookies, cache, or site data will remove them.</p>
-                            </div>
                             <button onclick="filterPosts('All')" class="bg-gray-900 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-gray-800 transition-colors shadow-lg active:scale-95 transform">Explore Artworks</button>
                         </div>
                     `;
@@ -701,8 +699,8 @@
                 container.classList.remove('masonry-empty');
             }
 
-            // Render valid posts + Inject Hidden Ad blocks
-            filteredPosts.forEach((post, index) => {
+            // Render valid posts ONLY
+            filteredPosts.forEach((post) => {
                 const isSaved = isPostSaved(post.slug);
                 const article = document.createElement('article');
                 article.className = 'masonry-item bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col cursor-pointer relative';
@@ -740,15 +738,6 @@
                     </div>
                 `;
                 container.appendChild(article);
-
-                // Add Native Ad every 6 cards (hidden until script is applied)
-                if ((index + 1) % 6 === 0) {
-                    const adContainer = document.createElement('div');
-                    adContainer.className = 'ad-native hidden masonry-item bg-[#f9f9f9] rounded-2xl border border-gray-100 min-h-[250px] w-full';
-                    adContainer.setAttribute('data-ad', '');
-                    adContainer.innerHTML = `<!-- ADSTERRA/MONETAG NATIVE CODE HERE -->`;
-                    container.appendChild(adContainer);
-                }
             });
         }
 
@@ -756,6 +745,8 @@
             currentCategory = category;
             window.scrollTo({ top: 0, behavior: 'smooth' });
             searchQuery = '';
+            
+            // Clean up search UI state
             const desktopInput = document.getElementById('desktop-search-input');
             const mobileInput = document.getElementById('mobile-search-input');
             const mobileClearBtn = document.getElementById('mobile-search-clear');
@@ -773,13 +764,15 @@
 
             const titleEl = document.getElementById('category-title');
             const descEl = document.getElementById('category-desc');
+            
             if (category === 'Saved') {
                 titleEl.textContent = 'Your Saved Artworks';
-                descEl.textContent = 'Your personal collection - stored locally. Clearing cookies will remove them.';
+                descEl.textContent = 'Your personal collection. Enjoy exploring the prompts you loved most.';
             } else {
                 titleEl.textContent = category === 'All' ? 'Latest Artworks' : category + ' Artworks';
                 descEl.textContent = 'Discover how these images were created, and copy the prompts with a single click to start your own creative journey.';
             }
+            
             renderPosts(category);
             closeMobileMenu();
         } 
@@ -829,22 +822,13 @@
             relatedContainer.innerHTML = '';
             const related = allSafePosts.filter(p => p.category === currentPost.category && p.slug !== currentPost.slug);
 
-            // Populate Related Posts and Inject Modal Hidden Ad
-            related.slice(0, 6).forEach((rel, idx) => {
+            // Populate Related Posts ONLY
+            related.slice(0, 6).forEach((rel) => {
                 const item = document.createElement('div');
                 item.className = 'masonry-item rounded-xl overflow-hidden cursor-pointer group bg-gray-100';
                 item.onclick = () => openModal(rel.slug);
                 item.innerHTML = `<img src="${rel.image}" alt="${rel.title}" loading="lazy" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300">`;
                 relatedContainer.appendChild(item);
-
-                // Inject Hidden Native Ad inside the 'More like this' section after 2nd item
-                if (idx === 1) {
-                    const adItem = document.createElement('div');
-                    adItem.className = 'ad-native hidden masonry-item bg-[#f9f9f9] rounded-xl border border-gray-200 min-h-[250px] w-full';
-                    adItem.setAttribute('data-ad', '');
-                    adItem.innerHTML = `<!-- ADSTERRA/MONETAG NATIVE CODE HERE -->`;
-                    relatedContainer.appendChild(adItem);
-                }
             });
 
             document.getElementById('image-modal').classList.remove('hidden');
@@ -998,10 +982,8 @@
         // --- Floating Support Button Logic ---
         window.addEventListener('scroll', () => {
           const floatBtn = document.getElementById('floating-support');
-          const supportSection = document.querySelector('section.bg-\\[\\#faf8f5\\]');
-          if (!floatBtn || !supportSection) return;
-          const supportTop = supportSection.getBoundingClientRect().top;
-          if (window.scrollY > 600 && supportTop > 200) {
+          if (!floatBtn) return;
+          if (window.scrollY > 600) {
             floatBtn.classList.remove('hidden');
           } else {
             floatBtn.classList.add('hidden');
@@ -1015,18 +997,8 @@
         function closeMobileMenu() { menu.classList.add('hidden'); }
 
     </script>
-    
-<footer style="text-align:center; padding:40px 20px; border-top:1px solid #222; margin-top:60px; color:#666; font-size:14px;">
-  <p>© 2026 Canvas Era • 
-    <a href="/about.html" style="color:#aaa; text-decoration:none;">About</a> • 
-    <a href="/contact.html" style="color:#aaa; text-decoration:none;">Contact</a> • 
-    <a href="/privacy.html" style="color:#aaa; text-decoration:none;">Privacy Policy</a>
-  </p>
-  <p style="margin-top:8px;">contact@canvasera.art</p>
-</footer>
-    
 </body>
 </html>
 
 
-
+ 
