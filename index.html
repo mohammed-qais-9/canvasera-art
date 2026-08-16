@@ -650,10 +650,15 @@
                 article.className = 'masonry-item bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col cursor-pointer relative';
                 article.onclick = () => openModal(post.slug);
 
+                let currentTags = post.tags;
+                if (!currentTags || currentTags.length === 0) {
+                    currentTags = [post.category.toLowerCase(), ...post.title.toLowerCase().split(' ').slice(0, 2)];
+                }
+
                 let tagsHtml = '';
-                if (post.tags && post.tags.length > 0) {
+                if (currentTags && currentTags.length > 0) {
                     tagsHtml = `<div class="flex gap-1.5 mt-2 mb-2 flex-wrap">` + 
-                        post.tags.slice(0, 2).map(t => `<span class="px-2 py-0.5 bg-gray-100 text-gray-500 rounded text-[10px] font-bold uppercase tracking-wider">#${t}</span>`).join('') +
+                        currentTags.slice(0, 2).map(t => `<span class="px-2 py-0.5 bg-gray-100 text-gray-500 rounded text-[10px] font-bold uppercase tracking-wider">#${t}</span>`).join('') +
                         `</div>`;
                 }
 
@@ -676,7 +681,7 @@
                         ${tagsHtml}
                         
                         <div class="mt-auto pt-4 border-t border-gray-100 flex gap-2 flex-wrap">
-                            <button aria-label="Copy prompt" onclick="event.stopPropagation(); copyText('${post.prompt.replace(/'/g, "\\'")}', this, event)" class="flex-grow flex items-center justify-center gap-2 bg-[#f0ece5] hover:bg-gray-800 hover:text-white text-gray-800 py-2.5 px-3 rounded-xl font-medium transition-colors text-sm">
+                            <button aria-label="Copy prompt" onclick="copyTextBySlug('${post.slug}', this, event)" class="flex-grow flex items-center justify-center gap-2 bg-[#f0ece5] hover:bg-gray-800 hover:text-white text-gray-800 py-2.5 px-3 rounded-xl font-medium transition-colors text-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
                                 Copy Prompt
                             </button>
@@ -760,9 +765,14 @@
             document.getElementById('modal-prompt').textContent = currentPost.prompt;
             document.getElementById('modal-download-btn').href = currentPost.image;
             
+            let currentTags = currentPost.tags;
+            if (!currentTags || currentTags.length === 0) {
+                currentTags = [currentPost.category.toLowerCase(), ...currentPost.title.toLowerCase().split(' ').slice(0, 2)];
+            }
+            
             const tagsContainer = document.getElementById('modal-tags');
-            if (currentPost.tags && currentPost.tags.length > 0) {
-                tagsContainer.innerHTML = currentPost.tags.map(tag => `<button onclick="closeModal(); executeSearch('${tag}')" class="px-3 py-1 bg-gray-100 rounded-full text-xs hover:bg-gray-200 transition-colors">#${tag}</button>`).join('');
+            if (currentTags && currentTags.length > 0) {
+                tagsContainer.innerHTML = currentTags.map(tag => `<button onclick="closeModal(); executeSearch('${tag}')" class="px-3 py-1 bg-gray-100 rounded-full text-xs hover:bg-gray-200 transition-colors">#${tag}</button>`).join('');
                 tagsContainer.classList.remove('hidden');
             } else {
                 tagsContainer.classList.add('hidden');
@@ -770,7 +780,7 @@
 
             updateModalSaveBtn(isPostSaved(currentPost.slug));
 
-            document.getElementById('modal-copy-btn').onclick = function(e) { copyText(currentPost.prompt, this, e); };
+            document.getElementById('modal-copy-btn').onclick = function(e) { copyTextBySlug(currentPost.slug, this, e); };
             document.getElementById('modal-share-btn').onclick = () => sharePost(currentPost.title, currentPost.desc);
 
             const remixContainer = document.getElementById('remix-container');
@@ -856,6 +866,13 @@
         function acceptCookies() {
             localStorage.setItem('cookieConsent', 'true');
             document.getElementById('cookie-banner').classList.add('hidden');
+        }
+
+        function copyTextBySlug(slug, btn, e) {
+            if (e) e.stopPropagation();
+            const post = getAllPosts().find(p => p.slug === slug);
+            if (!post) return;
+            copyText(post.prompt, btn, e);
         }
 
         function copyText(text, btnElement, event) {
