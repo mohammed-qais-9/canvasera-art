@@ -850,12 +850,18 @@
             }
         }
 
+        // ==========================================
+        // THE FIXED openModal FUNCTION
+        // ==========================================
         function openModal(identifier, pushState = true) {
             const allSafePosts = getAllPosts();
             currentPost = allSafePosts.find(p => p.id === identifier || p.slug === identifier);
             if (!currentPost) return;
 
-            document.getElementById('modal-image').src = currentPost.image;
+            const modalImg = document.getElementById('modal-image');
+            modalImg.src = currentPost.image;
+            modalImg.alt = currentPost.title; // Fix: Added alt attribute dynamically
+            
             document.getElementById('modal-category').textContent = currentPost.category;
             document.getElementById('modal-title').textContent = currentPost.title;
             document.getElementById('modal-desc').textContent = currentPost.desc;
@@ -899,13 +905,31 @@
             document.getElementById('image-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             
-            // 🔥 هذا السطر يحل مشكلتك - يرجعك لفوك من تضغط More like this
+            // Fix: Improved Scroll Logic - instant top jump + smooth follow-up + img load safety
             const modalScroll = document.querySelector('#image-modal .overflow-y-auto');
-            if(modalScroll) modalScroll.scrollTo({top: 0, behavior: 'smooth'});
+            if(modalScroll) {
+                // 1. Force instant jump to top immediately
+                modalScroll.scrollTop = 0;
+                
+                // 2. Wait for next paint frame to guarantee it visually snaps to top
+                requestAnimationFrame(() => {
+                    modalScroll.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+
+                // 3. Prevent layout shifting when the new image finishes loading
+                modalImg.onload = () => {
+                    modalScroll.scrollTop = 0;
+                };
+            }
             
+            // Fix: Push state checking logic to prevent back-button loops
             if (pushState) {
                 const fullSlug = currentPost.slug;
-                history.pushState({ postSlug: fullSlug }, '', '?art=' + fullSlug);
+                const currentUrlParams = new URLSearchParams(window.location.search);
+                // Only push if we aren't already at this exact slug URL
+                if (currentUrlParams.get('art') !== fullSlug) {
+                    history.pushState({ postSlug: fullSlug }, '', '?art=' + fullSlug);
+                }
             }
             updateMetaTags(currentPost);
         }
@@ -1161,5 +1185,4 @@
     </script>
 </body>
 </html>
-
 
