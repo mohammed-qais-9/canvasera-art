@@ -138,7 +138,7 @@
                         
                         <div id="desktop-search-container" class="absolute right-0 bg-white border border-gray-300 rounded-full flex items-center px-3 py-2 shadow-sm transition-all duration-300 opacity-0 invisible w-0 overflow-hidden z-50">
                             <svg class="w-4 h-4 text-gray-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                            <input type="text" id="desktop-search-input" oninput="executeSearch(this.value, false)" placeholder="Search babil, anime, art..." class="outline-none text-sm text-gray-700 bg-transparent w-48 focus:ring-0">
+                            <input type="text" id="desktop-search-input" oninput="executeSearch(this.value, false)" placeholder="Search Babylon, anime, art..." class="outline-none text-sm text-gray-700 bg-transparent w-48 focus:ring-0">
                             <button aria-label="Clear search" onclick="clearSearch()" class="text-gray-400 hover:text-gray-600 ml-2 focus:outline-none flex-shrink-0 bg-gray-100 hover:bg-gray-200 rounded-full p-1 transition-colors">
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
                             </button>
@@ -156,15 +156,17 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg">
             <div class="p-4 border-b border-gray-100 bg-gray-50">
-                <div class="bg-white border border-gray-200 rounded-xl flex items-center px-3 py-2 shadow-inner">
-                    <svg class="w-4 h-4 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    <input type="text" id="mobile-search-input" oninput="executeSearch(this.value, true)" placeholder="Search babil, anime, art..." class="w-full bg-transparent outline-none text-sm text-gray-700">
-                    <button aria-label="Clear search" onclick="clearSearch()" id="mobile-search-clear" class="hidden text-gray-400 hover:text-gray-600 bg-gray-100 rounded-full p-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                <div class="bg-white border border-gray-200 rounded-2xl flex items-center px-3 h-12 shadow-sm focus-within:ring-2 focus-within:ring-gray-300 transition-all">
+                    <svg class="w-5 h-5 text-gray-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <input type="text" id="mobile-search-input" oninput="executeSearch(this.value, true)" placeholder="Search Babylon, anime, art..." class="w-full h-full bg-transparent outline-none text-base text-gray-700 placeholder-gray-400">
+                    <button aria-label="Clear search" onclick="clearSearch()" id="mobile-search-clear" class="hidden text-gray-500 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-full w-[44px] h-[44px] flex items-center justify-center transition-colors flex-shrink-0 ml-1">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
                 </div>
             </div>
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+            <div id="mobile-menu-categories" class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center transition-all duration-300">
                 <button onclick="filterPosts('All'); closeMobileMenu();" class="block w-full px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-50">Home</button>
                 <button onclick="filterPosts('Culture'); closeMobileMenu();" class="block w-full px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-50">Culture</button>
                 <button onclick="filterPosts('Art'); closeMobileMenu();" class="block w-full px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-50">Art</button>
@@ -226,7 +228,6 @@
     <footer style="text-align:center; padding:40px 20px; border-top:1px solid #e5e5e5; margin-top:60px; color:#666; font-size:14px; background:#fff;">
       <p style="font-family:'Playfair Display',serif; font-size:20px; font-weight:bold; color:#111; margin-bottom:12px;">Canvas Era</p>
       <p style="margin-bottom:20px;">© 2026 Canvas Era • <a href="/about.html" style="color:#888;">About</a> • <a href="/contact.html" style="color:#888;">Contact</a> • <a href="/privacy.html" style="color:#888;">Privacy</a></p>
-      <p style="margin-bottom:24px;">contact@canvasera.art</p>
       
       <div class="flex justify-center gap-4 flex-wrap">
         <a href="https://www.pinterest.com/canvaseraart" target="_blank" class="flex items-center gap-2 px-5 py-2.5 bg-gray-50 hover:bg-[#E60023] hover:text-white text-gray-700 rounded-full transition-all duration-300 shadow-sm hover:shadow-md font-medium text-sm group border border-gray-200 hover:border-[#E60023]">
@@ -427,16 +428,18 @@
         function toggleSearchBar() {
             const container = document.getElementById('desktop-search-container');
             const btn = document.getElementById('search-toggle-btn');
+            const desktopInput = document.getElementById('desktop-search-input');
             
             if (container.classList.contains('invisible')) {
                 container.classList.remove('invisible', 'opacity-0', 'w-0');
                 container.classList.add('opacity-100', 'w-64');
                 btn.classList.add('opacity-0', 'pointer-events-none');
-                document.getElementById('desktop-search-input').focus();
+                if (desktopInput) desktopInput.focus();
             } else {
                 container.classList.add('invisible', 'opacity-0', 'w-0');
                 container.classList.remove('opacity-100', 'w-64');
                 btn.classList.remove('opacity-0', 'pointer-events-none');
+                if (desktopInput) desktopInput.blur();
                 clearSearch();
             }
         }
@@ -466,6 +469,15 @@
                     document.getElementById('category-title').textContent = `Search: "${query}"`;
                     document.getElementById('category-desc').textContent = `Found results for "${query}"`;
                     renderPosts('All');
+
+                    // Bug 3: Scroll to top immediately when showing search results
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+
+                    // Bug 1: Hide mobile categories while searching
+                    if (isMobile) {
+                        const mobileCategories = document.getElementById('mobile-menu-categories');
+                        if (mobileCategories) mobileCategories.classList.add('hidden');
+                    }
                 } else {
                     document.getElementById('category-title').textContent = currentCategory === 'All' ? 'Latest Artworks' : currentCategory + ' Artworks';
                     document.getElementById('category-desc').textContent = 'Discover how these images were created, and copy the prompts with a single click to start your own creative journey.';
@@ -497,6 +509,18 @@
             document.getElementById('category-title').textContent = currentCategory === 'All' ? 'Latest Artworks' : currentCategory + ' Artworks';
             document.getElementById('category-desc').textContent = 'Discover how these images were created, and copy the prompts with a single click to start your own creative journey.';
             renderPosts(currentCategory);
+
+            // Bug 2 & Bonus: Blur first to ensure keyboard closes if we were just clicking a close button,
+            // then refocus based on the visible active input to keep focus per bonus instructions.
+            if (desktopInput) desktopInput.blur();
+            if (mobileInput) mobileInput.blur();
+
+            if (window.innerWidth >= 768 && desktopInput && !document.getElementById('desktop-search-container').classList.contains('invisible')) {
+                desktopInput.focus();
+            } else if (mobileInput && !document.getElementById('mobile-menu').classList.contains('hidden')) {
+                mobileInput.focus();
+            }
+            // Do NOT re-open mobile menu categories automatically here.
         }
 
         function escapeHtml(unsafe) {
@@ -934,6 +958,25 @@
             if (!localStorage.getItem('cookieConsent')) {
                 document.getElementById('cookie-banner').classList.remove('hidden');
             }
+
+            // Bug 2: Enter key listeners to close keyboard and perform search 
+            const handleSearchKeydown = (e, isMobile) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    e.target.blur(); // Blur input to close mobile keyboard
+                    executeSearch(e.target.value, isMobile);
+                    if (isMobile) {
+                        closeMobileMenu();
+                    }
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                }
+            };
+            
+            const desktopInput = document.getElementById('desktop-search-input');
+            const mobileInput = document.getElementById('mobile-search-input');
+            
+            if (desktopInput) desktopInput.addEventListener('keydown', (e) => handleSearchKeydown(e, false));
+            if (mobileInput) mobileInput.addEventListener('keydown', (e) => handleSearchKeydown(e, true));
         });
 
         function acceptCookies() {
@@ -1077,8 +1120,23 @@
 
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => menu.classList.toggle('hidden'));
-        function closeMobileMenu() { menu.classList.add('hidden'); }
+        mobileMenuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if (!menu.classList.contains('hidden')) {
+                // If menu is opening, ensure categories are visible IF search is empty
+                const mobileCategories = document.getElementById('mobile-menu-categories');
+                const mobileInput = document.getElementById('mobile-search-input');
+                if (mobileCategories && mobileInput && !mobileInput.value.trim()) {
+                    mobileCategories.classList.remove('hidden');
+                }
+            }
+        });
+
+        function closeMobileMenu() { 
+            menu.classList.add('hidden'); 
+            const mobileInput = document.getElementById('mobile-search-input');
+            if (mobileInput) mobileInput.blur();
+        }
 
         window.addEventListener('scroll', () => {
           const floatBtn = document.getElementById('floating-telegram');
@@ -1093,6 +1151,4 @@
     </script>
 </body>
 </html>
-
-
 
