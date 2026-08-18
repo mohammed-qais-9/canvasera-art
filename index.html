@@ -82,6 +82,10 @@
         #pwa-install-banner { transform: translateY(100%); transition: transform 0.4s ease; }
         #pwa-install-banner.show { transform: translateY(0); }
 
+        #image-modal .overflow-y-auto {
+            scroll-behavior: auto !important;
+        }
+
         #toast {
             visibility: hidden;
             min-width: 250px;
@@ -900,15 +904,11 @@
             document.getElementById('image-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             
-            // Fix: Improved Scroll Logic - instant top jump without smooth scroll bug
+            // Instant, zero-animation scroll reset to top of modal content
             const modalScroll = document.querySelector('#image-modal .overflow-y-auto');
-            if(modalScroll) {
-                modalScroll.style.scrollBehavior = 'auto'; 
+            if (modalScroll) {
+                modalScroll.style.scrollBehavior = 'auto';
                 modalScroll.scrollTop = 0;
-                
-                requestAnimationFrame(() => {
-                    modalScroll.scrollTo({ top: 0, behavior: 'instant' });
-                });
 
                 modalImg.onload = () => {
                     modalScroll.scrollTop = 0;
@@ -1174,4 +1174,3 @@
     </script>
 </body>
 </html>
-
