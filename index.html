@@ -384,7 +384,7 @@
 
     <div id="toast"></div>
 
-    <script src="posts.js"></script>
+    <script src="posts.js?v=20260818"></script>
 
     <script>
         const getAllPosts = () => {
@@ -891,13 +891,17 @@
             const related = allSafePosts.filter(p => p.category === currentPost.category && p.slug !== currentPost.slug);
 
             related.slice(0, 6).forEach((rel) => {
-                const item = document.createElement('div');
-                item.className = 'masonry-item rounded-xl overflow-hidden cursor-pointer group bg-gray-100';
-                item.onclick = (e) => {
-                    e.stopPropagation(); // يمنع تداخل النقرات
-                    openModal(rel.slug);
-                };
-                item.innerHTML = `<img src="${rel.image}" alt="${rel.title}" loading="lazy" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300">`;
+                const item = document.createElement('a');
+                item.href = '?art=' + encodeURIComponent(rel.slug);
+                item.className = 'masonry-item rounded-xl overflow-hidden cursor-pointer group bg-gray-100 block';
+                item.innerHTML = `<img src="${rel.image}" alt="${rel.title}" loading="lazy" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300 pointer-events-none">`;
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const targetSlug = rel.slug;
+                    closeModal(false);
+                    setTimeout(() => { openModal(targetSlug, true); }, 50);
+                });
                 relatedContainer.appendChild(item);
             });
 
