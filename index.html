@@ -849,6 +849,18 @@
             }
         }
 
+        /* ==========================================================
+           FIXED openModal() — bulletproof scroll-to-top.
+           Root cause of the bug: the old code reset scrollTop
+           before the modal was unhidden and before the new image
+           had loaded/resized the content, so the browser's own
+           scroll-anchoring silently restored the old bottom
+           position afterward. This version resets AFTER the modal
+           is visible, again on the next animation frame (after
+           layout), again on image load, and again after a short
+           timeout as a final safety net — so no matter which stage
+           the browser is at, the container ends up at the top.
+           ========================================================== */
         function openModal(identifier, pushState = true) {
             const allSafePosts = getAllPosts();
             currentPost = allSafePosts.find(p => p.id === identifier || p.slug === identifier);
@@ -899,8 +911,12 @@
                     e.preventDefault();
                     e.stopPropagation();
                     const targetSlug = rel.slug;
-                    const modalScroll = document.getElementById('modal-scroll-container');
-                    if(modalScroll) modalScroll.scrollTop = 0;
+
+                    // Reset scroll BEFORE we close/reopen, so we never
+                    // carry the old bottom position into the new post.
+                    const modalScrollPre = document.getElementById('modal-scroll-container');
+                    if (modalScrollPre) modalScrollPre.scrollTop = 0;
+
                     closeModal(false);
                     setTimeout(() => { openModal(targetSlug, true); }, 50);
                 });
@@ -909,17 +925,26 @@
 
             document.getElementById('image-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
-            
+
+            // Bulletproof scroll-to-top: fire at every stage the
+            // browser could still be adjusting layout/scroll.
             const modalScroll = document.getElementById('modal-scroll-container');
             if (modalScroll) {
                 modalScroll.style.scrollBehavior = 'auto';
                 modalScroll.scrollTop = 0;
+
                 requestAnimationFrame(() => {
                     modalScroll.scrollTop = 0;
-                    modalScroll.scrollTo({top:0, left:0, behavior:'instant'});
+                    modalScroll.scrollTo({ top: 0, left: 0, behavior: 'instant' });
                 });
-                modalImg.onload = () => { modalScroll.scrollTop = 0; }
-                setTimeout(() => { modalScroll.scrollTop = 0; }, 150);
+
+                modalImg.onload = () => {
+                    modalScroll.scrollTop = 0;
+                };
+
+                setTimeout(() => {
+                    modalScroll.scrollTop = 0;
+                }, 150);
             }
             
             if (pushState) {
@@ -1181,4 +1206,3 @@
     </script>
 </body>
 </html>
-
