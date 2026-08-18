@@ -277,7 +277,7 @@
                 <div class="w-10"></div>
             </div>
 
-            <div class="overflow-y-auto flex-grow relative pb-20 sm:pb-6">
+            <div id="modal-scroll-container" class="overflow-y-auto flex-grow relative pb-20 sm:pb-6">
                 <div class="p-4 sm:p-6 space-y-6">
                     
                     <div class="rounded-2xl overflow-hidden bg-gray-100 shadow-inner relative">
@@ -899,6 +899,8 @@
                     e.preventDefault();
                     e.stopPropagation();
                     const targetSlug = rel.slug;
+                    const modalScroll = document.getElementById('modal-scroll-container');
+                    if(modalScroll) modalScroll.scrollTop = 0;
                     closeModal(false);
                     setTimeout(() => { openModal(targetSlug, true); }, 50);
                 });
@@ -908,15 +910,16 @@
             document.getElementById('image-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             
-            // Instant, zero-animation scroll reset to top of modal content
-            const modalScroll = document.querySelector('#image-modal .overflow-y-auto');
+            const modalScroll = document.getElementById('modal-scroll-container');
             if (modalScroll) {
                 modalScroll.style.scrollBehavior = 'auto';
                 modalScroll.scrollTop = 0;
-
-                modalImg.onload = () => {
+                requestAnimationFrame(() => {
                     modalScroll.scrollTop = 0;
-                };
+                    modalScroll.scrollTo({top:0, left:0, behavior:'instant'});
+                });
+                modalImg.onload = () => { modalScroll.scrollTop = 0; }
+                setTimeout(() => { modalScroll.scrollTop = 0; }, 150);
             }
             
             if (pushState) {
@@ -1178,3 +1181,4 @@
     </script>
 </body>
 </html>
+
