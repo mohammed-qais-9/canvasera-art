@@ -899,6 +899,10 @@
             document.getElementById('image-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             
+            // 🔥 هذا السطر يحل مشكلتك - يرجعك لفوك من تضغط More like this
+            const modalScroll = document.querySelector('#image-modal .overflow-y-auto');
+            if(modalScroll) modalScroll.scrollTo({top: 0, behavior: 'smooth'});
+            
             if (pushState) {
                 const fullSlug = currentPost.slug;
                 history.pushState({ postSlug: fullSlug }, '', '?art=' + fullSlug);
@@ -1157,4 +1161,5 @@
     </script>
 </body>
 </html>
+
 
