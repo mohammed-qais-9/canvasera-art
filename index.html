@@ -470,10 +470,8 @@
                     document.getElementById('category-desc').textContent = `Found results for "${query}"`;
                     renderPosts('All');
 
-                    // Bug 3: Scroll to top immediately when showing search results
                     window.scrollTo({top: 0, behavior: 'smooth'});
 
-                    // Bug 1: Hide mobile categories while searching
                     if (isMobile) {
                         const mobileCategories = document.getElementById('mobile-menu-categories');
                         if (mobileCategories) mobileCategories.classList.add('hidden');
@@ -510,8 +508,6 @@
             document.getElementById('category-desc').textContent = 'Discover how these images were created, and copy the prompts with a single click to start your own creative journey.';
             renderPosts(currentCategory);
 
-            // Bug 2 & Bonus: Blur first to ensure keyboard closes if we were just clicking a close button,
-            // then refocus based on the visible active input to keep focus per bonus instructions.
             if (desktopInput) desktopInput.blur();
             if (mobileInput) mobileInput.blur();
 
@@ -520,7 +516,6 @@
             } else if (mobileInput && !document.getElementById('mobile-menu').classList.contains('hidden')) {
                 mobileInput.focus();
             }
-            // Do NOT re-open mobile menu categories automatically here.
         }
 
         function escapeHtml(unsafe) {
@@ -850,9 +845,6 @@
             }
         }
 
-        // ==========================================
-        // THE FIXED openModal FUNCTION
-        // ==========================================
         function openModal(identifier, pushState = true) {
             const allSafePosts = getAllPosts();
             currentPost = allSafePosts.find(p => p.id === identifier || p.slug === identifier);
@@ -860,7 +852,7 @@
 
             const modalImg = document.getElementById('modal-image');
             modalImg.src = currentPost.image;
-            modalImg.alt = currentPost.title; // Fix: Added alt attribute dynamically
+            modalImg.alt = currentPost.title;
             
             document.getElementById('modal-category').textContent = currentPost.category;
             document.getElementById('modal-title').textContent = currentPost.title;
@@ -897,7 +889,10 @@
             related.slice(0, 6).forEach((rel) => {
                 const item = document.createElement('div');
                 item.className = 'masonry-item rounded-xl overflow-hidden cursor-pointer group bg-gray-100';
-                item.onclick = () => openModal(rel.slug);
+                item.onclick = (e) => {
+                    e.stopPropagation(); // يمنع تداخل النقرات
+                    openModal(rel.slug);
+                };
                 item.innerHTML = `<img src="${rel.image}" alt="${rel.title}" loading="lazy" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300">`;
                 relatedContainer.appendChild(item);
             });
@@ -905,28 +900,24 @@
             document.getElementById('image-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             
-            // Fix: Improved Scroll Logic - instant top jump + smooth follow-up + img load safety
+            // Fix: Improved Scroll Logic - instant top jump without smooth scroll bug
             const modalScroll = document.querySelector('#image-modal .overflow-y-auto');
             if(modalScroll) {
-                // 1. Force instant jump to top immediately
+                modalScroll.style.scrollBehavior = 'auto'; 
                 modalScroll.scrollTop = 0;
                 
-                // 2. Wait for next paint frame to guarantee it visually snaps to top
                 requestAnimationFrame(() => {
-                    modalScroll.scrollTo({ top: 0, behavior: 'smooth' });
+                    modalScroll.scrollTo({ top: 0, behavior: 'instant' });
                 });
 
-                // 3. Prevent layout shifting when the new image finishes loading
                 modalImg.onload = () => {
                     modalScroll.scrollTop = 0;
                 };
             }
             
-            // Fix: Push state checking logic to prevent back-button loops
             if (pushState) {
                 const fullSlug = currentPost.slug;
                 const currentUrlParams = new URLSearchParams(window.location.search);
-                // Only push if we aren't already at this exact slug URL
                 if (currentUrlParams.get('art') !== fullSlug) {
                     history.pushState({ postSlug: fullSlug }, '', '?art=' + fullSlug);
                 }
@@ -987,11 +978,10 @@
                 document.getElementById('cookie-banner').classList.remove('hidden');
             }
 
-            // Bug 2: Enter key listeners to close keyboard and perform search 
             const handleSearchKeydown = (e, isMobile) => {
                 if (e.key === 'Enter') {
                     e.preventDefault();
-                    e.target.blur(); // Blur input to close mobile keyboard
+                    e.target.blur(); 
                     executeSearch(e.target.value, isMobile);
                     if (isMobile) {
                         closeMobileMenu();
@@ -1151,7 +1141,6 @@
         mobileMenuBtn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
             if (!menu.classList.contains('hidden')) {
-                // If menu is opening, ensure categories are visible IF search is empty
                 const mobileCategories = document.getElementById('mobile-menu-categories');
                 const mobileInput = document.getElementById('mobile-search-input');
                 if (mobileCategories && mobileInput && !mobileInput.value.trim()) {
