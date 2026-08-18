@@ -1149,6 +1149,12 @@
         });
 
     </script>
+    <script>
+  if (window.location.search.includes('m=1')) {
+    const cleanUrl = window.location.origin + window.location.pathname;
+    window.history.replaceState({}, document.title, cleanUrl);
+  }
+    </script>
 </body>
 </html>
 
