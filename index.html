@@ -866,7 +866,13 @@
             currentPost = allSafePosts.find(p => p.id === identifier || p.slug === identifier);
             if (!currentPost) return;
 
+            const modalRoot = document.getElementById('image-modal');
+            const modalScroll = document.getElementById('modal-scroll-container');
             const modalImg = document.getElementById('modal-image');
+
+            if (modalRoot) { modalRoot.scrollTop = 0; }
+            if (modalScroll) { modalScroll.scrollTop = 0; }
+
             modalImg.src = currentPost.image;
             modalImg.alt = currentPost.title;
             
@@ -890,7 +896,6 @@
             }
 
             updateModalSaveBtn(isPostSaved(currentPost.slug));
-
             document.getElementById('modal-copy-btn').onclick = function(e) { copyTextBySlug(currentPost.slug, this, e); };
             document.getElementById('modal-share-btn').onclick = () => sharePost(currentPost.title, currentPost.desc);
 
@@ -901,7 +906,6 @@
             const relatedContainer = document.getElementById('related-posts');
             relatedContainer.innerHTML = '';
             const related = allSafePosts.filter(p => p.category === currentPost.category && p.slug !== currentPost.slug);
-
             related.slice(0, 6).forEach((rel) => {
                 const item = document.createElement('a');
                 item.href = '?art=' + encodeURIComponent(rel.slug);
@@ -911,14 +915,10 @@
                     e.preventDefault();
                     e.stopPropagation();
                     const targetSlug = rel.slug;
-
-                    // Reset scroll BEFORE we close/reopen, so we never
-                    // carry the old bottom position into the new post.
-                    const modalScrollPre = document.getElementById('modal-scroll-container');
-                    if (modalScrollPre) modalScrollPre.scrollTop = 0;
-
+                    if (modalRoot) modalRoot.scrollTop = 0;
+                    if (modalScroll) modalScroll.scrollTop = 0;
                     closeModal(false);
-                    setTimeout(() => { openModal(targetSlug, true); }, 50);
+                    setTimeout(() => { openModal(targetSlug, true); }, 70);
                 });
                 relatedContainer.appendChild(item);
             });
@@ -926,26 +926,27 @@
             document.getElementById('image-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
 
-            // Bulletproof scroll-to-top: fire at every stage the
-            // browser could still be adjusting layout/scroll.
-            const modalScroll = document.getElementById('modal-scroll-container');
-            if (modalScroll) {
-                modalScroll.style.scrollBehavior = 'auto';
-                modalScroll.scrollTop = 0;
-
-                requestAnimationFrame(() => {
+            const forceTop = () => {
+                if (modalRoot) {
+                    modalRoot.scrollTop = 0;
+                    modalRoot.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                }
+                if (modalScroll) {
+                    modalScroll.style.scrollBehavior = 'auto';
                     modalScroll.scrollTop = 0;
                     modalScroll.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                });
+                }
+                window.scrollTo(0,0);
+            };
 
-                modalImg.onload = () => {
-                    modalScroll.scrollTop = 0;
-                };
-
-                setTimeout(() => {
-                    modalScroll.scrollTop = 0;
-                }, 150);
-            }
+            forceTop();
+            requestAnimationFrame(() => {
+                forceTop();
+                requestAnimationFrame(forceTop);
+            });
+            modalImg.onload = forceTop;
+            setTimeout(forceTop, 150);
+            setTimeout(forceTop, 400);
             
             if (pushState) {
                 const fullSlug = currentPost.slug;
