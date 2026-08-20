@@ -11,18 +11,6 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-15"
               },
-            {
-    "title": "Horus Wings Over Karnak",
-    "slug": "horus-wings-over-karnak",
-    "desc": "Woman among Karnak's columns, giant 2D comic Horus spreads his wings",
-    "description": "Woman among Karnak's columns, giant 2D comic Horus spreads his wings",
-    "prompt": "photorealistic smiling woman in flowing white linen sitting on an oriental rug between the towering carved columns of Karnak Temple, sunlight streaming through the stone pillars, giant friendly 2D black-and-white comic line-art of falcon-headed god Horus standing behind her with huge wings spread protectively around her, comic linework popping against the photoreal sandstone columns, cinematic golden hour lighting, warm dust particles, highly detailed --ar 9:16",
-    "image": "images/horus-wings-over-karnak.jpg",
-    "tags": [],
-    "category": "Culture",
-    "author": "Canvas Era",
-    "date": "2026-08-15"
-            },
           {
     "title": "Morning Tea in the Woods",
     "slug": "morning-tea-in-the-woods",
@@ -59,30 +47,6 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-15"
       },
-                {
-    "title": "Ashurbanipal's Library ",
-    "slug": "ashurbanipals-library",
-    "desc": "Woman at Nineveh's ruins, giant comic Ashurbanipal reads her a ",
-    "description": "Woman at Nineveh's ruins, giant comic Ashurbanipal reads her a ",
-    "prompt": "photorealistic smiling woman in soft earth-tone robes sitting on an oriental rug amid the excavated ruins of Nineveh's royal library, broken clay tablets scattered artfully nearby, giant friendly 2D black-and-white comic line-art of King Ashurbanipal sitting behind her unrolling a huge scroll and reading aloud with a warm expression, comic linework contrasting the photoreal stone rubble, cinematic golden hour lighting, dust motes drifting, highly detailed --ar 9:16",
-    "image": "images/ashurbanipals-library.jpg",
-    "tags": [],
-    "category": "Culture",
-    "author": "Canvas Era",
-    "date": "2026-08-15"
-                },
-            {
-    "title": "Sargon's Palace Welcome",
-    "slug": "sargons-palace-welcome",
-    "desc": "Man in Nineveh's palace ruins, giant comic Sargon II welcomes him warmly",
-    "description": "Man in Nineveh's palace ruins, giant comic Sargon II welcomes him warmly",
-    "prompt": "photorealistic smiling man in a woven earth-tone robe sitting on an oriental rug inside the roofless ruins of an Assyrian palace, carved stone reliefs of hunting scenes visible on the walls behind him, giant friendly 2D black-and-white comic line-art of King Sargon II standing behind him with arms open wide in a warm welcoming gesture, comic linework contrasting the photoreal stone reliefs, cinematic golden hour lighting, dust particles in the air, highly detailed --ar 9:16",
-    "image": "images/sargons-palace-welcome.jpg",
-    "tags": [],
-    "category": "Culture",
-    "author": "Canvas Era",
-    "date": "2026-08-15"
-            },
           {
     "title": "Cozy Bookshop Bird Watcher",
     "slug": "cozy-bookshop-bird-watcher",
@@ -119,18 +83,6 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-15"
       },
-    {
-    "title": "Hammurabi's Law Ziggurat",
-    "slug": "hammurabis-law-ziggurat",
-    "desc": "Man before a Babylon ziggurat, giant comic Hammurabi holds up his law code",
-    "description": "Man before a Babylon ziggurat, giant comic Hammurabi holds up his law code",
-    "prompt": "photorealistic smiling man in earth-toned robes sitting on a patterned oriental rug at the base of a reconstructed mudbrick ziggurat in ancient Babylon, warm terracotta tones and mudbrick texture, giant friendly 2D black-and-white comic line-art of King Hammurabi standing behind him proudly holding up a huge stone law tablet with a warm smile, playful scale contrast, cinematic golden hour lighting, dust haze over the plain, highly detailed photoreal and ink linework mix --ar 9:16",
-    "image": "images/hammurabis-law-ziggurat.jpg",
-    "tags": [],
-    "category": "Culture",
-    "author": "Canvas Era",
-    "date": "2026-08-14"
-    },
   {
     "title": "Cosmic Memory Portrait",
     "slug": "cosmic-memory-portrait",
@@ -220,24 +172,6 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-14"
     },
-  {
-    "title": "Bring Ancient Egyptian Mythology to Life with Mixed-Media AI Art",
-    "slug": "egyptian-anubis-guardian-mixed-media",
-    "desc": "Photorealistic woman sketching in Egyptian desert with a giant friendly 2D Anubis guardian smiling behind her at golden sunset.",
-    "description": "Creative mixed-media concept blending stunning realism of a desert photograph with fun illustrative style of a 2D comic Anubis guardian.",
-    "prompt": "A realistic photo of a smiling young woman sitting cross-legged on a small vintage oriental rug on the desert sand, holding a sketchbook and pen. Ancient Egyptian pyramid ruins are in the background during a beautiful golden sunset. Behind her, a giant cute 2D cartoon illustration of Anubis with black jackal ears and an Egyptian collar, drawn in clean 2D black-and-white comic line-art style. The cartoon Anubis is acting as a gentle protective guardian, resting his hands softly near her shoulders with a big, wholesome, friendly smile. Mixed media art, real photograph combined with a 2D cartoon drawing, high contrast, cinematic lighting, highly detailed --ar 9:16",
-    "image": "images/egypt-anubis-guardian.jpg",
-    "tags": [
-      "Egyptian",
-      "Anubis",
-      "Mixed Media",
-      "Pyramids",
-      "Ancient Egypt"
-    ],
-    "category": "Culture",
-    "author": "Canvas Era",
-    "date": "2026-05-18"
-  },
     {
     "title": "Rainy Day Serenity: A Childhood Memory",
     "slug": "rainy-day-serenity-a-childhood-memory",
@@ -262,22 +196,6 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-14"
     },
-  {
-    "title": "Embrace the Power of Assyrian Mythology with Mixed-Media AI Art",
-    "slug": "assyrian-lamassu-mixed-media",
-    "desc": "A beautiful blend of realistic photography and Assyrian heritage. A guardian Lamassu drawn in elegant ink protects the modern muse.",
-    "description": "A beautiful blend of realistic photography and Assyrian heritage. A guardian Lamassu drawn in elegant ink protects the modern muse.",
-    "prompt": "A realistic cinematic photograph of a smiling young woman sitting relaxed on ancient stone steps. Standing protectively behind her is a giant 2D cartoon illustration of a majestic Assyrian Winged Bull (Lamassu). The Lamassu is drawn in clean, thick black ink line art comic style. It features the authentic ancient bearded human face with a squared braided beard and a horned crown, but stylized beautifully and elegantly. The 2D Lamassu acts as a noble guardian, with its large grand wing gently curving behind the woman's back like a protective shield. Mixed media composition, photo-realism blended with 2D ink illustration, dramatic natural lighting, highly detailed --ar 9:16",
-    "image": "images/lamassu-guardian.jpg",
-    "tags": [
-      "Mixed Media",
-      "Assyrian",
-      "Lamassu"
-    ],
-    "category": "Culture",
-    "author": "Canvas Era",
-    "date": "2026-05-13"
-  },
           {
     "title": "The Greenhouse Botanist",
     "slug": "the-greenhouse-botanist",
