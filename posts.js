@@ -196,24 +196,6 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-15"
         },
-  {
-    "title": "Transform Your Photos with Ancient History and 2D Comic Style",
-    "slug": "babylonian-king-thumbsup-mixed-media",
-    "desc": "A friendly giant 2D Babylonian King gives a thumbs-up while hugging a real woman in ancient Babylonian ruins with Ziggurat view.",
-    "description": "A unique blend of reality and imagination - merge high-detail photorealism with fun 2D black-and-white comic character in ancient Babylonian ruins.",
-    "prompt": "A striking mixed-media photograph of a smiling young woman sitting cross-legged on an ancient oriental rug amidst stone ruins with a distant Ziggurat. Behind her stands a giant, friendly 2D comic line-art illustration of an Ancient Babylonian King with a cuneiform-engraved gold crown and braided square beard, hugging her playfully and giving an enthusiastic thumbs-up. Warm golden hour lighting, strong visual contrast between photorealistic environment and 2D ink line-art character, high resolution, cinematic composition --ar 9:16",
-    "image": "images/babylon-king-thumbsup.jpg",
-    "tags": [
-      "Babylonian",
-      "Mixed Media",
-      "Ziggurat",
-      "Ancient History",
-      "Comic"
-    ],
-    "category": "Culture",
-    "author": "Canvas Era",
-    "date": "2026-05-17"
-  },
         {
     "title": "Cottage Kitchen Bread",
     "slug": "cottage-kitchen-bread",
