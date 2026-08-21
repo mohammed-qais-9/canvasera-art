@@ -216,7 +216,7 @@ const posts = [
     "prompt": "Cozy travel scrapbook collage of a cute young girl wandering through Prague, Czech Republic, surrounded by vintage tram tickets, antique postcards, polaroid photographs, handwritten Czech notes, postage stamps, café receipts, pressed flowers, Prague Castle, Charles Bridge, Old Town Square, Astronomical Clock and colorful historic buildings, warm cream, dusty lavender and muted terracotta palette, soft misty morning light, aged paper textures, layered scrapbook elements, nostalgic European travel journal aesthetic, highly detailed illustration, whimsical fairytale atmosphere, cozy cinematic lighting --ar 2:3",
     "image": "images/prague-postcards-a-fairytale-journey.jpg",
     "tags": [],
-    "category": "Art",
+    "category": "Cities",
     "author": "Canvas Era",
     "date": "2026-08-21"
   },
