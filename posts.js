@@ -144,7 +144,7 @@ const posts = [
     "prompt": "Cozy travel scrapbook collage of a cute young girl exploring New York City, surrounded by vintage subway tickets, polaroid photographs, handwritten notes, old receipts, postage stamps, coffee shop stickers, pressed paper scraps, Statue of Liberty, Empire State Building, Brooklyn Bridge, Times Square and Central Park, warm cream and muted caramel palette with subtle city-light accents, soft golden-hour lighting, textured vintage paper, layered scrapbook composition, nostalgic urban travel journal aesthetic, highly detailed illustration, charming cozy atmosphere, cinematic softness --ar 2:3",
     "image": "images/new-york-moments-city-lights-scrapbook.jpg",
     "tags": [],
-    "category": "Art",
+    "category": "Cities",
     "author": "Canvas Era",
     "date": "2026-08-21"
    },
