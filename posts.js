@@ -160,6 +160,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-15"
         },
+   {
+    "title": "London Calling — Rainy Day Scrapbook",
+    "slug": "london-calling-rainy-day-scrapbook",
+    "desc": "A charming London adventure with rainy streets, red buses, cozy cafés, historic landmarks, and little memories tucked between pages.",
+    "description": "A charming London adventure with rainy streets, red buses, cozy cafés, historic landmarks, and little memories tucked between pages.",
+    "prompt": "Cozy travel scrapbook collage of a cute young girl exploring London, England, surrounded by vintage Underground tickets, old postcards, polaroid photographs, handwritten notes, postage stamps, tea tags, paper receipts, Big Ben, Tower Bridge, red double-decker bus, London Eye, Westminster Palace and charming Notting Hill streets, warm beige and muted burgundy palette, soft rainy daylight, subtle reflections, layered torn-paper textures, vintage travel journal aesthetic, highly detailed illustration, whimsical cozy atmosphere, nostalgic cinematic lighting --ar 2:3",
+    "image": "images/london-calling-rainy-day-scrapbook.jpg",
+    "tags": [],
+    "category": "Cities",
+    "author": "Canvas Era",
+    "date": "2026-08-21"
+   },
     {
     "title": "Midnight Neon Dreamer",
     "slug": "midnight-neon-dreamer",
