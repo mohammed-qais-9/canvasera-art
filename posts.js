@@ -184,6 +184,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-14"
     },
+   {
+    "title": "Paris, Je T'Aime — Travel Scrapbook",
+    "slug": "paris-je-taime-travel-scrapbook",
+    "desc": "A dreamy Parisian journey filled with café mornings, romantic streets, treasured snapshots, and charming handwritten memories.",
+    "description": "A dreamy Parisian journey filled with café mornings, romantic streets, treasured snapshots, and charming handwritten memories.",
+    "prompt": "Cozy travel scrapbook collage of a cute young girl traveling through Paris, France, surrounded by vintage Paris Metro tickets, aged postcards, torn paper edges, polaroid photographs, handwritten French notes, postage stamps, tiny coffee receipts, pressed flowers, Eiffel Tower, Arc de Triomphe, Notre-Dame Cathedral, charming Montmartre streets and cozy Parisian café, warm cream and blush color palette, soft golden morning light, delicate paper textures, layered scrapbook composition, nostalgic travel journal aesthetic, highly detailed illustration, whimsical cozy atmosphere, cinematic softness --ar 2:3",
+    "image": "images/paris-je-taime-travel-scrapbook.jpg",
+    "tags": [],
+    "category": "Cities",
+    "author": "Canvas Era",
+    "date": "2026-08-21"
+   },
     {
     "title": "Alchemist's Cozy Corner",
     "slug": "alchemists-cozy-corner",
