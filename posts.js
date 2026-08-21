@@ -136,6 +136,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-05-16"
   },
+   {
+    "title": "New York Moments — City Lights Scrapbook",
+    "slug": "new-york-moments-city-lights-scrapbook",
+    "desc": "A cozy New York adventure capturing bright city streets, iconic skyscrapers, coffee breaks, subway rides, and spontaneous little memories.",
+    "description": "A cozy New York adventure capturing bright city streets, iconic skyscrapers, coffee breaks, subway rides, and spontaneous little memories.",
+    "prompt": "Cozy travel scrapbook collage of a cute young girl exploring New York City, surrounded by vintage subway tickets, polaroid photographs, handwritten notes, old receipts, postage stamps, coffee shop stickers, pressed paper scraps, Statue of Liberty, Empire State Building, Brooklyn Bridge, Times Square and Central Park, warm cream and muted caramel palette with subtle city-light accents, soft golden-hour lighting, textured vintage paper, layered scrapbook composition, nostalgic urban travel journal aesthetic, highly detailed illustration, charming cozy atmosphere, cinematic softness --ar 2:3",
+    "image": "images/new-york-moments-city-lights-scrapbook.jpg",
+    "tags": [],
+    "category": "Art",
+    "author": "Canvas Era",
+    "date": "2026-08-21"
+   },
         {
     "title": "Fire Escape Cat Cyberpunk",
     "slug": "fire-escape-cat-cyberpunk",
