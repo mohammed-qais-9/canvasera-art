@@ -83,6 +83,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-15"
       },
+   {
+    "title": "Tokyo Dreaming — A Scrapbook Journey",
+    "slug": "tokyo-dreaming-a-scrapbook-journey",
+    "desc": "A playful Tokyo adventure blending neon nights, quiet temples, delicious treats, and treasured moments captured between scrapbook pages.",
+    "description": "A playful Tokyo adventure blending neon nights, quiet temples, delicious treats, and treasured moments captured between scrapbook pages.",
+    "prompt": "Cozy travel scrapbook collage of a cute young girl exploring Tokyo, Japan, surrounded by vintage train tickets, Japanese postage stamps, polaroid photographs, handwritten journal notes, washi tape, tiny ramen receipts, cherry blossom petals, paper textures, Tokyo Tower, Shibuya Crossing, Senso-ji Temple, traditional lanterns and colorful streets of Harajuku, warm cream and muted coral palette with subtle neon accents, soft evening lighting, layered travel journal composition, nostalgic paper collage, highly detailed illustration, charming whimsical atmosphere, cozy cinematic aesthetic --ar 2:3",
+    "image": "images/tokyo-dreaming-a-scrapbook-journey.jpg",
+    "tags": [],
+    "category": "Cities",
+    "author": "Canvas Era",
+    "date": "2026-08-21"
+   },
   {
     "title": "Cosmic Memory Portrait",
     "slug": "cosmic-memory-portrait",
