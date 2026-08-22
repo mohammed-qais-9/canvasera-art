@@ -1,4 +1,16 @@
 const posts = [
+    {
+    "title": "Istanbul Memories — Across Two Worlds",
+    "slug": "istanbul-memories-across-two-worlds",
+    "desc": "A warm Istanbul escape filled with colorful bazaars, ferry rides, historic mosques, Turkish tea, and softly preserved travel memories.",
+    "description": "A warm Istanbul escape filled with colorful bazaars, ferry rides, historic mosques, Turkish tea, and softly preserved travel memories.",
+    "prompt": "Cozy travel scrapbook collage of a cute young girl traveling through Istanbul, Turkey, surrounded by vintage ferry tickets, Turkish postage stamps, polaroid snapshots, handwritten travel notes, decorative paper scraps, dried flowers, tea receipts, Blue Mosque, Hagia Sophia, Galata Tower, Bosphorus ferry, Grand Bazaar and colorful Ottoman architecture, warm terracotta, cream and dusty blue palette, soft afternoon sunlight, textured handmade paper, layered vintage scrapbook composition, nostalgic travel journal feeling, highly detailed illustration, dreamy cozy atmosphere --ar 2:3",
+    "image": "images/istanbul-memories-across-two-worlds.jpg",
+    "tags": [],
+    "category": "Cities",
+    "author": "Canvas Era",
+    "date": "2026-08-22"
+    },
    {
     "title": "Warm Hearth & Heavy Rain",
     "slug": "warm-hearth-heavy-rain",
