@@ -1,4 +1,16 @@
 const posts = [
+   {
+    "title": "Warm Hearth & Heavy Rain",
+    "slug": "warm-hearth-heavy-rain",
+    "desc": " A peaceful moment by the window seat, featuring a classic wood-burning fireplace, soft candlelight, and cozy rainy day aesthetics.",
+    "description": " A peaceful moment by the window seat, featuring a classic wood-burning fireplace, soft candlelight, and cozy rainy day aesthetics.",
+    "prompt": "A cozy digital illustration of a beautiful young woman with voluminous curly brown hair adorned with small pastel flowers. She is wearing a soft, heather-gray fleece-lined lounge top and dark striped lounge pants, sitting barefoot on a wooden window seat. She has her eyes closed, smiling peacefully, resting her chin in her hands with her knees pulled up. Next to her is a classic cast-iron wood-burning fireplace with a bright roaring fire. Outside the large window, heavy rain is falling with cool moody tones. The scene is detailed with a potted green plant, a small bird perched on the sill, a vintage lantern with a glowing candle, small standalone candles, and ONE single, unique, antique-style ceramic coffee mug (matching the style from the original) filled with coffee. Crucially, only one cup is present. Contrast between cool rainy light and warm orange firelight, cozy storybook art style, highly detailed, whimsical, soft lighting.",
+    "image": "images/warm-hearth-heavy-rain.jpg",
+    "tags": [],
+    "category": "Art",
+    "author": "Canvas Era",
+    "date": "2026-08-22"
+   },
               {
     "title": "The Attic Artist",
     "slug": "the-attic-artist",
