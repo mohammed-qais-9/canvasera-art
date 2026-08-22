@@ -23,6 +23,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-15"
               },
+    {
+    "title": "Seoul in Bloom — Korean Travel Scrapbook",
+    "slug": "seoul-in-bloom-korean-travel-scrapbook",
+    "desc": "A dreamy Seoul adventure blending ancient palaces, cozy cafés, colorful streets, cherry blossoms, and cherished moments captured on paper.",
+    "description": "A dreamy Seoul adventure blending ancient palaces, cozy cafés, colorful streets, cherry blossoms, and cherished moments captured on paper.",
+    "prompt": "Cozy travel scrapbook collage of a cute young girl exploring Seoul, South Korea, surrounded by vintage subway tickets, Korean postage stamps, polaroid photographs, handwritten Korean travel notes, café receipts, delicate washi tape, pressed cherry blossoms, traditional paper fragments, Gyeongbokgung Palace, Bukchon Hanok Village, N Seoul Tower, Han River, colorful Insadong streets and charming Korean cafés, warm ivory, dusty pink and muted sage palette, soft golden afternoon lighting, subtle city reflections, textured vintage paper, layered torn scrapbook elements, nostalgic Korean travel journal aesthetic, highly detailed illustration, whimsical cozy atmosphere, dreamy cinematic softness --ar 2:3",
+    "image": "images/seoul-in-bloom-korean-travel-scrapbook.jpg",
+    "tags": [],
+    "category": "Cities",
+    "author": "Canvas Era",
+    "date": "2026-08-22"
+    },
           {
     "title": "Morning Tea in the Woods",
     "slug": "morning-tea-in-the-woods",
