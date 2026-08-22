@@ -47,6 +47,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-15"
         },
+    {
+    "title": "Venice in a Daydream — Italian Scrapbook",
+    "slug": "venice-in-a-daydream-italian-scrapbook",
+    "desc": "A romantic Venice escape drifting through canals, bridges, colorful buildings, quiet cafés, and timeless moments preserved on paper.",
+    "description": "A romantic Venice escape drifting through canals, bridges, colorful buildings, quiet cafés, and timeless moments preserved on paper.",
+    "prompt": "Cozy travel scrapbook collage of a cute young girl traveling through Venice, Italy, surrounded by vintage Vaporetto tickets, Italian postcards, polaroid photographs, handwritten notes, postage stamps, café receipts, delicate lace, pressed flowers, Rialto Bridge, Grand Canal, St. Mark's Basilica, gondolas and colorful Venetian buildings, warm ivory, dusty rose and muted teal palette, soft golden afternoon light, aged paper textures, layered torn scrapbook elements, nostalgic European travel journal aesthetic, highly detailed illustration, dreamy romantic atmosphere, gentle cinematic lighting --ar 2:3",
+    "image": "images/venice-in-a-daydream-italian-scrapbook.jpg",
+    "tags": [],
+    "category": "Cities",
+    "author": "Canvas Era",
+    "date": "2026-08-22"
+    },
       {
     "title": "The Magic Bakery",
     "slug": "the-magic-bakery",
