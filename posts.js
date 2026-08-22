@@ -59,6 +59,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-15"
           },
+   {
+    "title": "Sydney Sunsets — Australian Travel Scrapbook",
+    "slug": "sydney-sunsets-australian-travel-scrapbook",
+    "desc": "A sunny Sydney adventure filled with harbor views, colorful beaches, charming cafés, iconic landmarks, and treasured travel memories.",
+    "description": "A sunny Sydney adventure filled with harbor views, colorful beaches, charming cafés, iconic landmarks, and treasured travel memories.",
+    "prompt": "Cozy travel scrapbook collage of a cute young girl exploring Sydney, Australia, surrounded by vintage ferry tickets, Australian postage stamps, polaroid photographs, handwritten travel notes, café receipts, seashells, pressed flowers, torn paper fragments, Sydney Opera House, Sydney Harbour Bridge, Bondi Beach, colorful coastal houses and a charming harbor ferry, warm ivory, sandy beige and muted turquoise palette, soft golden sunset lighting, subtle ocean reflections, textured vintage paper, layered scrapbook elements, nostalgic Australian travel journal aesthetic, highly detailed illustration, whimsical cozy atmosphere, dreamy cinematic softness --ar 2:3",
+    "image": "images/sydney-sunsets-australian-travel-scrapbook.jpg",
+    "tags": [],
+    "category": "Cities",
+    "author": "Canvas Era",
+    "date": "2026-08-22"
+   },
         {
     "title": "Rooftop Stargazer and Cat",
     "slug": "rooftop-stargazer-and-cat",
