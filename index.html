@@ -383,6 +383,7 @@
             }));
         };
 
+        let scrollPosition = 0;
         let currentCategory = 'All';
         let currentPost = null;
         let searchQuery = '';
@@ -849,6 +850,7 @@
            the browser is at, the container ends up at the top.
            ========================================================== */
         function openModal(identifier, pushState = true) {
+            scrollPosition = window.scrollY || document.documentElement.scrollTop;
             const allSafePosts = getAllPosts();
             currentPost = allSafePosts.find(p => p.id === identifier || p.slug === identifier);
             if (!currentPost) return;
@@ -923,7 +925,6 @@
                     modalScroll.scrollTop = 0;
                     modalScroll.scrollTo({ top: 0, left: 0, behavior: 'instant' });
                 }
-                window.scrollTo(0,0);
             };
 
             forceTop();
@@ -950,6 +951,10 @@
             document.body.style.overflow = 'auto';
             currentPost = null;
             
+            setTimeout(() => {
+              window.scrollTo({ top: scrollPosition, left: 0, behavior: 'instant' });
+            }, 10);
+
             if (pushState) {
                 const newUrl = window.location.pathname;
                 history.pushState(null, '', newUrl);
@@ -1194,4 +1199,4 @@
     </script>
 </body>
 </html>
-
+```       
