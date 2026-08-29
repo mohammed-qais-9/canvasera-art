@@ -376,18 +376,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-15"
     },
-   {
+    {
     "title": "Baghdad Memories — The Heart of Mesopotamia",
     "slug": "baghdad-memories-the-heart-of-mesopotamia",
     "desc": "A nostalgic Baghdad journey celebrating ancient heritage, riverside evenings, traditional architecture, warm tea, and beautiful cultural memories.",
     "description": "A nostalgic Baghdad journey celebrating ancient heritage, riverside evenings, traditional architecture, warm tea, and beautiful cultural memories.",
     "prompt": "Cozy travel scrapbook collage of a cute young girl discovering Baghdad, Iraq, surrounded by vintage travel tickets, Iraqi postage stamps, polaroid photographs, handwritten Arabic notes, old paper fragments, traditional tea cups, Al-Mutanabbi Street, Al-Shaheed Monument, Abu Hanifa Mosque, Baghdad old city architecture, Tigris River and traditional wooden boats, subtle Mesopotamian motifs inspired by ancient Babylonian patterns, warm sand, ivory and muted gold palette, soft sunset lighting, textured aged paper, layered scrapbook composition, nostalgic cultural travel journal, highly detailed illustration, peaceful cozy atmosphere --ar 2:3",
-    "image": "images/baghdad-memories-the-heart-of-mesopotamia.jpg",
+    "image": "images/baghdad-memories-the-heart-of-mesopotamia.webp",
     "tags": [],
     "category": "Cities",
     "author": "Canvas Era",
-    "date": "2026-08-20"
-   },
+    "date": "2026-08-29"
+  },
      {
     "title": "Magical Café in Floating Islands",
     "slug": "magical-caf-in-floating-islands",
