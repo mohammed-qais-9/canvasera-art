@@ -304,31 +304,19 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-14"
     },
-   {
+    {
     "title": "Paris, Je T'Aime — Travel Scrapbook",
     "slug": "paris-je-taime-travel-scrapbook",
     "desc": "A dreamy Parisian journey filled with café mornings, romantic streets, treasured snapshots, and charming handwritten memories.",
     "description": "A dreamy Parisian journey filled with café mornings, romantic streets, treasured snapshots, and charming handwritten memories.",
     "prompt": "Cozy travel scrapbook collage of a cute young girl traveling through Paris, France, surrounded by vintage Paris Metro tickets, aged postcards, torn paper edges, polaroid photographs, handwritten French notes, postage stamps, tiny coffee receipts, pressed flowers, Eiffel Tower, Arc de Triomphe, Notre-Dame Cathedral, charming Montmartre streets and cozy Parisian café, warm cream and blush color palette, soft golden morning light, delicate paper textures, layered scrapbook composition, nostalgic travel journal aesthetic, highly detailed illustration, whimsical cozy atmosphere, cinematic softness --ar 2:3",
-    "image": "images/paris-je-taime-travel-scrapbook.jpg",
+    "image": "images/paris-je-taime-travel-scrapbook.webp",
     "tags": [],
     "category": "Cities",
     "author": "Canvas Era",
-    "date": "2026-08-21"
-   },
-    {
-    "title": "Alchemist's Cozy Corner",
-    "slug": "alchemists-cozy-corner",
-    "desc": "A cozy, cluttered room filled with glowing potion bottles, ancient books, and a little cat wearing a wizard hat",
-    "description": "A cozy, cluttered room filled with glowing potion bottles, ancient books, and a little cat wearing a wizard hat",
-    "prompt": "​Anime illustration, interior of a cozy witch's alchemy workshop, shelves stacked with glowing colorful potion jars and leather-bound books, soft golden light filtering through a stained glass window, a cute small black cat wearing a tiny wizard hat sitting on a desk, whimsical and magical atmosphere, warm tones, Studio Pierrot style, highly detailed, vibrant colors --ar 4:5",
-    "image": "images/alchemists-cozy-corner.jpg",
-    "tags": [],
-    "category": "Anime",
-    "author": "Canvas Era",
-    "date": "2026-08-14"
+    "date": "2026-08-29"
     },
-           {
+     {
     "title": "Alchemist's Cozy Corner",
     "slug": "alchemists-cozy-corner",
     "desc": "A cozy, cluttered room filled with glowing potion bottles, ancient books, and a little cat wearing a wizard hat",
@@ -336,10 +324,22 @@ const posts = [
     "prompt": "​Anime illustration, interior of a cozy witch's alchemy workshop, shelves stacked with glowing colorful potion jars and leather-bound books, soft golden light filtering through a stained glass window, a cute small black cat wearing a tiny wizard hat sitting on a desk, whimsical and magical atmosphere, warm tones, Studio Pierrot style, highly detailed, vibrant colors --ar 4:5",
     "image": "images/alchemists-cozy-corner.webp",
     "tags": [],
+    "category": "Anime",
+    "author": "Canvas Era",
+    "date": "2026-08-29"
+     },
+            {
+    "title": "The Greenhouse Botanist",
+    "slug": "the-greenhouse-botanist",
+    "desc": "A gentle boy tending to his lush indoor greenhouse, surrounded by hanging plants, sunlight, and a small watering can.",
+    "description": "A gentle boy tending to his lush indoor greenhouse, surrounded by hanging plants, sunlight, and a small watering can.",
+    "prompt": "Soft digital illustration of a young boy in a sweater tending to an indoor greenhouse, lush hanging plants and vines everywhere, sunbeams streaming through glass windows, cozy cottage-core aesthetic, warm golden light, gentle expression, detailed botanical elements, clean soft lines, warm earth tones, storybook illustration style, high quality --ar 2:3",
+    "image": "images/the-greenhouse-botanist.webp",
+    "tags": [],
     "category": "Art",
     "author": "Canvas Era",
     "date": "2026-08-29"
-           },
+            },
     {
     "title": "Prague Postcards — A Fairytale Journey",
     "slug": "prague-postcards-a-fairytale-journey",
