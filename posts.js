@@ -340,17 +340,17 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-15"
   },
-   {
+    {
     "title": "Prague Postcards — A Fairytale Journey",
     "slug": "prague-postcards-a-fairytale-journey",
-    "desc": "A magical Prague stroll filled with cobblestone streets, castle views, charming cafés, old postcards, and dreamy European memories.",
-    "description": "A magical Prague stroll filled with cobblestone streets, castle views, charming cafés, old postcards, and dreamy European memories.",
+    "desc": "A magical Prague stroll filled with cobblestone streets, castle views, charming cafés, old postcards, and dreamy European memories",
+    "description": "A magical Prague stroll filled with cobblestone streets, castle views, charming cafés, old postcards, and dreamy European memories",
     "prompt": "Cozy travel scrapbook collage of a cute young girl wandering through Prague, Czech Republic, surrounded by vintage tram tickets, antique postcards, polaroid photographs, handwritten Czech notes, postage stamps, café receipts, pressed flowers, Prague Castle, Charles Bridge, Old Town Square, Astronomical Clock and colorful historic buildings, warm cream, dusty lavender and muted terracotta palette, soft misty morning light, aged paper textures, layered scrapbook elements, nostalgic European travel journal aesthetic, highly detailed illustration, whimsical fairytale atmosphere, cozy cinematic lighting --ar 2:3",
-    "image": "images/prague-postcards-a-fairytale-journey.jpg",
+    "image": "images/prague-postcards-a-fairytale-journey.webp",
     "tags": [],
     "category": "Cities",
     "author": "Canvas Era",
-    "date": "2026-08-21"
+    "date": "2026-08-29"
   },
          {
     "title": "The Clockmaker's Apprentice",
