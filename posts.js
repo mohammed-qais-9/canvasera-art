@@ -286,11 +286,11 @@ const posts = [
     "desc": "A futuristic girl with cybernetic gear sitting on a fire escape, overlooking a rain-soaked, neon-lit metropolis",
     "description": "A futuristic girl with cybernetic gear sitting on a fire escape, overlooking a rain-soaked, neon-lit metropolis",
     "prompt": "​Cyberpunk anime portrait, a girl wearing futuristic cybernetic headphones and a techwear jacket, sitting on a fire escape, rainy night in a futuristic metropolis, reflection of neon signs in wet puddles, soft bokeh city lights in the background, synthwave color palette (neon blue and pink), moody lighting, sharp focus on eyes, ultra-detailed, futuristic urban aesthetic --ar 9:16",
-    "image": "images/midnight-neon-dreamer.jpg",
+    "image": "images/midnight-neon-dreamer.webp",
     "tags": [],
     "category": "Anime",
     "author": "Canvas Era",
-    "date": "2026-08-14"
+    "date": "2026-08-29"
     },
      {
     "title": "Rainy Day Serenity: A Childhood Memory",
