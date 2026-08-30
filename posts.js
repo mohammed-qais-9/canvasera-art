@@ -214,24 +214,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-05-15"
   },
-  {
+   {
     "title": "The Feathered Adventures - Cozy Bookshop Storybook Art",
-    "slug": "cozy-bookshop-storybook-art",
+    "slug": "the-feathered-adventures-cozy-bookshop-storybook-art",
     "desc": "Whimsical children's book illustration of a cozy bookshop girl reading about birds with warm pastel colors and storybook charm.",
     "description": "Whimsical children's book illustration of a cozy bookshop girl reading about birds with warm pastel colors and storybook charm.",
     "prompt": "A whimsical children's book illustration style artwork, a young girl with messy tousled blonde hair tied up with red cherry hair clips, wearing round oversized black glasses, sitting cross-legged on a windowsill in a cozy bookshop, reading an open picture book with colorful bird illustrations, wearing a striped long-sleeve shirt and rolled-up blue jeans with pink sneakers, surrounded by tall wooden bookshelves filled with colorful books, vintage bird illustration prints hanging on a mint-green wall, string lights with warm glowing bulbs hanging above, a small yellow toy bird chick sitting beside her, potted plants nearby, stacks of books on the floor, warm cozy lighting, soft pastel color palette, detailed ink linework with watercolor-style shading, adorable big-eyed character design, storybook illustration aesthetic --ar 2:3",
-    "image": "images/cozy-bookshop-girl.jpg",
-    "tags": [
-      "Whimsical",
-      "Children Book",
-      "Cozy",
-      "Storybook",
-      "Illustration"
-    ],
+    "image": "images/the-feathered-adventures-cozy-bookshop-storybook-art.webp",
+    "tags": [],
     "category": "Art",
     "author": "Canvas Era",
-    "date": "2026-05-16"
-  },
+    "date": "2026-08-30"
+   },
        {
     "title": "New York Moments — City Lights Scrapbook",
     "slug": "new-york-moments-city-lights-scrapbook",
