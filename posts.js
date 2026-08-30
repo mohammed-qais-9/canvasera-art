@@ -71,18 +71,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-22"
     },
-          {
+       {
     "title": "Morning Tea in the Woods",
     "slug": "morning-tea-in-the-woods",
     "desc": "A girl sitting on a porch chair overlooking a misty forest, holding a warm cup of tea, with a peaceful expression.",
     "description": "A girl sitting on a porch chair overlooking a misty forest, holding a warm cup of tea, with a peaceful expression.",
     "prompt": "A beautiful digital illustration of a girl sitting in a wooden porch chair holding a steaming cup of tea, looking out at a serene misty forest, wearing a cozy oversized cardigan, soft morning lighting, intricate foliage, serene and peaceful expression, warm natural tones, soft lines, storybook illustration, highly detailed, whimsical and calm aesthetic --ar 2:3",
-    "image": "images/morning-tea-in-the-woods.jpg",
-    "tags": ["cozy", "forest", "morning"],
+    "image": "images/morning-tea-in-the-woods.webp",
+    "tags": [],
     "category": "Art",
     "author": "Canvas Era",
-    "date": "2026-08-15"
-          },
+    "date": "2026-08-30"
+       },
          {
     "title": "Starlight Weaver",
     "slug": "starlight-weaver",
