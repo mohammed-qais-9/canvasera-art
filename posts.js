@@ -1,5 +1,5 @@
 const posts = [
-      {
+  {
     "title": "Crimson Heritage Portrait",
     "slug": "crimson-heritage-portrait",
     "desc": "A breathtaking portrait of a beautiful woman in traditional embroidered clothing, holding a bowl of fresh fruit against a richly detailed floral tapestry background.",
@@ -10,20 +10,20 @@ const posts = [
     "category": "Art",
     "author": "Canvas Era",
     "date": "2026-08-29"
-      },
-     {
+  },
+  {
     "title": "Anime Heritage Tapestry",
     "slug": "anime-heritage-tapestry",
     "desc": "A beautiful anime-style portrait of a girl in traditional embroidered clothing, holding fresh pomegranates against a rich floral tapestry background.",
     "description": "A beautiful anime-style portrait of a girl in traditional embroidered clothing, holding fresh pomegranates against a rich floral tapestry background.",
-    "prompt": "​A beautiful anime girl in the style of Kyoto Animation, wearing an intricately embroidered traditional dress, holding a bowl of fresh pomegranates. The background is a rich, highly detailed floral tapestry with deep reds, golds, and midnight blues. Masterpiece anime illustration, vibrant colors, cultural aesthetic, 8k --ar 9:16",
+    "prompt": "A beautiful anime girl in the style of Kyoto Animation, wearing an intricately embroidered traditional dress, holding a bowl of fresh pomegranates. The background is a rich, highly detailed floral tapestry with deep reds, golds, and midnight blues. Masterpiece anime illustration, vibrant colors, cultural aesthetic, 8k --ar 9:16",
     "image": "images/anime-heritage-tapestry.jpg",
     "tags": [],
     "category": "Anime",
     "author": "Canvas Era",
     "date": "2026-08-29"
-     },
-    {
+  },
+  {
     "title": "Istanbul Memories — Across Two Worlds",
     "slug": "istanbul-memories-across-two-worlds",
     "desc": "A warm Istanbul escape filled with colorful bazaars, ferry rides, historic mosques, Turkish tea, and softly preserved travel memories.",
@@ -34,20 +34,20 @@ const posts = [
     "category": "Cities",
     "author": "Canvas Era",
     "date": "2026-08-22"
-    },
-   {
+  },
+  {
     "title": "Warm Hearth & Heavy Rain",
     "slug": "warm-hearth-heavy-rain",
-    "desc": " A peaceful moment by the window seat, featuring a classic wood-burning fireplace, soft candlelight, and cozy rainy day aesthetics.",
-    "description": " A peaceful moment by the window seat, featuring a classic wood-burning fireplace, soft candlelight, and cozy rainy day aesthetics.",
+    "desc": "A peaceful moment by the window seat, featuring a classic wood-burning fireplace, soft candlelight, and cozy rainy day aesthetics.",
+    "description": "A peaceful moment by the window seat, featuring a classic wood-burning fireplace, soft candlelight, and cozy rainy day aesthetics.",
     "prompt": "A cozy digital illustration of a beautiful young woman with voluminous curly brown hair adorned with small pastel flowers. She is wearing a soft, heather-gray fleece-lined lounge top and dark striped lounge pants, sitting barefoot on a wooden window seat. She has her eyes closed, smiling peacefully, resting her chin in her hands with her knees pulled up. Next to her is a classic cast-iron wood-burning fireplace with a bright roaring fire. Outside the large window, heavy rain is falling with cool moody tones. The scene is detailed with a potted green plant, a small bird perched on the sill, a vintage lantern with a glowing candle, small standalone candles, and ONE single, unique, antique-style ceramic coffee mug (matching the style from the original) filled with coffee. Crucially, only one cup is present. Contrast between cool rainy light and warm orange firelight, cozy storybook art style, highly detailed, whimsical, soft lighting.",
     "image": "images/warm-hearth-heavy-rain.jpg",
     "tags": [],
     "category": "Art",
     "author": "Canvas Era",
     "date": "2026-08-22"
-   },
-               {
+  },
+  {
     "title": "The Attic Artist",
     "slug": "the-attic-artist",
     "desc": "A girl sitting on the floor of a sunlit attic, painting on a small canvas, surrounded by messy paint tubes and sketches.",
@@ -58,8 +58,8 @@ const posts = [
     "category": "Art",
     "author": "Canvas Era",
     "date": "2026-08-30"
-               },
-     {
+  },
+  {
     "title": "Seoul in Bloom — Korean Travel Scrapbook",
     "slug": "seoul-in-bloom-korean-travel-scrapbook",
     "desc": "A dreamy Seoul adventure blending ancient palaces, cozy cafés, colorful streets, cherry blossoms, and cherished moments captured on paper.",
@@ -70,8 +70,8 @@ const posts = [
     "category": "Cities",
     "author": "Canvas Era",
     "date": "2026-08-30"
-          },
-       {
+  },
+  {
     "title": "Morning Tea in the Woods",
     "slug": "morning-tea-in-the-woods",
     "desc": "A girl sitting on a porch chair overlooking a misty forest, holding a warm cup of tea, with a peaceful expression.",
@@ -82,20 +82,20 @@ const posts = [
     "category": "Art",
     "author": "Canvas Era",
     "date": "2026-08-30"
-       },
-         {
+  },
+  {
     "title": "Starlight Weaver",
     "slug": "starlight-weaver",
     "desc": "A goddess-like girl weaving starlight into the fabric of the night sky above a calm ocean.",
     "description": "A goddess-like girl weaving starlight into the fabric of the night sky above a calm ocean.",
-    "prompt": "​Shoujo anime style, an elegant girl with flowing silver hair standing above a calm moonlit ocean, weaving glowing stardust threads into the sky, celestial jewelry, sparkles and magical light effects, dreamy and ethereal atmosphere, soft dreamy colors, intricate dress design, high quality, digital art, masterpiece --ar 2:3",
+    "prompt": "Shoujo anime style, an elegant girl with flowing silver hair standing above a calm moonlit ocean, weaving glowing stardust threads into the sky, celestial jewelry, sparkles and magical light effects, dreamy and ethereal atmosphere, soft dreamy colors, intricate dress design, high quality, digital art, masterpiece --ar 2:3",
     "image": "images/starlight-weaver.webp",
     "tags": [],
     "category": "Anime",
     "author": "Canvas Era",
     "date": "2026-08-30"
-         },
-     {
+  },
+  {
     "title": "Venice in a Daydream — Italian Scrapbook",
     "slug": "venice-in-a-daydream-italian-scrapbook",
     "desc": "A romantic Venice escape drifting through canals, bridges, colorful buildings, quiet cafés, and timeless moments preserved on paper.",
@@ -106,20 +106,20 @@ const posts = [
     "category": "Cities",
     "author": "Canvas Era",
     "date": "2026-08-30"
-     },
-       {
+  },
+  {
     "title": "The Magic Bakery",
     "slug": "the-magic-bakery",
     "desc": "A young girl preparing magical pastries in a cozy, sunlit kitchen filled with floating flour particles and glowing jars",
     "description": "A young girl preparing magical pastries in a cozy, sunlit kitchen filled with floating flour particles and glowing jars",
-    "prompt": "​Anime style, cozy bakery kitchen interior, warm golden hour sunlight, a cute girl with braided hair baking magical sweets, floating flour dust particles, copper kitchen tools, soft and nostalgic aesthetic, Kyoto Animation style, highly detailed, vibrant and warm colors, masterpiece, peaceful mood --ar 4:5",
+    "prompt": "Anime style, cozy bakery kitchen interior, warm golden hour sunlight, a cute girl with braided hair baking magical sweets, floating flour dust particles, copper kitchen tools, soft and nostalgic aesthetic, Kyoto Animation style, highly detailed, vibrant and warm colors, masterpiece, peaceful mood --ar 4:5",
     "image": "images/the-magic-bakery.webp",
     "tags": [],
     "category": "Anime",
     "author": "Canvas Era",
     "date": "2026-08-30"
-       },
-           {
+  },
+  {
     "title": "Cozy Bookshop Bird Watcher",
     "slug": "cozy-bookshop-bird-watcher",
     "desc": "Messy-haired girl with cherry clips reads a bird book in a warm little bookshop",
@@ -130,8 +130,8 @@ const posts = [
     "category": "Art",
     "author": "Canvas Era",
     "date": "2026-08-30"
-           },
-    {
+  },
+  {
     "title": "Sydney Sunsets — Australian Travel Scrapbook",
     "slug": "sydney-sunsets-australian-travel-scrapbook",
     "desc": "A sunny Sydney adventure filled with harbor views, colorful beaches, charming cafés, iconic landmarks, and treasured travel memories.",
@@ -142,8 +142,8 @@ const posts = [
     "category": "Cities",
     "author": "Canvas Era",
     "date": "2026-08-30"
-    },
-         {
+  },
+  {
     "title": "Rooftop Stargazer and Cat",
     "slug": "rooftop-stargazer-and-cat",
     "desc": "Girl in a knit sweater stargazes on a cottage rooftop with her sleepy cat",
@@ -154,8 +154,8 @@ const posts = [
     "category": "Art",
     "author": "Canvas Era",
     "date": "2026-08-30"
-         },
-       {
+  },
+  {
     "title": "Rainy Window Letter Writer",
     "slug": "rainy-window-letter-writer",
     "desc": "Girl in a wool shawl writes a letter by candlelight as rain taps the window",
@@ -166,8 +166,8 @@ const posts = [
     "category": "Art",
     "author": "Canvas Era",
     "date": "2026-08-30"
-       },
-    {
+  },
+  {
     "title": "Tokyo Dreaming — A Scrapbook Journey",
     "slug": "tokyo-dreaming-a-scrapbook-journey",
     "desc": "A playful Tokyo adventure blending neon nights, quiet temples, delicious treats, and treasured moments captured between scrapbook pages.",
@@ -178,8 +178,8 @@ const posts = [
     "category": "Cities",
     "author": "Canvas Era",
     "date": "2026-08-30"
-    },
-   {
+  },
+  {
     "title": "Cosmic Memory Portrait",
     "slug": "cosmic-memory-portrait",
     "desc": "A captivating digital oil painting of a woman merged with glowing cosmic nebula and golden floral elements.",
@@ -190,8 +190,8 @@ const posts = [
     "category": "Art",
     "author": "Canvas Era",
     "date": "2026-08-30"
-   },
-   {
+  },
+  {
     "title": "Neo-Kyo Cyber Fashion Icon",
     "slug": "neo-kyo-cyber-fashion-icon",
     "desc": "Futuristic cyberpunk anime portrait of a girl in high-tech streetwear with holographic visor in a neon-drenched rainy Tokyo night.",
@@ -202,8 +202,8 @@ const posts = [
     "category": "Anime",
     "author": "Canvas Era",
     "date": "2026-08-30"
-   },
-   {
+  },
+  {
     "title": "The Feathered Adventures - Cozy Bookshop Storybook Art",
     "slug": "the-feathered-adventures-cozy-bookshop-storybook-art",
     "desc": "Whimsical children's book illustration of a cozy bookshop girl reading about birds with warm pastel colors and storybook charm.",
@@ -214,8 +214,8 @@ const posts = [
     "category": "Art",
     "author": "Canvas Era",
     "date": "2026-08-30"
-   },
-       {
+  },
+  {
     "title": "New York Moments — City Lights Scrapbook",
     "slug": "new-york-moments-city-lights-scrapbook",
     "desc": "A cozy New York adventure capturing bright city streets, iconic skyscrapers, coffee breaks, subway rides, and spontaneous little memories.",
@@ -226,8 +226,8 @@ const posts = [
     "category": "Cities",
     "author": "Canvas Era",
     "date": "2026-08-30"
-       },
-         {
+  },
+  {
     "title": "Fire Escape Cat Cyberpunk",
     "slug": "fire-escape-cat-cyberpunk",
     "desc": "Techwear girl and her cat watch neon rain from a fire",
@@ -238,8 +238,8 @@ const posts = [
     "category": "Anime",
     "author": "Canvas Era",
     "date": "2026-08-30"
-         },
-         {
+  },
+  {
     "title": "Cottage Kitchen Bread",
     "slug": "cottage-kitchen-bread",
     "desc": "Apron-clad girl kneads dough in a flour-dusted cottage kitchen at sunrise",
@@ -251,7 +251,7 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-30"
   },
-    {
+  {
     "title": "London Calling — Rainy Day Scrapbook",
     "slug": "london-calling-rainy-day-scrapbook",
     "desc": "A charming London adventure with rainy streets, red buses, cozy cafés, historic landmarks, and little memories tucked between pages.",
@@ -263,19 +263,19 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-30"
   },
-    {
+  {
     "title": "Midnight Neon Dreamer",
     "slug": "midnight-neon-dreamer",
     "desc": "A futuristic girl with cybernetic gear sitting on a fire escape, overlooking a rain-soaked, neon-lit metropolis",
     "description": "A futuristic girl with cybernetic gear sitting on a fire escape, overlooking a rain-soaked, neon-lit metropolis",
-    "prompt": "​Cyberpunk anime portrait, a girl wearing futuristic cybernetic headphones and a techwear jacket, sitting on a fire escape, rainy night in a futuristic metropolis, reflection of neon signs in wet puddles, soft bokeh city lights in the background, synthwave color palette (neon blue and pink), moody lighting, sharp focus on eyes, ultra-detailed, futuristic urban aesthetic --ar 9:16",
+    "prompt": "Cyberpunk anime portrait, a girl wearing futuristic cybernetic headphones and a techwear jacket, sitting on a fire escape, rainy night in a futuristic metropolis, reflection of neon signs in wet puddles, soft bokeh city lights in the background, synthwave color palette (neon blue and pink), moody lighting, sharp focus on eyes, ultra-detailed, futuristic urban aesthetic --ar 9:16",
     "image": "images/midnight-neon-dreamer.webp",
     "tags": [],
     "category": "Anime",
     "author": "Canvas Era",
     "date": "2026-08-29"
-    },
-     {
+  },
+  {
     "title": "Rainy Day Serenity: A Childhood Memory",
     "slug": "rainy-day-serenity-a-childhood-memory",
     "desc": "Embrace the comfort of a rainy afternoon with this enchanting illustration. Featuring a joyful girl and her faithful white cat amidst a garden of blooming roses, this piece perfectly captures the innocence, warmth, and nostalgia of childhood on a gentle rainy day.",
@@ -287,7 +287,7 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-29"
   },
-    {
+  {
     "title": "Paris, Je T'Aime — Travel Scrapbook",
     "slug": "paris-je-taime-travel-scrapbook",
     "desc": "A dreamy Parisian journey filled with café mornings, romantic streets, treasured snapshots, and charming handwritten memories.",
@@ -298,20 +298,20 @@ const posts = [
     "category": "Cities",
     "author": "Canvas Era",
     "date": "2026-08-29"
-    },
-     {
+  },
+  {
     "title": "Alchemist's Cozy Corner",
     "slug": "alchemists-cozy-corner",
     "desc": "A cozy, cluttered room filled with glowing potion bottles, ancient books, and a little cat wearing a wizard hat",
     "description": "A cozy, cluttered room filled with glowing potion bottles, ancient books, and a little cat wearing a wizard hat",
-    "prompt": "​Anime illustration, interior of a cozy witch's alchemy workshop, shelves stacked with glowing colorful potion jars and leather-bound books, soft golden light filtering through a stained glass window, a cute small black cat wearing a tiny wizard hat sitting on a desk, whimsical and magical atmosphere, warm tones, Studio Pierrot style, highly detailed, vibrant colors --ar 4:5",
+    "prompt": "Anime illustration, interior of a cozy witch's alchemy workshop, shelves stacked with glowing colorful potion jars and leather-bound books, soft golden light filtering through a stained glass window, a cute small black cat wearing a tiny wizard hat sitting on a desk, whimsical and magical atmosphere, warm tones, Studio Pierrot style, highly detailed, vibrant colors --ar 4:5",
     "image": "images/alchemists-cozy-corner.webp",
     "tags": [],
     "category": "Anime",
     "author": "Canvas Era",
     "date": "2026-08-29"
-     },
-            {
+  },
+  {
     "title": "The Greenhouse Botanist",
     "slug": "the-greenhouse-botanist",
     "desc": "A gentle boy tending to his lush indoor greenhouse, surrounded by hanging plants, sunlight, and a small watering can.",
@@ -322,8 +322,8 @@ const posts = [
     "category": "Art",
     "author": "Canvas Era",
     "date": "2026-08-29"
-            },
-    {
+  },
+  {
     "title": "Prague Postcards — A Fairytale Journey",
     "slug": "prague-postcards-a-fairytale-journey",
     "desc": "A magical Prague stroll filled with cobblestone streets, castle views, charming cafés, old postcards, and dreamy European memories",
@@ -335,31 +335,31 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-29"
   },
-         {
+  {
     "title": "The Clockmaker's Apprentice",
     "slug": "the-clockmakers-apprentice",
     "desc": "A boy sitting at a desk filled with gears and clocks, working with a small tool under the warm light of a desk lamp.",
     "description": "A boy sitting at a desk filled with gears and clocks, working with a small tool under the warm light of a desk lamp.",
-    "prompt": "Charming digital illustration of a young boy working on a vintage wooden clock at a cluttered wooden desk, surrounded by gears and tools, warm amber desk lamp lighting, cozy rustic workshop, soft shadows, intricate details, gentle focus, warm color palette (browns, creams, gold), storybook illustration, peaceful and focused atmosphere --ar 4:5\"",
+    "prompt": "Charming digital illustration of a young boy working on a vintage wooden clock at a cluttered wooden desk, surrounded by gears and tools, warm amber desk lamp lighting, cozy rustic workshop, soft shadows, intricate details, gentle focus, warm color palette (browns, creams, gold), storybook illustration, peaceful and focused atmosphere --ar 4:5",
     "image": "images/the-clockmakers-apprentice.webp",
     "tags": [],
     "category": "Art",
     "author": "Canvas Era",
     "date": "2026-08-29"
   },
-     {
+  {
     "title": "Sakura Blade Spirit",
     "slug": "sakura-blade-spirit",
     "desc": "A samurai girl in traditional attire standing amidst a storm of falling cherry blossoms",
     "description": "A samurai girl in traditional attire standing amidst a storm of falling cherry blossoms",
-    "prompt": "​Anime illustration, beautiful samurai girl wearing a traditional kimono with intricate floral patterns, standing in the middle of a massive cherry blossom storm, petals flying everywhere, serene expression, sunset lighting, ukiyo-e inspired colors mixed with modern anime style, sharp details, atmospheric, epic composition, ultra-fine art --ar 2:3",
+    "prompt": "Anime illustration, beautiful samurai girl wearing a traditional kimono with intricate floral patterns, standing in the middle of a massive cherry blossom storm, petals flying everywhere, serene expression, sunset lighting, ukiyo-e inspired colors mixed with modern anime style, sharp details, atmospheric, epic composition, ultra-fine art --ar 2:3",
     "image": "images/sakura-blade-spirit.webp",
     "tags": [],
     "category": "Anime",
     "author": "Canvas Era",
     "date": "2026-08-29"
   },
-    {
+  {
     "title": "Baghdad Memories — The Heart of Mesopotamia",
     "slug": "baghdad-memories-the-heart-of-mesopotamia",
     "desc": "A nostalgic Baghdad journey celebrating ancient heritage, riverside evenings, traditional architecture, warm tea, and beautiful cultural memories.",
@@ -371,7 +371,7 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-29"
   },
-     {
+  {
     "title": "Magical Café in Floating Islands",
     "slug": "magical-caf-in-floating-islands",
     "desc": "A cozy fantasy coffee shop perched on a floating island above the clouds, serving magical creatures.",
@@ -382,7 +382,6 @@ const posts = [
     "category": "Anime",
     "author": "Canvas Era",
     "date": "2026-08-29"
-     },
-          
-  
+  }
+      
 ];
