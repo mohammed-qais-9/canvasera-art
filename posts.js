@@ -179,23 +179,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-21"
    },
-  {
+   {
     "title": "Cosmic Memory Portrait",
     "slug": "cosmic-memory-portrait",
     "desc": "A captivating digital oil painting of a woman merged with glowing cosmic nebula and golden floral elements.",
     "description": "A captivating digital oil painting of a woman merged with glowing cosmic nebula and golden floral elements.",
     "prompt": "Surreal digital portrait painting of a woman's side profile, blending seamlessly into a glowing galaxy nebula and gold leaf flowers, expressive brush strokes, dramatic chiaroscuro lighting, dark background, fine art style, trending on ArtStation --ar 3:4",
-    "image": "images/cosmic-memory.jpg",
-    "tags": [
-      "Surreal",
-      "Portrait",
-      "Cosmic",
-      "Oil Painting"
-    ],
+    "image": "images/cosmic-memory-portrait.webp",
+    "tags": [],
     "category": "Art",
     "author": "Canvas Era",
-    "date": "2026-05-14"
-  },
+    "date": "2026-08-30"
+   },
    {
     "title": "Neo-Kyo Cyber Fashion Icon",
     "slug": "neo-kyo-cyber-fashion-icon",
