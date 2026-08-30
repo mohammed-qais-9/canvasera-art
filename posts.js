@@ -47,18 +47,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-22"
    },
-              {
+               {
     "title": "The Attic Artist",
     "slug": "the-attic-artist",
     "desc": "A girl sitting on the floor of a sunlit attic, painting on a small canvas, surrounded by messy paint tubes and sketches.",
     "description": "A girl sitting on the floor of a sunlit attic, painting on a small canvas, surrounded by messy paint tubes and sketches.",
     "prompt": "Whimsical digital illustration of a girl painting on a canvas in a sunlit cozy attic, messy art supplies, scattered sketches, soft dust motes dancing in the light, warm inviting atmosphere, nostalgic aesthetic, soft painterly brushstrokes, detailed background, warm beige and pastel colors, storybook art style, highly detailed --ar 2:3",
-    "image": "images/the-attic-artist.jpg",
-    "tags": ["cozy", "art studio", "ghibli"],
+    "image": "images/the-attic-artist.webp",
+    "tags": [],
     "category": "Art",
     "author": "Canvas Era",
-    "date": "2026-08-15"
-              },
+    "date": "2026-08-30"
+               },
     {
      {
     "title": "Seoul in Bloom — Korean Travel Scrapbook",
