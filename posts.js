@@ -59,7 +59,6 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-30"
                },
-    {
      {
     "title": "Seoul in Bloom — Korean Travel Scrapbook",
     "slug": "seoul-in-bloom-korean-travel-scrapbook",
