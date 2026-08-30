@@ -196,24 +196,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-05-14"
   },
-  {
+   {
     "title": "Neo-Kyo Cyber Fashion Icon",
     "slug": "neo-kyo-cyber-fashion-icon",
     "desc": "Futuristic cyberpunk anime portrait of a girl in high-tech streetwear with holographic visor in a neon-drenched rainy Tokyo night.",
     "description": "Futuristic cyberpunk anime portrait of a girl in high-tech streetwear with holographic visor in a neon-drenched rainy Tokyo night.",
     "prompt": "Cyberpunk fashion portrait, anime girl wearing a translucent futuristic visor and techwear jacket, vibrant neon bokeh background with city lights, soft rain streaks, blue and magenta color grading, sharp focus on expressive eyes, cinematic composition, futuristic urban aesthetic, masterpiece --ar 9:16",
-    "image": "images/anime-cyber-fashion.jpg",
-    "tags": [
-      "Anime",
-      "Cyberpunk",
-      "Techwear",
-      "Neon",
-      "Futuristic"
-    ],
+    "image": "images/neo-kyo-cyber-fashion-icon.webp",
+    "tags": [],
     "category": "Anime",
     "author": "Canvas Era",
-    "date": "2026-05-15"
-  },
+    "date": "2026-08-30"
+   },
    {
     "title": "The Feathered Adventures - Cozy Bookshop Storybook Art",
     "slug": "the-feathered-adventures-cozy-bookshop-storybook-art",
