@@ -232,30 +232,30 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-05-16"
   },
-   {
+       {
     "title": "New York Moments — City Lights Scrapbook",
     "slug": "new-york-moments-city-lights-scrapbook",
     "desc": "A cozy New York adventure capturing bright city streets, iconic skyscrapers, coffee breaks, subway rides, and spontaneous little memories.",
     "description": "A cozy New York adventure capturing bright city streets, iconic skyscrapers, coffee breaks, subway rides, and spontaneous little memories.",
     "prompt": "Cozy travel scrapbook collage of a cute young girl exploring New York City, surrounded by vintage subway tickets, polaroid photographs, handwritten notes, old receipts, postage stamps, coffee shop stickers, pressed paper scraps, Statue of Liberty, Empire State Building, Brooklyn Bridge, Times Square and Central Park, warm cream and muted caramel palette with subtle city-light accents, soft golden-hour lighting, textured vintage paper, layered scrapbook composition, nostalgic urban travel journal aesthetic, highly detailed illustration, charming cozy atmosphere, cinematic softness --ar 2:3",
-    "image": "images/new-york-moments-city-lights-scrapbook.jpg",
+    "image": "images/new-york-moments-city-lights-scrapbook.webp",
     "tags": [],
     "category": "Cities",
     "author": "Canvas Era",
-    "date": "2026-08-21"
-   },
-        {
+    "date": "2026-08-30"
+       },
+         {
     "title": "Fire Escape Cat Cyberpunk",
     "slug": "fire-escape-cat-cyberpunk",
-    "desc": "Techwear girl and her cat watch neon rain from a fire ",
-    "description": "Techwear girl and her cat watch neon rain from a fire ",
+    "desc": "Techwear girl and her cat watch neon rain from a fire",
+    "description": "Techwear girl and her cat watch neon rain from a fire",
     "prompt": "cyberpunk girl with silver-streaked hair, oversized techwear jacket, sitting on a rusty fire escape with a small robotic cat curled beside her, rainy neon Tokyo alley glowing below with pink and blue signage, warm golden light spilling from her apartment window behind her, steam rising from a nearby vent, cozy plus futuristic mood, soft bokeh lights, cinematic detail --ar 9:16",
-    "image": "images/fire-escape-cat-cyberpunk.jpg",
+    "image": "images/fire-escape-cat-cyberpunk.webp",
     "tags": [],
     "category": "Anime",
     "author": "Canvas Era",
-    "date": "2026-08-15"
-        },
+    "date": "2026-08-30"
+         },
          {
     "title": "Cottage Kitchen Bread",
     "slug": "cottage-kitchen-bread",
