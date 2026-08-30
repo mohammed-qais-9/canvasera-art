@@ -1,16 +1,16 @@
 const posts = [
-  {
+   {
     "title": "Crimson Heritage Portrait",
     "slug": "crimson-heritage-portrait",
     "desc": "A breathtaking portrait of a beautiful woman in traditional embroidered clothing, holding a bowl of fresh fruit against a richly detailed floral tapestry background.",
     "description": "A breathtaking portrait of a beautiful woman in traditional embroidered clothing, holding a bowl of fresh fruit against a richly detailed floral tapestry background.",
     "prompt": "A highly detailed, stylized digital illustration of a beautiful young woman with long, flowing dark hair and blonde highlights. She has large expressive brown eyes, prominent winged eyeliner, rosy cheeks, and red lips. She is wearing a large, ornate traditional round earring with a red gemstone. She gracefully holds a decorative blue and gold bowl filled with red pomegranate seeds, berries, and slices of watermelon. Her dress is an elegant, wide-necked cream garment covered in intricate, traditional floral and botanical patterns in red, blue, and gold. The background is dark and densely packed with rich, flat-style folk-art floral motifs, mandalas, and vibrant botanical elements. Rich warm colors, high contrast, 2D flat art style blended with modern character design, masterpiece, highly aesthetic.\n9:16",
-    "image": "images/crimson-heritage-portrait.jpg",
+    "image": "images/crimson-heritage-portrait.webp",
     "tags": [],
     "category": "Art",
     "author": "Canvas Era",
-    "date": "2026-08-29"
-  },
+    "date": "2026-08-30"
+   },
   {
     "title": "Anime Heritage Tapestry",
     "slug": "anime-heritage-tapestry",
