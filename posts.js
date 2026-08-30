@@ -59,7 +59,7 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-30"
   },
-  {
+   {
     "title": "Seoul in Bloom — Korean Travel Scrapbook",
     "slug": "seoul-in-bloom-korean-travel-scrapbook",
     "desc": "A dreamy Seoul adventure blending ancient palaces, cozy cafés, colorful streets, cherry blossoms, and cherished moments captured on paper.",
@@ -70,7 +70,7 @@ const posts = [
     "category": "Cities",
     "author": "Canvas Era",
     "date": "2026-08-30"
-  },
+   },
   {
     "title": "Morning Tea in the Woods",
     "slug": "morning-tea-in-the-woods",
