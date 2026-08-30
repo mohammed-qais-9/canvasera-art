@@ -11,18 +11,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-30"
    },
-  {
+   {
     "title": "Anime Heritage Tapestry",
     "slug": "anime-heritage-tapestry",
     "desc": "A beautiful anime-style portrait of a girl in traditional embroidered clothing, holding fresh pomegranates against a rich floral tapestry background.",
     "description": "A beautiful anime-style portrait of a girl in traditional embroidered clothing, holding fresh pomegranates against a rich floral tapestry background.",
     "prompt": "A beautiful anime girl in the style of Kyoto Animation, wearing an intricately embroidered traditional dress, holding a bowl of fresh pomegranates. The background is a rich, highly detailed floral tapestry with deep reds, golds, and midnight blues. Masterpiece anime illustration, vibrant colors, cultural aesthetic, 8k --ar 9:16",
-    "image": "images/anime-heritage-tapestry.jpg",
+    "image": "images/anime-heritage-tapestry.webp",
     "tags": [],
     "category": "Anime",
     "author": "Canvas Era",
-    "date": "2026-08-29"
-  },
+    "date": "2026-08-30"
+   },
    {
     "title": "Istanbul Memories — Across Two Worlds",
     "slug": "istanbul-memories-across-two-worlds",
