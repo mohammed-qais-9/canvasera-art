@@ -83,18 +83,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-30"
   },
-  {
+   {
     "title": "Starlight Weaver",
     "slug": "starlight-weaver",
-    "desc": "A goddess-like girl weaving starlight into the fabric of the night sky above a calm ocean.",
-    "description": "A goddess-like girl weaving starlight into the fabric of the night sky above a calm ocean.",
+    "desc": "​A mesmerizing anime-style girl weaving magical starlight into the night sky above a peaceful moonlit ocean.",
+    "description": "​A mesmerizing anime-style girl weaving magical starlight into the night sky above a peaceful moonlit ocean.",
     "prompt": "Shoujo anime style, an elegant girl with flowing silver hair standing above a calm moonlit ocean, weaving glowing stardust threads into the sky, celestial jewelry, sparkles and magical light effects, dreamy and ethereal atmosphere, soft dreamy colors, intricate dress design, high quality, digital art, masterpiece --ar 2:3",
     "image": "images/starlight-weaver.webp",
     "tags": [],
     "category": "Anime",
     "author": "Canvas Era",
     "date": "2026-08-30"
-  },
+   },
   {
     "title": "Venice in a Daydream — Italian Scrapbook",
     "slug": "venice-in-a-daydream-italian-scrapbook",
