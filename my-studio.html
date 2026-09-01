@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Canvas Era - Prompt Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FAF9F6;--card:#FFFFFF;--ink:#2D2D2D;--muted:#6B6B6B;--accent:#4A4036;--accent2:#362E26;--line:#E6E2D8;--out:#1C1B1A;--outT:#E8E6E3;--soft:0 4px 20px rgba(0,0,0,.03);--focus:0 0 0 3px rgba(74,64,54,.2)}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--ink);font-family:Inter,sans-serif;line-height:1.6;padding:2rem 1rem;min-height:100vh}
+h1,h2,h3{font-family:'Playfair Display',serif}
+.app{max-width:900px;margin:0 auto;background:var(--card);padding:2.5rem;border-radius:24px;box-shadow:var(--soft);border:1px solid var(--line)}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+.logo{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:600}
+.badge{font-size:.75rem;color:var(--muted);border:1px solid var(--line);padding:.3rem .8rem;border-radius:999px;background:var(--bg)}
+.subtitle{text-align:center;color:var(--muted);margin-bottom:2.5rem;font-weight:300}
+h1{font-size:2.3rem;font-weight:600;margin-bottom:.3rem;text-align:center}
+.sec{font-size:1.15rem;margin-bottom:1rem}
+.input-group{margin-bottom:2rem}
+.main-input{width:100%;padding:1rem 1.25rem;font-size:1.05rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);transition:.3s;outline:none;resize:vertical;min-height:80px}
+.main-input:focus{border-color:var(--accent);box-shadow:var(--focus);background:var(--card)}
+.cat{margin-bottom:1.7rem}.cat-title{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.6rem;font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:.6rem}
+.tag{padding:.45rem 1.1rem;font-size:.88rem;background:var(--card);border:1px solid var(--line);border-radius:999px;cursor:pointer;transition:.2s;user-select:none}
+.tag:hover{border-color:var(--accent);background:var(--bg)}
+.tag.active{background:var(--accent);color:var(--bg);border-color:var(--accent);box-shadow:0 4px 12px rgba(74,64,54,.15);transform:translateY(-1px)}
+.output-sec{margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--line)}
+.output{width:100%;min-height:120px;padding:1.4rem;background:var(--out);color:var(--outT);font-family:'Courier New',monospace;font-size:.95rem;border-radius:12px;border:none;resize:vertical;margin-bottom:1.2rem;line-height:1.6;outline:none}
+.btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{padding:.7rem 1.4rem;border-radius:999px;font-size:.95rem;font-weight:500;cursor:pointer;transition:.2s;border:none}
+.btn-p{background:var(--accent);color:var(--bg)}.btn-p:hover{background:var(--accent2);transform:translateY(-1px)}
+.btn-s{background:transparent;color:var(--muted);border:1px solid var(--line)}.btn-s:hover{background:var(--bg);color:var(--ink)}
+.btn-ok{background:#4C6B56!important;color:#fff!important}
+.tip{margin-top:1.5rem;background:#f5f0e6;border:1px solid #e8dfce;border-radius:12px;padding:.9rem 1rem;font-size:.85rem;color:#5a5244;display:flex;gap:.6rem}
+@media(max-width:768px){.app{padding:1.4rem;border-radius:16px}h1{font-size:1.8rem}.btns{flex-direction:column}.btn{width:100%}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="header">
+<div class="logo">Canvas Era</div>
+<a href="https://canvasera.art" class="badge">← Gallery</a>
+</div>
+<header>
+<h1>Prompt Studio</h1>
+<p class="subtitle">للكل - ابنِ أي برومبت براسك، من مدن مختلفة وغيرهن - بأسلوب Canvas Era</p>
+</header>
+<main>
+<section class="input-group">
+<h2 class="sec">1. Core Subject</h2>
+<textarea id="mainSubject" class="main-input" placeholder="e.g., A boy building a treehouse in foggy forest, a cat astronaut drinking tea..."></textarea>
+</section>
+<section id="modifiersSection">
+<h2 class="sec" style="margin-bottom:1.2rem;">2. Aesthetic Modifiers (from your library)</h2>
+</section>
+<section class="output-sec">
+<h2 class="sec">3. Final Prompt</h2>
+<textarea id="promptOutput" class="output" readonly placeholder="Your prompt will appear here..."></textarea>
+<div class="btns">
+<button id="copyBtn" class="btn btn-p">Copy Prompt</button>
+<button id="clearBtn" class="btn btn-s">Clear All</button>
+<button id="saveBtn" class="btn btn-s">🔖 Save Private</button>
+</div>
+<div id="saved" class="mt-4 hidden">
+<p style="font-size:.8rem;color:var(--muted);margin-bottom:.5rem;">SAVED PRIVATELY (local)</p>
+<div id="savedList" style="display:flex;flex-direction:column;gap:.5rem;"></div>
+</div>
+<div class="tip">💡 <span><b>Tip:</b> هذا نفس تصميمك النظيف، بس التاكات مأخوذة من الـ 32 بوست مالتك. تقدر تبني مدن جديدة، قصص جديدة، مو بس باريس وبغداد.</span></div>
+</section>
+</main>
+</div>
+<script>
+const tagCategories=[
+{id:'style',title:'Style - من مكتبتك',tags:['Cozy Scrapbook','Storybook Illustration','Kyoto Animation','Ghibli Style','Cyberpunk','Whimsical','Flat Illustration','Cottagecore','Xiaohongshu Style']},
+{id:'lighting',title:'Lighting & Mood - من مكتبتك',tags:['Soft Golden Hour','Warm Candlelight','Misty Morning','Neon Night','Soft Cinematic Light','Volumetric Rays','Dreamy Ethereal','Cozy Warm Atmosphere']},
+{id:'details',title:'Details - Patterns من posts.js',tags:['Vintage Tickets','Polaroid Photos','Handwritten Notes','Pressed Flowers','Washi Tape','Fairy Lights','Dust Motes','Scattered Coffee Beans','Ancient Books','Floating Islands']},
+{id:'env',title:'Environment - مدن مختلفة وغيرهن',tags:['Paris Streets','Baghdad Riverside','Tokyo Alley','Venice Canal','London Rainy Street','Seoul Palace','Prague Cobblestone','Enchanted Forest','Cozy Attic','Magical Library','Rooftop at Night']},
+{id:'ratio',title:'Aspect Ratio',tags:['--ar 2:3','--ar 3:4','--ar 16:9','--ar 9:16','--ar 1:1','--ar 4:5']}
+];
+const mainInput=document.getElementById('mainSubject'), modSec=document.getElementById('modifiersSection'), out=document.getElementById('promptOutput'), copyBtn=document.getElementById('copyBtn'), clearBtn=document.getElementById('clearBtn'), saveBtn=document.getElementById('saveBtn');
+let active=new Set();
+function init(){render();setup();update()}
+function render(){
+tagCategories.forEach(cat=>{
+const g=document.createElement('div');g.className='cat';
+const t=document.createElement('h3');t.className='cat-title';t.textContent=cat.title;g.appendChild(t);
+const c=document.createElement('div');c.className='tags';
+cat.tags.forEach(txt=>{
+const b=document.createElement('button');b.className='tag';b.textContent=txt;
+b.addEventListener('click',()=>{b.classList.toggle('active'); if(b.classList.contains('active')) active.add(txt); else active.delete(txt); update();});
+c.appendChild(b);
+});
+g.appendChild(c);modSec.appendChild(g);
+});
+}
+function update(){
+const subj=mainInput.value.trim();
+let desc=[], params=[];
+active.forEach(tag=>{ if(tag.startsWith('--')) params.push(tag); else desc.push(tag); });
+let parts=[]; if(subj) parts.push(subj); if(desc.length) parts.push(desc.join(', '));
+let final=parts.join(', '); if(params.length) final+=(final?' ':'')+params.join(' ');
+out.value=final;
+}
+function setup(){
+mainInput.addEventListener('input',update);
+copyBtn.addEventListener('click',()=>{
+if(!out.value) return;
+navigator.clipboard.writeText(out.value).then(()=>{
+const o=copyBtn.textContent;copyBtn.textContent='Copied!';copyBtn.classList.add('btn-ok');
+setTimeout(()=>{copyBtn.textContent=o;copyBtn.classList.remove('btn-ok');},1500);
+});
+});
+clearBtn.addEventListener('click',()=>{
+mainInput.value='';active.clear();document.querySelectorAll('.tag.active').forEach(e=>e.classList.remove('active'));update();
+});
+saveBtn.addEventListener('click',()=>{
+if(!out.value) return;
+let arr=JSON.parse(localStorage.getItem('ce_studio')||'[]');
+arr.unshift({id:Date.now(),text:out.value,date:new Date().toLocaleDateString()});
+localStorage.setItem('ce_studio',JSON.stringify(arr));
+renderSaved();
+});
+}
+function renderSaved(){
+let arr=JSON.parse(localStorage.getItem('ce_studio')||'[]');
+if(!arr.length) return;
+document.getElementById('saved').classList.remove('hidden');
+const list=document.getElementById('savedList');list.innerHTML='';
+arr.slice(0,5).forEach(p=>{
+const d=document.createElement('div');d.style.cssText='background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem;font-size:.85rem;display:flex;justify-content:space-between;align-items:center;';
+d.innerHTML=`<span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:80%">${p.text}</span><button onclick="del(${p.id})" style="background:none;border:none;cursor:pointer;color:var(--muted)">✕</button>`;
+list.appendChild(d);
+});
+}
+window.del=(id)=>{let arr=JSON.parse(localStorage.getItem('ce_studio')||'[]').filter(x=>x.id!==id);localStorage.setItem('ce_studio',JSON.stringify(arr));renderSaved(); if(!arr.length) document.getElementById('saved').classList.add('hidden');}
+init();renderSaved();
+</script>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
+</html>
