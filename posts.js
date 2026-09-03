@@ -299,6 +299,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-29"
   },
+    {
+    "title": "Cairo Vintage Travel Scrapbook",
+    "slug": "cairo-vintage-travel-scrapbook",
+    "desc": "A cozy vintage scrapbook illustration capturing the magic of Cairo. Featuring a dreamy girl holding a book surrounded by polaroids of Khan el-Khalili, the Pyramids, old tickets, lace, and handwritten notes.",
+    "description": "A cozy vintage scrapbook illustration capturing the magic of Cairo. Featuring a dreamy girl holding a book surrounded by polaroids of Khan el-Khalili, the Pyramids, old tickets, lace, and handwritten notes.",
+    "prompt": "A beautiful vintage scrapbook collage layout centered around Cairo Egypt, junk journal aesthetic. In the center, a dreamy girl with wavy hair wearing a vintage dress holding an old book, looking up warmly. Surrounded by overlapping elements: vintage polaroids of the Pyramids of Giza, Khan el-Khalili bazaar, and a felucca on the Nile river. Torn parchment paper, old Egyptian postage stamps, vintage train tickets, delicate lace borders, dried flowers, and handwritten cursive notes. Warm golden sepia lighting, nostalgic travel diary vibe, cozy aesthetic, highly detailed, masterpiece --ar 2:3",
+    "image": "images/cairo-vintage-travel-scrapbook.webp",
+    "tags": [],
+    "category": "Cities",
+    "author": "Canvas Era",
+    "date": "2026-09-03"
+    },
   {
     "title": "Alchemist's Cozy Corner",
     "slug": "alchemists-cozy-corner",
