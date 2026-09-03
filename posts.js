@@ -299,6 +299,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-29"
   },
+   {
+    "title": "Cozy Witch & Magical Potion",
+    "slug": "cozy-witch-magical-potion",
+    "desc": "A cozy anime illustration of a witch girl with glasses brewing a glowing potion in her moonlit library, accompanied by a small black cat in a wizard hat.",
+    "description": "A cozy anime illustration of a witch girl with glasses brewing a glowing potion in her moonlit library, accompanied by a small black cat in a wizard hat.",
+    "prompt": "cozy anime witch library at night, girl with glasses brewing glowing potion, shelves full of magical books, black cat with wizard hat, warm light from potion bottles, moonlight from window, magical cozy aesthetic, highly detailed --ar 2:3",
+    "image": "images/cozy-witch-magical-potion.webp",
+    "tags": [],
+    "category": "Anime",
+    "author": "Canvas Era",
+    "date": "2026-09-03"
+  }, 
     {
     "title": "Cairo Vintage Travel Scrapbook",
     "slug": "cairo-vintage-travel-scrapbook",
