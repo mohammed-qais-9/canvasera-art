@@ -371,6 +371,18 @@ const posts = [
     "author": "Canvas Era",
     "date": "2026-08-29"
   },
+    {
+    "title": "The Floating Library",
+    "slug": "the-floating-library",
+    "desc": "Warm sunlight pours through dusty windows in this magical endless bookshop, where a young girl finds the perfect reading spot among enchanted floating books and lush greenery.",
+    "description": "Warm sunlight pours through dusty windows in this magical endless bookshop, where a young girl finds the perfect reading spot among enchanted floating books and lush greenery.",
+    "prompt": "cozy endless bookshop with ladders and floating books, little girl sitting on ladder reading, warm sunlight through dusty window, plants hanging, magical realism, storybook illustration, ultra detailed --ar 2:3",
+    "image": "images/the-floating-library.webp",
+    "tags": [],
+    "category": "Art",
+    "author": "Canvas Era",
+    "date": "2026-09-03"
+    },
   {
     "title": "Magical Café in Floating Islands",
     "slug": "magical-caf-in-floating-islands",
