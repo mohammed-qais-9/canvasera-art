@@ -394,6 +394,6 @@ const posts = [
     "category": "Anime",
     "author": "Canvas Era",
     "date": "2026-08-29"
-  }
+  },
       
 ];
