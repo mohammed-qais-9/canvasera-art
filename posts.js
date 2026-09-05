@@ -1,4 +1,16 @@
 const posts = [
+     {
+    "title": "Lofi Cyberpunk Rooftop Garden",
+    "slug": "lofi-cyberpunk-rooftop-garden",
+    "desc": "A cozy anime-style illustration of a girl wearing headphones, tending to her secret glowing botanical garden high above the neon streets of futuristic Tokyo. Accompanied by her black cat, this artwork perfectly blends vibrant cyberpunk energy with serene lofi vibes.",
+    "description": "A cozy anime-style illustration of a girl wearing headphones, tending to her secret glowing botanical garden high above the neon streets of futuristic Tokyo. Accompanied by her black cat, this artwork perfectly blends vibrant cyberpunk energy with serene lofi vibes.",
+    "prompt": "anime girl tending to a secret rooftop garden above neon Tokyo at night, plants glowing, city lights below, wearing headphones, cat beside her, cyberpunk cozy, warm and futuristic, highly detailed --ar 2:3",
+    "image": "images/lofi-cyberpunk-rooftop-garden.webp",
+    "tags": [],
+    "category": "Anime",
+    "author": "Canvas Era",
+    "date": "2026-09-05"
+     },
     {
     "title": "Barcelona Memories Vintage Scrapbook",
     "slug": "barcelona-memories-vintage-scrapbook",
