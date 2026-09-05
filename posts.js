@@ -7,7 +7,7 @@ const posts = [
     "prompt": "An intricate quilt art wall tapestry featuring a close portrait of a stunning woman with wavy red hair and subtle freckles, wearing a dark crimson red embroidered headscarf and matching draped shawl. The fabric is richly detailed with golden thread embroidery, tiny oak leaves, and pinecone motifs. The background is a vintage patchwork quilt with delicate French script, accented with embroidered autumn maple leaves in warm orange and rusty red tones, dried dark chrysanthemums, and small acorns. Rich tactile thread textures, highly detailed embroidery, cozy autumn color palette, soft warm lighting, masterpiece.",
     "image": "images/quilted-autumn-tapestry-portrait.webp",
     "tags": [],
-    "category": "Cities",
+    "category": "Art",
     "author": "Canvas Era",
     "date": "2026-09-05"
       },
