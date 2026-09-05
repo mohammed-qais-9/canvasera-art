@@ -1,4 +1,16 @@
 const posts = [
+       {
+    "title": "Madrid Memories: Vintage Travel Scrapbook",
+    "slug": "madrid-memories-vintage-travel-scrapbook",
+    "desc": "Experience the historic charm of Spain with this warm and cozy Madrid vintage scrapbook collage. This highly detailed illustration features a dreamy portrait surrounded by nostalgic travel memories—including retro polaroids of the Royal Palace and Plaza Mayor, classic RENFE train tickets, dried roses, delicate lace, and handwritten notes about sunsets and churros. A perfect masterpiece for junk journal and travel aesthetic lovers.",
+    "description": "Experience the historic charm of Spain with this warm and cozy Madrid vintage scrapbook collage. This highly detailed illustration features a dreamy portrait surrounded by nostalgic travel memories—including retro polaroids of the Royal Palace and Plaza Mayor, classic RENFE train tickets, dried roses, delicate lace, and handwritten notes about sunsets and churros. A perfect masterpiece for junk journal and travel aesthetic lovers.",
+    "prompt": "A breathtaking vintage scrapbook collage layout centered around Madrid Spain, junk journal aesthetic. In the center, a charming Spanish girl with soft curls wearing an elegant vintage blouse, holding an antique book and smiling thoughtfully. Surrounded by overlapping elements: vintage polaroids with clear handwritten labels of \"Royal Palace\", \"Plaza Mayor\", and \"Retiro Park\". Torn antique paper with heading \"Madrid Spain\", vintage RENFE train tickets, classic Spanish postage stamps, dried roses, lace trim, and handwritten cursive travel notes about warm sunsets and churros. Warm golden brown lighting, nostalgic travel diary vibe, cozy aesthetic, highly detailed, masterpiece --ar 2:3",
+    "image": "images/madrid-memories-vintage-travel-scrapbook.webp",
+    "tags": [],
+    "category": "Cities",
+    "author": "Canvas Era",
+    "date": "2026-09-05"
+       },
       {
     "title": "Quilted Autumn Tapestry Portrait",
     "slug": "quilted-autumn-tapestry-portrait",
