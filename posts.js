@@ -1,4 +1,16 @@
 const posts = [
+      {
+    "title": "Quilted Autumn Tapestry Portrait",
+    "slug": "quilted-autumn-tapestry-portrait",
+    "desc": "A breathtaking and highly detailed quilted fabric portrait of a beautiful freckled girl with vibrant red hair, wearing a deep crimson hood. Surrounded by embroidered autumn leaves, pinecones, and cozy patchwork textures. A true masterpiece blending AI art with traditional textile aesthetics.",
+    "description": "A breathtaking and highly detailed quilted fabric portrait of a beautiful freckled girl with vibrant red hair, wearing a deep crimson hood. Surrounded by embroidered autumn leaves, pinecones, and cozy patchwork textures. A true masterpiece blending AI art with traditional textile aesthetics.",
+    "prompt": "An intricate quilt art wall tapestry featuring a close portrait of a stunning woman with wavy red hair and subtle freckles, wearing a dark crimson red embroidered headscarf and matching draped shawl. The fabric is richly detailed with golden thread embroidery, tiny oak leaves, and pinecone motifs. The background is a vintage patchwork quilt with delicate French script, accented with embroidered autumn maple leaves in warm orange and rusty red tones, dried dark chrysanthemums, and small acorns. Rich tactile thread textures, highly detailed embroidery, cozy autumn color palette, soft warm lighting, masterpiece.",
+    "image": "images/quilted-autumn-tapestry-portrait.webp",
+    "tags": [],
+    "category": "Cities",
+    "author": "Canvas Era",
+    "date": "2026-09-05"
+      },
      {
     "title": "Lofi Cyberpunk Rooftop Garden",
     "slug": "lofi-cyberpunk-rooftop-garden",
