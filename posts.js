@@ -1,4 +1,16 @@
 const posts = [
+    {
+    "title": "Barcelona Memories Vintage Scrapbook",
+    "slug": "barcelona-memories-vintage-scrapbook",
+    "desc": "Lose yourself in the magical streets of Spain with this warm, vintage scrapbook collage of Barcelona. Featuring a cozy travel diary aesthetic, complete with realistic polaroids of the Sagrada Família, Park Güell, the Gothic Quarter, and a classic Camp Nou ticket, all surrounded by delicate lace, dried flowers, and heartfelt handwritten notes.",
+    "description": "Lose yourself in the magical streets of Spain with this warm, vintage scrapbook collage of Barcelona. Featuring a cozy travel diary aesthetic, complete with realistic polaroids of the Sagrada Família, Park Güell, the Gothic Quarter, and a classic Camp Nou ticket, all surrounded by delicate lace, dried flowers, and heartfelt handwritten notes.",
+    "prompt": "A beautiful vintage scrapbook collage layout centered around Barcelona Spain, junk journal aesthetic. In the center, a dreamy Spanish girl with dark wavy hair wearing a vintage linen dress, holding a leather travel journal and looking up warmly. Surrounded by overlapping elements: vintage polaroids with clear handwritten labels of \"Sagrada Familia\", \"Park Güell\", and \"Gothic Quarter\". Torn parchment paper with heading \"Barcelona Spain\", vintage Spanish postage stamps, classic European train tickets, delicate lace borders, pressed dried bougainvillea flowers, and handwritten cursive notes about Mediterranean sea breeze. Warm golden sepia lighting, nostalgic travel diary vibe, cozy aesthetic, highly detailed, masterpiece --ar 2:3\n",
+    "image": "images/barcelona-memories-vintage-scrapbook.webp",
+    "tags": [],
+    "category": "Cities",
+    "author": "Canvas Era",
+    "date": "2026-09-05"
+    },
    {
     "title": "Crimson Heritage Portrait",
     "slug": "crimson-heritage-portrait",
